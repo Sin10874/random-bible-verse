@@ -16,6 +16,7 @@ export default function Page() {
   const [loading, setLoading] = useState(false);
   const [verse, setVerse] = useState<Verse | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [showToast, setShowToast] = useState(false);
 
   async function fetchVerse() {
     try {
@@ -38,25 +39,13 @@ export default function Page() {
     if (!verse) return;
     const payload = verse.reference ? `${verse.text} — ${verse.reference}` : verse.text;
     await navigator.clipboard.writeText(payload);
-    alert("Copied!");
-  }
-
-  async function shareVerse() {
-    if (!verse) return;
-    const payload = verse.reference ? `${verse.text} — ${verse.reference}` : verse.text;
-    if (navigator.share) {
-      try {
-        await navigator.share({ text: payload });
-      } catch {}
-    } else {
-      await navigator.clipboard.writeText(payload);
-      alert("No Web Share on this device. Copied instead!");
-    }
+    setShowToast(true);
+    setTimeout(() => setShowToast(false), 1500);
   }
 
   return (
     <div className="text-white bg-[#0b0f1a]">
-      {/* ===== Hero：只有首屏使用背景图 ===== */}
+      {/* ===== Hero：首屏使用背景图 ===== */}
       <section className="relative min-h-screen overflow-hidden">
         {/* 背景图仅限 Hero 区域 */}
         <img
@@ -65,12 +54,12 @@ export default function Page() {
           className="absolute inset-0 h-full w-full object-cover"
           aria-hidden="true"
         />
-        {/* 顶部暗化 + 纵向渐变 */}
+        {/* 暗化遮罩 */}
         <div
           className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/60"
           aria-hidden="true"
         />
-        {/* 底部与下方深色背景的过渡（透明 -> 深色） */}
+        {/* 底部过渡到纯色区 */}
         <div
           className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-[#0b0f1a]"
           aria-hidden="true"
@@ -94,12 +83,12 @@ export default function Page() {
           <div className="min-w-[48px]" />
         </header>
 
-        {/* Hero 内容 —— 垂直居中 & 间距增大 */}
+        {/* Hero 内容 —— 垂直居中 */}
         <main
           className="relative z-10 mx-auto max-w-5xl px-6 md:px-10
                      min-h-[calc(100vh-96px)] flex flex-col items-center justify-center text-center"
         >
-          {/* “Trust God.” 仅做视觉展示，不占 heading */}
+          {/* 视觉主标（不占 heading） */}
           <p
             className={`${display.className} italic text-5xl md:text-7xl font-semibold tracking-tight leading-[1.05] drop-shadow-xl`}
             aria-hidden="true"
@@ -114,7 +103,7 @@ export default function Page() {
           </p>
 
           <div className="mt-12 md:mt-14 flex items-center justify-center">
-            {/* H2：按钮语义标题（仅给读屏器） */}
+            {/* H2：按钮语义标题（读屏用） */}
             <h2 className="sr-only">Random Bible Verse</h2>
             <button
               onClick={fetchVerse}
@@ -157,24 +146,13 @@ export default function Page() {
                 <div className="mt-4 text-white/80">— {verse.reference}</div>
               )}
 
-              <div className="mt-6 flex gap-3">
+              {/* 只保留 Copy 按钮，右对齐 */}
+              <div className="mt-6 flex justify-end">
                 <button
                   onClick={copyVerse}
-                  className="btn-primary cursor-pointer px-4 py-2 text-sm"
+                  className="rounded-full bg-white/90 text-neutral-900 px-5 py-2 text-sm font-medium hover:bg-white shadow cursor-pointer transition active:scale-95"
                 >
                   Copy
-                </button>
-                <button
-                  onClick={shareVerse}
-                  className="btn-primary cursor-pointer px-4 py-2 text-sm"
-                >
-                  Share
-                </button>
-                <button
-                  onClick={fetchVerse}
-                  className="btn-primary cursor-pointer px-4 py-2 text-sm"
-                >
-                  New Verse
                 </button>
               </div>
             </div>
@@ -353,6 +331,17 @@ export default function Page() {
         </div>
       </section>
 
+      {/* ✅ Copy Toast */}
+      {showToast && (
+        <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
+                  bg-white/90 text-neutral-900 px-5 py-2 rounded-full
+                  shadow-md text-sm font-medium
+                  transition-opacity duration-300 animate-fadeInOut
+                  z-50">
+          ✅ Copied
+        </div>
+      )}   
+
       {/* ===== 底部 ===== */}
       <footer className="relative z-10 border-t border-white/10 bg-[#0a0a0a]">
         <div className="mx-auto max-w-5xl px-6 md:px-10 py-10 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/80">
@@ -360,9 +349,10 @@ export default function Page() {
             © {new Date().getFullYear()} Bible Verse Generator. Built with ❤️ for reflection.
           </p>
           <div className="flex items-center gap-5">
-            <a href="#privacy" className="hover:text-white">Privacy</a>
-            <a href="#terms" className="hover:text-white">Terms</a>
-            <a href="#contact" className="hover:text-white">Contact</a>
+            <a href="/privacy" className="hover:text-white">Privacy</a>
+            <a href="mailto:randombibleverse@outlook.com" className="hover:text-white">
+              Contact Us
+            </a>
           </div>
         </div>
       </footer>
