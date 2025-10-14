@@ -1,14 +1,16 @@
+// app/api/verse/route.ts
 import { NextResponse } from "next/server";
 
-export const dynamic = "force-dynamic";
+export const dynamic = "force-dynamic"; // vercel 上每次动态
 
 const ARK_API_KEY = process.env.ARK_API_KEY;
 const ARK_MODEL = process.env.ARK_MODEL ?? "doubao-seed-1-6-flash-250828";
 const ARK_API_BASE =
   process.env.ARK_API_BASE ?? "https://ark.cn-beijing.volces.com";
 
-type TextBlock = { type: "text"; text: string };
+// ====== 类型声明（不使用 any）======
 type Role = "user" | "assistant" | "system";
+type TextBlock = { type: "text"; text: string };
 type Message = { role: Role; content: TextBlock[] };
 
 type ArkChatChoice = {
@@ -24,6 +26,7 @@ type ArkChatResponse = {
   choices?: ArkChatChoice[];
 };
 
+// 从豆包响应中提取第一段文本
 function extractFirstText(data: unknown): string | null {
   if (
     typeof data === "object" &&
@@ -54,13 +57,16 @@ function pickFallback() {
   return FALLBACKS[Math.floor(Math.random() * FALLBACKS.length)];
 }
 
+// ====== API Handler ======
 export async function GET() {
+  // 没有密钥时直接返回兜底，避免 500
   if (!ARK_API_KEY) {
     const fb = pickFallback();
     return NextResponse.json(fb, { status: 200 });
   }
 
   try {
+    // 明确提示只返回一条英文经文
     const messages: Message[] = [
       {
         role: "user",
@@ -75,7 +81,10 @@ export async function GET() {
       },
     ];
 
-    const reqBody = { model: ARK_MODEL, messages };
+    const body = JSON.stringify({
+      model: ARK_MODEL,
+      messages,
+    });
 
     const url = `${ARK_API_BASE}/api/v3/chat/completions`;
     const res = await fetch(url, {
@@ -84,7 +93,7 @@ export async function GET() {
         "Content-Type": "application/json",
         Authorization: `Bearer ${ARK_API_KEY}`,
       },
-      body: JSON.stringify(reqBody),
+      body,
       cache: "no-store",
     });
 
@@ -99,8 +108,9 @@ export async function GET() {
     if (text) {
       const lines = text.split("\n").map((s) => s.trim()).filter(Boolean);
       const verseText = lines[0] ?? text;
+
       let reference = lines[1] ?? "";
-      reference = reference.replace(/^—\s*/, "");
+      reference = reference.replace(/^—\s*/, ""); // 去掉开头的破折号
 
       return NextResponse.json(
         { text: verseText, reference: reference || undefined },
@@ -111,6 +121,7 @@ export async function GET() {
     const fb = pickFallback();
     return NextResponse.json(fb, { status: 200 });
   } catch {
+    // 不声明 e，避免 no-unused-vars
     const fb = pickFallback();
     return NextResponse.json(fb, { status: 200 });
   }
