@@ -48,7 +48,6 @@ async function handle() {
 
   try {
     const payload = useCompat
-      // OpenAI 兼容格式
       ? {
           model,
           temperature,
@@ -56,14 +55,18 @@ async function handle() {
             { role: 'user', content: 'Return ONE random Bible verse in JSON with keys "text" and "reference" only.' },
           ],
         }
-      // 官方 v3 chat/completions 多模态格式
       : {
           model,
           temperature,
           messages: [
             {
               role: 'user',
-              content: [{ type: 'text', text: 'Return ONE random Bible verse in JSON with keys "text" and "reference" only.' }],
+              content: [
+                {
+                  type: 'text',
+                  text: 'Return ONE random Bible verse in JSON with keys "text" and "reference" only.',
+                },
+              ],
             },
           ],
         };
@@ -75,9 +78,7 @@ async function handle() {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(payload),
-      // 给跨区一点余量
       signal: AbortSignal.timeout(15000),
-      // 禁止任何中间缓存
       cache: 'no-store',
     });
 
@@ -88,11 +89,9 @@ async function handle() {
     }
 
     const data = (await res.json()) as ArkResponse;
-
-    // 从 choices[0].message.content 中取文本
     const content = data?.choices?.[0]?.message?.content || '';
 
-    // JSON 解析（模型通常按我们要求返回 JSON）
+    // 尝试解析模型返回的 JSON
     try {
       const parsed = JSON.parse(content);
       if (parsed?.text) {
@@ -102,18 +101,17 @@ async function handle() {
         );
       }
     } catch {
-      // 不是 JSON 的话，做个简易兜底
+      // 不是 JSON 就继续下面的兜底
     }
 
-    // 简单兜底：把 content 当作纯文本返回
     if (content) {
       return NextResponse.json({ text: content }, { headers: { 'x-source': 'doubao' }, status: 200 });
     }
 
-    // 最后兜底
     return NextResponse.json({ ...pickFallback() }, { headers: { 'x-source': 'fallback' }, status: 200 });
-  } catch (e: any) {
-    console.error('[Doubao] fetch error:', e?.message || e);
+  } catch (e) {
+    const msg = e instanceof Error ? e.message : String(e);
+    console.error('[Doubao] fetch error:', msg);
     return NextResponse.json({ ...pickFallback() }, { headers: { 'x-source': 'fallback' }, status: 200 });
   }
 }
