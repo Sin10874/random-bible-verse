@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { Cormorant_Garamond } from "next/font/google";
 
 const display = Cormorant_Garamond({
@@ -47,26 +48,27 @@ export default function Page() {
     <div className="text-white bg-[#0b0f1a]">
       {/* ===== Hero：首屏使用背景图 ===== */}
       <section className="relative min-h-screen overflow-hidden">
-        {/* 背景图仅限 Hero 区域 */}
+        {/* 桌面背景 */}
         <img
           src={process.env.NEXT_PUBLIC_HERO_URL || "/mountain-hero.jpg"}
           alt=""
-          className="absolute inset-0 h-full w-full object-cover"
+          className="absolute inset-0 hidden sm:block h-full w-full object-cover"
+          aria-hidden="true"
+        />
+        {/* 移动端背景（竖图） */}
+        <img
+          src={process.env.NEXT_PUBLIC_HERO_MOBILE_URL || "/mountain-hero-mobile.jpg"}
+          alt=""
+          className="absolute inset-0 block sm:hidden h-full w-full object-cover object-[50%_30%]"
           aria-hidden="true"
         />
         {/* 暗化遮罩 */}
-        <div
-          className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/60"
-          aria-hidden="true"
-        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/60" />
         {/* 底部过渡到纯色区 */}
-        <div
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-[#0b0f1a]"
-          aria-hidden="true"
-        />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-[#0b0f1a]" />
 
         {/* 顶部导航（含 H1） */}
-        <header className="relative z-10 flex items-center justify-between px-6 md:px-10 py-5">
+        <header className="relative z-20 flex items-center justify-between px-6 md:px-10 py-5">
           <div className="flex items-center gap-3">
             <img
               src="/logo.svg"
@@ -75,12 +77,28 @@ export default function Page() {
               height={32}
               className="h-8 w-8 object-contain drop-shadow-sm"
             />
-            {/* H1：网站主标题 */}
             <h1 className="font-semibold tracking-tight text-lg md:text-xl">
               Bible Verse Generator
             </h1>
           </div>
-          <div className="min-w-[48px]" />
+
+          {/* 顶部右侧：仅保留 Contact Us 图标按钮 */}
+          <a
+            href="mailto:randombibleverse@outlook.com"
+            className="inline-flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20
+                       ring-1 ring-white/25 p-2 backdrop-blur transition cursor-pointer
+                       focus:outline-none focus:ring-2 focus:ring-white/30"
+            aria-label="Contact Us"
+            title="Contact Us"
+          >
+            {/* Envelope Icon */}
+            <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5" aria-hidden="true">
+              <path d="M4 6h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1Z" stroke="currentColor" strokeWidth="1.5"/>
+              <path d="M4 8l8 5 8-5" stroke="currentColor" strokeWidth="1.5" />
+            </svg>
+            {/* 如需桌面显示文字，解开下一行注释： */}
+            {/* <span className="hidden md:inline ml-2 text-sm">Contact</span> */}
+          </a>
         </header>
 
         {/* Hero 内容 —— 垂直居中 */}
@@ -88,7 +106,6 @@ export default function Page() {
           className="relative z-10 mx-auto max-w-5xl px-6 md:px-10
                      min-h-[calc(100vh-96px)] flex flex-col items-center justify-center text-center"
         >
-          {/* 视觉主标（不占 heading） */}
           <p
             className={`${display.className} italic text-5xl md:text-7xl font-semibold tracking-tight leading-[1.05] drop-shadow-xl`}
             aria-hidden="true"
@@ -103,7 +120,6 @@ export default function Page() {
           </p>
 
           <div className="mt-12 md:mt-14 flex items-center justify-center">
-            {/* H2：按钮语义标题（读屏用） */}
             <h2 className="sr-only">Random Bible Verse</h2>
             <button
               onClick={fetchVerse}
@@ -146,7 +162,6 @@ export default function Page() {
                 <div className="mt-4 text-white/80">— {verse.reference}</div>
               )}
 
-              {/* 只保留 Copy 按钮，右对齐 */}
               <div className="mt-6 flex justify-end">
                 <button
                   onClick={copyVerse}
@@ -333,28 +348,58 @@ export default function Page() {
 
       {/* ✅ Copy Toast */}
       {showToast && (
-        <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
-                  bg-white/90 text-neutral-900 px-5 py-2 rounded-full
-                  shadow-md text-sm font-medium
-                  transition-opacity duration-300 animate-fadeInOut
-                  z-50">
+        <div
+          className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
+                     bg-white/90 text-neutral-900 px-5 py-2 rounded-full
+                     shadow-md text-sm font-medium
+                     transition-opacity duration-300 animate-fadeInOut
+                     z-50"
+        >
           ✅ Copied
         </div>
-      )}   
+      )}
 
-      {/* ===== 底部 ===== */}
+      {/* ===== 底部（Mobile 友好） ===== */}
       <footer className="relative z-10 border-t border-white/10 bg-[#0a0a0a]">
-        <div className="mx-auto max-w-5xl px-6 md:px-10 py-10 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/80">
-          <p>
+        <div
+          className="mx-auto max-w-5xl
+               px-5 py-6 md:px-10 md:py-10
+               flex flex-col md:flex-row
+               md:items-center md:justify-between
+               gap-4 md:gap-5
+               text-white/70"
+        >
+          <nav className="order-1 md:order-2 w-full md:w-auto">
+            <ul className="flex justify-center md:justify-end items-center gap-6">
+              <li>
+                <Link
+                  href="/privacy"
+                  className="inline-flex items-center rounded-md px-2 py-2
+                       text-sm hover:text-white
+                       focus:outline-none focus:ring-2 focus:ring-white/30"
+                >
+                  Privacy
+                </Link>
+              </li>
+              <li>
+                <a
+                  href="mailto:randombibleverse@outlook.com"
+                  className="inline-flex items-center rounded-md px-2 py-2
+                       text-sm hover:text-white
+                       focus:outline-none focus:ring-2 focus:ring-white/30"
+                >
+                  Contact Us
+                </a>
+              </li>
+            </ul>
+          </nav>
+
+          <p className="order-2 md:order-1 text-center md:text-left text-xs md:text-sm leading-relaxed">
             © {new Date().getFullYear()} Bible Verse Generator. Built with ❤️ for reflection.
           </p>
-          <div className="flex items-center gap-5">
-            <a href="/privacy" className="hover:text-white">Privacy</a>
-            <a href="mailto:randombibleverse@outlook.com" className="hover:text-white">
-              Contact Us
-            </a>
-          </div>
         </div>
+
+        <div className="h-[env(safe-area-inset-bottom)] md:hidden" />
       </footer>
     </div>
   );
