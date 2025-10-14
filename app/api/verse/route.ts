@@ -1,3 +1,8 @@
+// 放在文件最上方
+export const runtime = "edge";                     // 改用 Edge Runtime
+export const preferredRegion = ["hkg1","sin1","nrt1"]; // 优先香港/新加坡/东京
+export const maxDuration = 20;                     // Edge 执行时间上限（秒）
+
 import { NextResponse } from "next/server";
 
 type Verse = { text: string; reference?: string };
