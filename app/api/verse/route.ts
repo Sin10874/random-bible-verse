@@ -1,128 +1,93 @@
 // app/api/verse/route.ts
 import { NextResponse } from "next/server";
 
-export const dynamic = "force-dynamic"; // vercel 上每次动态
+// ✅ 强制用 Node.js 运行时，避免某些 Edge 出口对国内域名不稳定
+export const runtime = "nodejs";
+// ✅ 这条让函数每次都真正执行（不要缓存）
+export const dynamic = "force-dynamic";
 
-const ARK_API_KEY = process.env.ARK_API_KEY;
-const ARK_MODEL = process.env.ARK_MODEL ?? "doubao-seed-1-6-flash-250828";
-const ARK_API_BASE =
-  process.env.ARK_API_BASE ?? "https://ark.cn-beijing.volces.com";
+type ArkMessage =
+  | { role: "user"; content: Array<{ type: "text"; text: string }> }
+  | { role: "assistant"; content: Array<{ type: "text"; text: string }> };
 
-// ====== 类型声明（不使用 any）======
-type Role = "user" | "assistant" | "system";
-type TextBlock = { type: "text"; text: string };
-type Message = { role: Role; content: TextBlock[] };
-
-type ArkChatChoice = {
-  message?: {
-    role?: Role;
-    content?: Array<{ type?: string; text?: string }>;
-  };
-  finish_reason?: string;
+type ArkChoice = {
+  message: { role: "assistant"; content: Array<{ type: "text"; text: string }> };
 };
 
-type ArkChatResponse = {
-  id?: string;
-  choices?: ArkChatChoice[];
-};
+type ArkChatResponse = { choices?: ArkChoice[] };
 
-// 从豆包响应中提取第一段文本
-function extractFirstText(data: unknown): string | null {
-  if (
-    typeof data === "object" &&
-    data !== null &&
-    "choices" in data &&
-    Array.isArray((data as { choices?: unknown }).choices)
-  ) {
-    const choices = (data as { choices: ArkChatChoice[] }).choices;
-    const first = choices[0];
-    const content = first?.message?.content;
-    if (Array.isArray(content)) {
-      const textBlock = content.find((b) => b?.type === "text");
-      if (textBlock && typeof textBlock.text === "string") {
-        return textBlock.text.trim();
-      }
-    }
-  }
-  return null;
+const API_BASE = (process.env.ARK_API_BASE || "https://ark.cn-beijing.volces.com").replace(/\/+$/, "");
+const API_KEY = process.env.ARK_API_KEY;
+const MODEL = process.env.ARK_MODEL || "doubao-seed-1-6-flash-250828";
+const TEMP = Number(process.env.ARK_TEMPERATURE ?? 0.7);
+
+// 一个非常简洁的兜底（用于服务异常时）
+function fallback() {
+  const body = { text: "Be strong and courageous... for the LORD your God is with you.", reference: "Joshua 1:9" };
+  return new NextResponse(JSON.stringify(body), {
+    status: 200,
+    headers: { "content-type": "application/json; charset=utf-8", "x-source": "fallback" },
+  });
 }
 
-const FALLBACKS: Array<{ text: string; reference: string }> = [
-  { text: "The LORD is my shepherd; I shall not want.", reference: "Psalm 23:1" },
-  { text: "Be strong and courageous... for the LORD your God is with you.", reference: "Joshua 1:9" },
-  { text: "Trust in the LORD with all your heart...", reference: "Proverbs 3:5" },
-];
-
-function pickFallback() {
-  return FALLBACKS[Math.floor(Math.random() * FALLBACKS.length)];
-}
-
-// ====== API Handler ======
 export async function GET() {
-  // 没有密钥时直接返回兜底，避免 500
-  if (!ARK_API_KEY) {
-    const fb = pickFallback();
-    return NextResponse.json(fb, { status: 200 });
-  }
-
   try {
-    // 明确提示只返回一条英文经文
-    const messages: Message[] = [
-      {
-        role: "user",
-        content: [
-          {
-            type: "text",
-            text:
-              "Give me ONE random Bible verse in English. Respond ONLY with the verse text and reference on two lines.\n" +
-              "Line1: the verse text; Line2: the reference like '— John 3:16'.",
-          },
-        ],
-      },
+    if (!API_KEY) {
+      console.error("[/api/verse] Missing ARK_API_KEY");
+      return fallback();
+    }
+
+    const url = `${API_BASE}/api/v3/chat/completions`;
+
+    const systemPrompt =
+      'Return ONE random Bible verse in English as strict JSON: {"text":"...","reference":"Book X:Y"}. No extra text.';
+    const messages: ArkMessage[] = [
+      { role: "user", content: [{ type: "text", text: systemPrompt }] },
     ];
 
-    const body = JSON.stringify({
-      model: ARK_MODEL,
+    const payload = {
+      model: MODEL,
+      temperature: TEMP,
       messages,
-    });
+    };
 
-    const url = `${ARK_API_BASE}/api/v3/chat/completions`;
     const res = await fetch(url, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${ARK_API_KEY}`,
+        "content-type": "application/json",
+        Authorization: `Bearer ${API_KEY}`,
       },
-      body,
-      cache: "no-store",
+      body: JSON.stringify(payload),
     });
 
     if (!res.ok) {
-      const fb = pickFallback();
-      return NextResponse.json(fb, { status: 200 });
+      const errText = await res.text().catch(() => "(no body)");
+      console.error("[/api/verse] Doubao non-OK:", res.status, errText);
+      return fallback();
     }
 
-    const raw: unknown = await res.json();
-    const text = extractFirstText(raw);
-
-    if (text) {
-      const lines = text.split("\n").map((s) => s.trim()).filter(Boolean);
-      const verseText = lines[0] ?? text;
-
-      let reference = lines[1] ?? "";
-      reference = reference.replace(/^—\s*/, ""); // 去掉开头的破折号
-
-      return NextResponse.json(
-        { text: verseText, reference: reference || undefined },
-        { status: 200 }
-      );
+    const data = (await res.json()) as ArkChatResponse;
+    // 豆包 Ark 的结构：choices[0].message.content[0].text
+    const textChunk = data.choices?.[0]?.message?.content?.[0]?.text || "";
+    // 期望是严格 JSON
+    let parsed: { text?: string; reference?: string } | null = null;
+    try {
+      parsed = JSON.parse(textChunk);
+    } catch (e) {
+      console.warn("[/api/verse] parse JSON failed, raw =", textChunk);
     }
 
-    const fb = pickFallback();
-    return NextResponse.json(fb, { status: 200 });
-  } catch {
-    // 不声明 e，避免 no-unused-vars
-    const fb = pickFallback();
-    return NextResponse.json(fb, { status: 200 });
+    if (!parsed?.text) {
+      // 如果模型没按 JSON 回答，就直接把文本塞到 text 字段里
+      parsed = { text: textChunk?.trim() || "God is our refuge and strength.", reference: "" };
+    }
+
+    return new NextResponse(JSON.stringify(parsed), {
+      status: 200,
+      headers: { "content-type": "application/json; charset=utf-8", "x-source": "doubao" },
+    });
+  } catch (e) {
+    console.error("[/api/verse] Unexpected error:", e);
+    return fallback();
   }
 }
