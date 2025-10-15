@@ -4,5 +4,5 @@
         "runtime": "nodejs20.x"
       }
     },
-    "regions": ["hkg1", "sin1", "hnd1", "icn1"]
+    "regions": ["iad1"]
   }  
