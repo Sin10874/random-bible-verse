@@ -1,69 +1,138 @@
 // app/api/verse/route.ts
-import { NextRequest, NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
+import type { NextRequest } from "next/server";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
-export const maxDuration = 5; // 本地读文件非常快，不需要更高预算
+export const preferredRegion = ["hkg1", "sin1", "hnd1"];
+export const maxDuration = 15;
 
-/** 最近去重（Cookie 保存最近 50 条引用，避免短期重复） */
-const DEDUPE_COOKIE = "recent_refs";
-const DEDUPE_SIZE = 50;
+/** 兜底 */
+const FALLBACK = {
+  text: "Be strong and courageous... for the LORD your God is with you.",
+  reference: "Joshua 1:9",
+};
 
-function readRecent(req: NextRequest): string[] {
-  const raw = req.cookies.get(DEDUPE_COOKIE)?.value;
-  try { return raw ? JSON.parse(raw) as string[] : []; } catch { return []; }
+/** 环境变量 */
+const ARK_API_KEY = process.env.ARK_API_KEY ?? "";
+const ARK_API_BASE = (process.env.ARK_API_BASE ?? "https://ark.cn-beijing.volces.com").replace(/\/+$/, "");
+const ARK_MODEL = process.env.ARK_MODEL || "doubao-seed-1-6-flash-250828";
+const ARK_TEMPERATURE = process.env.ARK_TEMPERATURE ? Number(process.env.ARK_TEMPERATURE) : 0.7;
+
+/** 构造请求体 */
+function buildArkPayload() {
+  return {
+    model: ARK_MODEL,
+    messages: [
+      {
+        role: "user",
+        content: [
+          {
+            type: "text",
+            text:
+              'Return ONE random Bible verse in JSON with keys "text" and "reference" only. Use concise wording.',
+          },
+        ],
+      },
+    ],
+    stream: false,
+    temperature: ARK_TEMPERATURE,
+  };
 }
-function writeRecent(res: NextResponse, recent: string[]) {
-  res.cookies.set(DEDUPE_COOKIE, JSON.stringify(recent.slice(-DEDUPE_SIZE)), {
-    httpOnly: true,
-    sameSite: "lax",
-    path: "/",
-    maxAge: 60 * 60 * 24 * 7, // 7 天
+
+/** 通用 fetch + 超时 */
+async function fetchWithTimeout(url: string, init: RequestInit, timeoutMs = 8000): Promise<Response> {
+  const controller = new AbortController();
+  const id = setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    return await fetch(url, { ...init, signal: controller.signal });
+  } finally {
+    clearTimeout(id);
+  }
+}
+
+/** 调豆包 */
+async function callDoubao(): Promise<{
+  ok: boolean;
+  source: "doubao-native" | "doubao-compat";
+  data?: { text: string; reference?: string };
+  errText?: string;
+}> {
+  if (!ARK_API_KEY) return { ok: false, source: "doubao-native", errText: "Missing ARK_API_KEY" };
+
+  const headers = { "Content-Type": "application/json", Authorization: `Bearer ${ARK_API_KEY}` };
+  const payload = JSON.stringify(buildArkPayload());
+
+  // 尝试原生端点
+  const nativeUrl = `${ARK_API_BASE}/api/v3/chat/completions`;
+  try {
+    const r = await fetchWithTimeout(nativeUrl, { method: "POST", headers, body: payload }, 8000);
+    const text = await r.text();
+    if (!r.ok) return { ok: false, source: "doubao-native", errText: text };
+
+    const json = JSON.parse(text);
+    const contentStr = json.choices?.[0]?.message?.content ?? "";
+    const parsed = JSON.parse(contentStr);
+    return { ok: true, source: "doubao-native", data: parsed };
+  } catch {
+    // 再试兼容端点
+  }
+
+  const compatUrl = `${ARK_API_BASE}/v1/chat/completions`;
+  try {
+    const r = await fetchWithTimeout(compatUrl, { method: "POST", headers, body: payload }, 8000);
+    const text = await r.text();
+    if (!r.ok) return { ok: false, source: "doubao-compat", errText: text };
+
+    const json = JSON.parse(text);
+    const contentStr = json.choices?.[0]?.message?.content ?? "";
+    const parsed = JSON.parse(contentStr);
+    return { ok: true, source: "doubao-compat", data: parsed };
+  } catch (e) {
+    return { ok: false, source: "doubao-compat", errText: String(e) };
+  }
+}
+
+/** 探活 */
+export async function HEAD() {
+  return new Response(null, { status: 200, headers: { "cache-control": "no-store" } });
+}
+
+/** 主体 GET */
+export async function GET(_req: NextRequest) {
+  if (!ARK_API_KEY) {
+    return new Response(JSON.stringify(FALLBACK), {
+      status: 200,
+      headers: {
+        "content-type": "application/json",
+        "cache-control": "no-store",
+        "x-source": "fallback-no-key",
+      },
+    });
+  }
+
+  const result = await callDoubao();
+  if (result.ok && result.data) {
+    return new Response(JSON.stringify(result.data), {
+      status: 200,
+      headers: {
+        "content-type": "application/json",
+        "cache-control": "no-store",
+        "x-source": result.source,
+      },
+    });
+  }
+
+  return new Response(JSON.stringify(FALLBACK), {
+    status: 200,
+    headers: {
+      "content-type": "application/json",
+      "cache-control": "no-store",
+      "x-source": "timeout-or-error-fallback",
+      ...(result.errText ? { "x-upstream-error": truncate(result.errText, 512) } : {}),
+    },
   });
 }
 
-/** 均匀随机取一个不在 recent 里的 */
-function pickRandom<T>(arr: T[], recent: string[], key: (t: T) => string): T {
-  if (!arr.length) throw new Error("Empty verse list");
-  for (let i = 0; i < 10; i++) {
-    const item = arr[Math.floor(Math.random() * arr.length)];
-    if (!recent.includes(key(item))) return item;
-  }
-  return arr[Math.floor(Math.random() * arr.length)];
-}
-
-/** 加载本地经文 JSON */
-let VERSES: { reference: string; text: string }[] = [];
-try {
-  const filePath = path.join(process.cwd(), "public", "kjv.json");
-  const raw = fs.readFileSync(filePath, "utf8");
-  VERSES = JSON.parse(raw);
-  console.log(`Loaded ${VERSES.length} verses from kjv.json`);
-} catch (e) {
-  console.error("Failed to load kjv.json", e);
-}
-
-/** GET: 返回随机经文 */
-export async function GET(req: NextRequest) {
-  const debug = req.nextUrl.searchParams.get("debug") === "1";
-  const reqId = crypto.randomUUID();
-  const t0 = Date.now();
-
-  const recent = readRecent(req);
-  const verse = pickRandom(VERSES, recent, (v) => v.reference);
-  const dur = Date.now() - t0;
-
-  const resBody = debug
-    ? { ok: true, verse, debug: { reqId, latencyMs: dur, source: "local-json" } }
-    : verse;
-
-  const res = NextResponse.json(resBody, { status: 200 });
-  res.headers.set("x-source", "local-json");
-  res.headers.set("x-request-id", reqId);
-  res.headers.set("server-timing", `select;dur=${dur}`);
-  res.headers.set("cache-control", "no-store");
-  writeRecent(res, [...recent, verse.reference]);
-  return res;
+function truncate(s: string, n: number) {
+  return s.length > n ? s.slice(0, n) + "…" : s;
 }
