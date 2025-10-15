@@ -3,8 +3,8 @@ import { NextRequest, NextResponse } from "next/server";
 
 /** —— 运行时&执行时间 —— */
 export const runtime = "nodejs";
-export const maxDuration = 10; // Hobby 建议显式标注，避免无意超时
-export const dynamic = "force-dynamic"; // 每次命中函数
+export const maxDuration = 10;
+export const dynamic = "force-dynamic";
 
 /** —— 环境变量 —— */
 const ARK_API_KEY = process.env.ARK_API_KEY ?? "";
@@ -16,13 +16,13 @@ const ARK_TEMPERATURE = process.env.ARK_TEMPERATURE
   ? Number(process.env.ARK_TEMPERATURE)
   : 0.7;
 
-/** —— 站点兜底 —— */
+/** —— 兜底 —— */
 const FALLBACK: { text: string; reference: string } = {
   text: "Be strong and courageous... for the LORD your God is with you.",
   reference: "Joshua 1:9",
 };
 
-/** —— 类型声明（与你保持一致） —— */
+/** —— 类型 —— */
 interface ArkChatMessagePartText {
   type: "text";
   text: string;
@@ -39,7 +39,7 @@ interface ArkChatRequest {
 }
 interface ArkChatChoiceMessage {
   role: "assistant";
-  content: string; // doubao 返回的 content 是 string（JSON 文本）
+  content: string; // Doubao 把 JSON 放在字符串里
 }
 interface ArkChatChoice {
   index: number;
@@ -57,7 +57,7 @@ interface ArkChatResponse {
   };
 }
 
-/** —— 小工具 —— */
+/** —— 工具 —— */
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
 function buildArkPayload(): ArkChatRequest {
@@ -67,7 +67,7 @@ function buildArkPayload(): ArkChatRequest {
       {
         type: "text",
         text:
-          'Return ONE random Bible verse in *pure JSON* (no extra text). Shape: {"text": "...", "reference": "Book N:N"}. Keep the verse concise and standard English.',
+          'Return ONE random Bible verse in *pure JSON* (no extra text). Shape: {"text":"...","reference":"Book N:N"}. Use concise standard English.',
       },
     ],
   };
@@ -79,44 +79,45 @@ function buildArkPayload(): ArkChatRequest {
   };
 }
 
-/** JSON 提取：剥离 ```json 代码块或前后噪声 */
-function extractJsonObject(input: string): any | null {
-  if (!input) return null;
+/** 将 unknown 错误转为可读对象 */
+function toErrorInfo(e: unknown): { name?: string; message: string } {
+  if (e instanceof Error) return { name: e.name, message: e.message };
+  if (typeof e === "object" && e && "toString" in e) {
+    return { message: String(e) };
+  }
+  return { message: String(e) };
+}
 
-  // 优先提取 ```json ... ``` 代码块
+/** JSON 提取：剥离 ```json 代码块或前后噪声 */
+function extractJsonObject(input: string): Record<string, unknown> | null {
+  if (!input) return null;
   const codeBlock = input.match(/```(?:json)?\s*([\s\S]*?)\s*```/i);
   const raw = codeBlock ? codeBlock[1] : input.trim();
 
-  // 尝试定位第一个 { 到最后一个 }
   const first = raw.indexOf("{");
   const last = raw.lastIndexOf("}");
+  const tryParse = (s: string) => {
+    try {
+      return JSON.parse(s) as Record<string, unknown>;
+    } catch {
+      return null;
+    }
+  };
+
   if (first >= 0 && last > first) {
     const slice = raw.slice(first, last + 1);
-    try {
-      return JSON.parse(slice);
-    } catch {
-      // 再尝试去掉可能的注释或尾随逗号（简单清洗）
-      try {
-        const cleaned = slice
-          .replace(/\/\/.*$/gm, "")
-          .replace(/,\s*}/g, "}")
-          .replace(/,\s*]/g, "]");
-        return JSON.parse(cleaned);
-      } catch {
-        return null;
-      }
-    }
+    const parsed = tryParse(slice);
+    if (parsed) return parsed;
+    const cleaned = slice
+      .replace(/\/\/.*$/gm, "")
+      .replace(/,\s*}/g, "}")
+      .replace(/,\s*]/g, "]");
+    return tryParse(cleaned);
   }
-
-  // 兜底：直接 parse
-  try {
-    return JSON.parse(raw);
-  } catch {
-    return null;
-  }
+  return tryParse(raw);
 }
 
-/** 统一的超时 fetch（默认 8s） */
+/** 超时 fetch（默认 8s） */
 async function fetchWithTimeout(
   url: string,
   init: RequestInit,
@@ -125,14 +126,13 @@ async function fetchWithTimeout(
   const controller = new AbortController();
   const id = setTimeout(() => controller.abort(), timeoutMs);
   try {
-    const res = await fetch(url, { ...init, signal: controller.signal });
-    return res;
+    return await fetch(url, { ...init, signal: controller.signal });
   } finally {
     clearTimeout(id);
   }
 }
 
-/** 判断是否可重试（429/5xx/AbortError） */
+/** 重试判断（429/5xx/AbortError） */
 function isRetryable(status: number | undefined, errName?: string) {
   if (errName === "AbortError") return true;
   if (!status) return true;
@@ -141,7 +141,7 @@ function isRetryable(status: number | undefined, errName?: string) {
   return false;
 }
 
-/** 对单个端点执行一次请求并解析 */
+/** 单次尝试并解析 */
 async function attemptOnce(
   url: string,
   body: string,
@@ -165,34 +165,32 @@ async function attemptOnce(
     if (!r.ok) {
       return { ok: false, status: r.status, text: txt };
     }
-    // 解析 doubao 的 JSON响应
     const json = JSON.parse(txt) as ArkChatResponse;
     const choice = json.choices?.[0];
     const contentStr = choice?.message?.content ?? "";
 
-    // content 里是 JSON 文本，再 parse
     const parsed = extractJsonObject(contentStr);
     if (
       parsed &&
-      typeof parsed === "object" &&
       typeof parsed.text === "string" &&
       parsed.text.length > 0
     ) {
-      // reference 可选
-      return { ok: true, status: r.status, text: txt, data: parsed };
+      const ref =
+        typeof parsed.reference === "string" ? parsed.reference : undefined;
+      return { ok: true, status: r.status, text: txt, data: { text: parsed.text, reference: ref } };
     }
-    // 解析失败也当作错误，便于回退/兜底
     return {
       ok: false,
       status: r.status,
       text: txt,
       errorMsg: "Invalid JSON content in message.content",
     };
-  } catch (e: any) {
+  } catch (e: unknown) {
+    const info = toErrorInfo(e);
     return {
       ok: false,
-      errorName: e?.name,
-      errorMsg: e?.message || String(e),
+      errorName: info.name,
+      errorMsg: info.message,
     };
   }
 }
@@ -215,7 +213,6 @@ async function callDoubao(): Promise<{
   };
   const payload = JSON.stringify(buildArkPayload());
 
-  // 两个端点按顺序尝试：v3 原生 -> v1 兼容
   const endpoints: { label: "doubao-native" | "doubao-compat"; url: string }[] =
     [
       { label: "doubao-native", url: `${ARK_API_BASE}/api/v3/chat/completions` },
@@ -227,7 +224,7 @@ async function callDoubao(): Promise<{
     let lastErr: { status?: number; body?: string; name?: string; msg?: string } | undefined;
 
     while (attempt < 3) {
-      const timeoutMs = 8000; // 每次尝试的超时
+      const timeoutMs = 8000;
       const t0 = Date.now();
       const res = await attemptOnce(ep.url, payload, headers, timeoutMs);
       const dur = Date.now() - t0;
@@ -248,23 +245,17 @@ async function callDoubao(): Promise<{
         msg: res.errorMsg,
       };
 
-      // 不可重试就直接换端点 / 兜底
       if (!isRetryable(res.status, res.errorName)) break;
 
-      // 指数退避：200ms, 600ms, 1200ms（总预算<10s）
       const backoff = [200, 600, 1200][attempt];
       await sleep(backoff);
       attempt += 1;
 
-      // 粗暴防护：如果单次已接近 8s，再继续也会撞 maxDuration，直接退出
-      if (dur > 7000) break;
+      if (dur > 7000) break; // 保护：接近 8s 就别再拖
     }
 
-    // 尝试下一个端点
-    if (lastErr) {
-      // 若是第一个端点失败，继续试第二个
-      continue;
-    }
+    // 换下一个端点
+    if (lastErr) continue;
   }
 
   return {
@@ -339,7 +330,6 @@ export async function GET(req: NextRequest) {
     );
   }
 
-  // 失败兜底（可从响应头看到 err 摘要）
   const headers: Record<string, string> = {
     "x-source": "timeout-or-error-fallback",
     "x-request-id": reqId,
