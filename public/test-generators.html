@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试 Trending Generators</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, sans-serif;
+            background: #0b0f1a;
+            color: white;
+            padding: 20px;
+        }
+        .section {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 40px 20px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        h1 {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .subtitle {
+            text-align: center;
+            opacity: 0.8;
+            margin-bottom: 3rem;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            position: relative;
+            height: 200px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 16px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .card-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+        }
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        .card-desc {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        .status {
+            background: #1a1f2e;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .status-item {
+            margin: 10px 0;
+        }
+        .check {
+            color: #4ade80;
+        }
+        .cross {
+            color: #f87171;
+        }
+    </style>
+</head>
+<body>
+    <div class="status">
+        <h2>🔍 检查状态</h2>
+        <div class="status-item">
+            <span class="check">✅</span> 如果你能看到这个页面，说明静态文件服务正常
+        </div>
+        <div class="status-item">
+            <span class="check">✅</span> 如果下面有 13 个卡片，说明 HTML 渲染正常
+        </div>
+        <div class="status-item">
+            <span id="status-react"></span> <span id="status-text">等待检查 React 应用...</span>
+        </div>
+    </div>
+
+    <div class="section">
+        <h1>Trending Generators</h1>
+        <p class="subtitle">这是静态测试页面 - 如果能看到这个，说明样式正常</p>
+
+        <div class="grid">
+            <!-- Theme-based -->
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-title">Love</div>
+                    <div class="card-desc">Discover God's love and verses about loving others</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-title">Hope</div>
+                    <div class="card-desc">Find hope and encouragement in God's promises</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-title">Strength</div>
+                    <div class="card-desc">Draw strength and courage from God's word</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-title">Peace</div>
+                    <div class="card-desc">Experience God's peace in every circumstance</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-title">Faith</div>
+                    <div class="card-desc">Strengthen your faith through Scripture</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-title">Grief</div>
+                    <div class="card-desc">Find comfort in times of loss and sorrow</div>
+                </div>
+            </div>
+
+            <!-- Book-based -->
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-title">Psalms</div>
+                    <div class="card-desc">Experience worship and praise from the Book of Psalms</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-title">Proverbs</div>
+                    <div class="card-desc">Gain wisdom from the Book of Proverbs</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-title">John</div>
+                    <div class="card-desc">Discover Jesus through the Gospel of John</div>
+                </div>
+            </div>
+
+            <!-- Scenario-based -->
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-title">Prayer</div>
+                    <div class="card-desc">Learn to pray through Scripture</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-title">Encouragement</div>
+                    <div class="card-desc">Be uplifted and encouraged by God's word</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-title">Comfort</div>
+                    <div class="card-desc">Find peace and comfort in God's presence</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-title">Thanksgiving</div>
+                    <div class="card-desc">Give thanks and praise to God</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="status">
+        <h2>📋 如果你能看到上面的 13 个卡片：</h2>
+        <div class="status-item">
+            ✅ 说明样式和布局代码是正确的
+        </div>
+        <div class="status-item">
+            ✅ 问题可能在 React 组件渲染
+        </div>
+        <div class="status-item">
+            ⚠️ 请检查终端是否有编译错误
+        </div>
+    </div>
+
+    <script>
+        // 检查主应用是否可访问
+        fetch('/')
+            .then(response => {
+                if (response.ok) {
+                    document.getElementById('status-react').innerHTML = '<span class="check">✅</span>';
+                    document.getElementById('status-text').textContent = 'React 应用正常响应';
+                } else {
+                    document.getElementById('status-react').innerHTML = '<span class="cross">❌</span>';
+                    document.getElementById('status-text').textContent = 'React 应用响应异常';
+                }
+            })
+            .catch(() => {
+                document.getElementById('status-react').innerHTML = '<span class="cross">❌</span>';
+                document.getElementById('status-text').textContent = 'React 应用无法访问';
+            });
+    </script>
+</body>
+</html>
