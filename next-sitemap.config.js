@@ -11,5 +11,35 @@ module.exports = {
         { userAgent: '*', allow: '/' },
       ],
     },
+    // 自定义优先级
+    transform: async (config, path) => {
+      // 首页最高优先级
+      if (path === '/') {
+        return {
+          loc: path,
+          changefreq: 'daily',
+          priority: 1.0,
+          lastmod: new Date().toISOString(),
+        }
+      }
+
+      // 生成器页面高优先级
+      if (path.includes('-bible-verses')) {
+        return {
+          loc: path,
+          changefreq: 'daily',
+          priority: 0.9,
+          lastmod: new Date().toISOString(),
+        }
+      }
+
+      // 其他页面默认优先级
+      return {
+        loc: path,
+        changefreq: config.changefreq,
+        priority: config.priority,
+        lastmod: new Date().toISOString(),
+      }
+    },
   };
   

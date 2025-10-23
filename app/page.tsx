@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Cormorant_Garamond } from "next/font/google";
+import { GENERATORS } from "./data/generators";
 
 const display = Cormorant_Garamond({
   subsets: ["latin"],
@@ -175,9 +176,57 @@ export default function Page() {
         </main>
       </section>
 
+      {/* ===== Trending Generators 模块 ===== */}
+      <section
+        className="relative z-10 bg-gradient-to-b from-[#0b0f1a] to-[#0a0e17] py-16 md:py-24"
+        aria-label="Trending Bible Verse Generators"
+      >
+        <div className="mx-auto max-w-6xl px-6 md:px-10">
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-center mb-4">
+            Trending Generators
+          </h2>
+          <p className="text-white/80 text-center max-w-2xl mx-auto mb-12 md:mb-16">
+            Explore Bible verses by theme, book, or life situation
+          </p>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
+            {GENERATORS.map((generator) => (
+              <Link
+                key={generator.id}
+                href={`/${generator.slug}`}
+                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5
+                         hover:bg-white/10 hover:border-white/20 transition-all duration-300
+                         backdrop-blur-sm shadow-lg hover:shadow-xl hover:scale-[1.02]"
+              >
+                {/* 图片区域 */}
+                <div className="relative h-40 md:h-48 overflow-hidden">
+                  <img
+                    src={generator.image}
+                    alt={generator.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  {/* 渐变遮罩 */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+                </div>
+
+                {/* 文字区域 */}
+                <div className="absolute bottom-0 left-0 right-0 p-4 md:p-5">
+                  <h3 className="text-xl md:text-2xl font-bold mb-1.5 drop-shadow-lg">
+                    {generator.name}
+                  </h3>
+                  <p className="text-sm md:text-base text-white/90 drop-shadow">
+                    {generator.description}
+                  </p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ===== 下面的内容区：纯色/渐变背景，支持滚动 ===== */}
       <section
-        className="relative z-10 bg-gradient-to-b from-[#0b0f1a] via-[#0a0e17] to-[#0a0a0a]"
+        className="relative z-10 bg-gradient-to-b from-[#0a0e17] via-[#0a0e17] to-[#0a0a0a]"
         aria-label="About this Bible verse generator"
       >
         <div className="mx-auto max-w-4xl px-6 md:px-10 py-16 md:py-20">

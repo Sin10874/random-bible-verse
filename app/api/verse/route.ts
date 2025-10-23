@@ -37,17 +37,68 @@ try {
   console.error("Failed to load public/kjv-map.json", e);
 }
 
-// —— 均匀随机选一个“近期未出现”的引用（最多重抽 10 次）——
-function pickRefNotRecent(recent: string[]): string {
-  if (KJV_KEYS.length === 0) throw new Error("KJV data not loaded");
-  if (recent.length >= KJV_KEYS.length) {
-    return KJV_KEYS[Math.floor(Math.random() * KJV_KEYS.length)];
+// —— 加载经文分类数据 ——
+interface CategoryData {
+  name: string;
+  description: string;
+  verses?: string[];
+  bookFilter?: string;
+  bookExclude?: string[];
+}
+let VERSE_CATEGORIES: Record<string, CategoryData> = {};
+try {
+  const filePath = path.join(process.cwd(), "public", "verse-categories.json");
+  const raw = fs.readFileSync(filePath, "utf8");
+  VERSE_CATEGORIES = JSON.parse(raw) as Record<string, CategoryData>;
+  console.log(`Loaded verse categories: ${Object.keys(VERSE_CATEGORIES).length}`);
+} catch (e) {
+  console.error("Failed to load public/verse-categories.json", e);
+}
+
+// —— 根据类别获取可用的经文键列表 ——
+function getKeysForCategory(category: string | null): string[] {
+  if (!category) return KJV_KEYS;
+
+  const catData = VERSE_CATEGORIES[category];
+  if (!catData) return KJV_KEYS;
+
+  // 如果有 verses 列表（主题类/场景类），直接返回
+  if (catData.verses && catData.verses.length > 0) {
+    return catData.verses;
+  }
+
+  // 如果有 bookFilter（书卷类），过滤所有经文
+  if (catData.bookFilter) {
+    const bookName = catData.bookFilter;
+    const exclude = catData.bookExclude || [];
+
+    return KJV_KEYS.filter((key) => {
+      // 检查是否以该书卷名开头
+      if (!key.startsWith(bookName + " ")) return false;
+
+      // 检查是否需要排除（如 John 排除 1 John, 2 John, 3 John）
+      for (const ex of exclude) {
+        if (key.startsWith(ex + " ")) return false;
+      }
+
+      return true;
+    });
+  }
+
+  return KJV_KEYS;
+}
+
+// —— 均匀随机选一个"近期未出现"的引用（最多重抽 10 次）——
+function pickRefNotRecent(recent: string[], keys: string[]): string {
+  if (keys.length === 0) throw new Error("No verses available for this category");
+  if (recent.length >= keys.length) {
+    return keys[Math.floor(Math.random() * keys.length)];
   }
   for (let i = 0; i < 10; i++) {
-    const ref = KJV_KEYS[Math.floor(Math.random() * KJV_KEYS.length)];
+    const ref = keys[Math.floor(Math.random() * keys.length)];
     if (!recent.includes(ref)) return ref;
   }
-  return KJV_KEYS[Math.floor(Math.random() * KJV_KEYS.length)];
+  return keys[Math.floor(Math.random() * keys.length)];
 }
 
 // —— 清理文本：去掉段落标记“# ”（该数据用 # 表示新段落）——
@@ -60,18 +111,29 @@ export async function HEAD() {
   return new Response(null, { status: 200, headers: { "cache-control": "no-store" } });
 }
 
-// —— 主逻辑：返回原文（支持 ?debug=1）——
+// —— 主逻辑：返回原文（支持 ?debug=1 和 ?category=xxx）——
 export async function GET(req: NextRequest) {
   const debug = req.nextUrl.searchParams.get("debug") === "1";
+  const category = req.nextUrl.searchParams.get("category");
   const reqId = crypto.randomUUID();
   const t0 = Date.now();
 
   const recent = readRecent(req);
-  const reference = pickRefNotRecent(recent);
+  const keys = getKeysForCategory(category);
+  const reference = pickRefNotRecent(recent, keys);
   const text = cleanText(KJV_MAP[reference] ?? "");
 
   const body = debug
-    ? { ok: true, verse: { reference, text }, debug: { source: "local-json-kjv-map", latencyMs: Date.now() - t0 } }
+    ? {
+        ok: true,
+        verse: { reference, text },
+        debug: {
+          source: "local-json-kjv-map",
+          category: category || "all",
+          availableVerses: keys.length,
+          latencyMs: Date.now() - t0
+        }
+      }
     : { reference, text };
 
   const res = NextResponse.json(body, { status: 200 });
