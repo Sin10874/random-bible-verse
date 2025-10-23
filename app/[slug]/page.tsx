@@ -252,7 +252,7 @@ export default function GeneratorPage({ params }: GeneratorPageProps) {
           </nav>
 
           <p className="order-2 md:order-1 text-center md:text-left text-xs md:text-sm leading-relaxed">
-            © {new Date().getFullYear()} Bible Verse Generator. Built with ❤️ for reflection.
+            © 2024 Bible Verse Generator. Built with ❤️ for reflection.
           </p>
         </div>
 
