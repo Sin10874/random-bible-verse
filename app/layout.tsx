@@ -1,5 +1,5 @@
 // app/layout.tsx
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Script from "next/script"; // ✅ 新增
 import "./globals.css";
 
@@ -40,6 +40,10 @@ export const metadata: Metadata = {
     description:
       "Get a random Bible verse instantly for daily encouragement, faith, love and hope.",
   },
+};
+
+// ✅ Viewport 配置（Next.js 15+ 要求）
+export const viewport: Viewport = {
   themeColor: "#ffffff",
 };
 
