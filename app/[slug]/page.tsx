@@ -453,23 +453,6 @@ function getCategorySpecificContent(generator: Generator) {
         }
       ]
     },
-    comfort: {
-      intro: "Bible verses of comfort reveal God as our ultimate source of consolation. He is the Father of compassion and the God of all comfort who comforts us in our troubles.",
-      benefits: [
-        {
-          title: "Find God's Comfort",
-          description: "Experience the supernatural comfort that only God can provide during life's most difficult moments."
-        },
-        {
-          title: "Rest in His Presence",
-          description: "Come to Jesus for rest when you're weary and burdened, finding peace in His gentle and humble heart."
-        },
-        {
-          title: "Share Comfort",
-          description: "Comfort others with the same comfort you've received from God, becoming His instrument of peace."
-        }
-      ]
-    },
     thanksgiving: {
       intro: "Bible verses about thanksgiving teach us to give thanks in all circumstances. Gratitude is not just good manners - it's a command and a pathway to experiencing God's peace.",
       benefits: [

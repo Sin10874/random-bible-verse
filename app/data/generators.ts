@@ -7,7 +7,6 @@ export type GeneratorCategory =
   | "grief"
   | "prayer"
   | "encouragement"
-  | "comfort"
   | "thanksgiving"
   | "psalms"
   | "proverbs"
@@ -83,27 +82,27 @@ export const GENERATORS: Generator[] = [
   // Book-based generators
   {
     id: "psalms",
-    name: "Bible Verses from Psalms",
+    name: "Psalms Bible Verses",
     slug: "psalms-bible-verses",
-    title: "Bible Verses from Psalms",
+    title: "Psalms Bible Verses",
     description: "Experience worship and praise from the Book of Psalms",
     image: "/generators/psalms.jpg",
     category: "book",
   },
   {
     id: "proverbs",
-    name: "Bible Verses from Proverbs",
+    name: "Proverbs Bible Verses",
     slug: "proverbs-bible-verses",
-    title: "Bible Verses from Proverbs",
+    title: "Proverbs Bible Verses",
     description: "Gain wisdom from the Book of Proverbs",
     image: "/generators/proverbs.jpg",
     category: "book",
   },
   {
     id: "john",
-    name: "Bible Verses from John",
+    name: "John Bible Verses",
     slug: "john-bible-verses",
-    title: "Bible Verses from Gospel of John",
+    title: "John Bible Verses",
     description: "Discover Jesus through the Gospel of John",
     image: "/generators/john.jpg",
     category: "book",
@@ -121,27 +120,18 @@ export const GENERATORS: Generator[] = [
   },
   {
     id: "encouragement",
-    name: "Bible Verses for Encouragement",
+    name: "Encouraging Bible Verses",
     slug: "encouragement-bible-verses",
-    title: "Bible Verses for Encouragement",
+    title: "Encouraging Bible Verses",
     description: "Be uplifted and encouraged by God's word",
     image: "/generators/encouragement.jpg",
     category: "scenario",
   },
   {
-    id: "comfort",
-    name: "Bible Verses for Comfort",
-    slug: "comfort-bible-verses",
-    title: "Bible Verses for Comfort",
-    description: "Find peace and comfort in God's presence",
-    image: "/generators/comfort.jpg",
-    category: "scenario",
-  },
-  {
     id: "thanksgiving",
-    name: "Bible Verses About Thanksgiving",
+    name: "Thanksgiving Bible Verses",
     slug: "thanksgiving-bible-verses",
-    title: "Bible Verses About Thanksgiving",
+    title: "Thanksgiving Bible Verses",
     description: "Give thanks and praise to God",
     image: "/generators/thanksgiving.jpg",
     category: "scenario",
