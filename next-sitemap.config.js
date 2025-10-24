@@ -6,6 +6,14 @@ module.exports = {
     changefreq: 'daily',                         // 建议搜索引擎每天爬取
     priority: 0.7,
     exclude: ['/server-sitemap.xml'],            // 如果未来添加自定义 sitemap 可用
+    additionalPaths: async (config) => [
+      {
+        loc: '/prayer-for-purity',
+        changefreq: 'daily',
+        priority: 0.8,
+        lastmod: new Date().toISOString(),
+      },
+    ],
     robotsTxtOptions: {
       policies: [
         { userAgent: '*', allow: '/' },
