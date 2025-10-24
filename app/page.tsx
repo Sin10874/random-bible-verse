@@ -189,7 +189,7 @@ export default function Page() {
             Explore Bible verses by theme, book, or life situation
           </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {GENERATORS.map((generator) => (
               <Link
                 key={generator.id}
@@ -199,24 +199,21 @@ export default function Page() {
                          backdrop-blur-sm shadow-lg hover:shadow-xl hover:scale-[1.02]"
               >
                 {/* 图片区域 */}
-                <div className="relative h-40 md:h-48 overflow-hidden">
+                <div className="relative h-56 md:h-64 overflow-hidden">
                   <img
                     src={generator.image}
                     alt={generator.title}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                   {/* 渐变遮罩 */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
-                </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
 
-                {/* 文字区域 */}
-                <div className="absolute bottom-0 left-0 right-0 p-4 md:p-5">
-                  <h3 className="text-xl md:text-2xl font-bold mb-1.5 drop-shadow-lg">
-                    {generator.name}
-                  </h3>
-                  <p className="text-sm md:text-base text-white/90 drop-shadow">
-                    {generator.description}
-                  </p>
+                  {/* 标题 - 居中显示 */}
+                  <div className="absolute inset-0 flex items-center justify-center p-6">
+                    <h3 className="text-2xl md:text-3xl font-bold text-center drop-shadow-2xl leading-tight">
+                      {generator.name}
+                    </h3>
+                  </div>
                 </div>
               </Link>
             ))}

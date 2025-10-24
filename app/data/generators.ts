@@ -27,123 +27,123 @@ export const GENERATORS: Generator[] = [
   // Theme-based generators
   {
     id: "love",
-    name: "Love",
+    name: "Bible Verses About Love",
     slug: "love-bible-verses",
     title: "Bible Verses About Love",
     description: "Discover God's love and verses about loving others",
-    image: "/mountain-hero.jpg", // TODO: Replace with themed image
+    image: "/generators/love.jpg",
     category: "theme",
   },
   {
     id: "hope",
-    name: "Hope",
+    name: "Bible Verses About Hope",
     slug: "hope-bible-verses",
     title: "Bible Verses About Hope",
     description: "Find hope and encouragement in God's promises",
-    image: "/mountain-hero.jpg", // TODO: Replace with themed image
+    image: "/generators/hope.jpg",
     category: "theme",
   },
   {
     id: "strength",
-    name: "Strength",
+    name: "Bible Verses About Strength",
     slug: "strength-bible-verses",
     title: "Bible Verses About Strength",
     description: "Draw strength and courage from God's word",
-    image: "/mountain-hero.jpg", // TODO: Replace with themed image
+    image: "/generators/strength.jpg",
     category: "theme",
   },
   {
     id: "peace",
-    name: "Peace",
+    name: "Bible Verses About Peace",
     slug: "peace-bible-verses",
     title: "Bible Verses About Peace",
     description: "Experience God's peace in every circumstance",
-    image: "/mountain-hero.jpg", // TODO: Replace with themed image
+    image: "/generators/peace.jpg",
     category: "theme",
   },
   {
     id: "faith",
-    name: "Faith",
+    name: "Bible Verses About Faith",
     slug: "faith-bible-verses",
     title: "Bible Verses About Faith",
     description: "Strengthen your faith through Scripture",
-    image: "/mountain-hero.jpg", // TODO: Replace with themed image
+    image: "/generators/faith.jpg",
     category: "theme",
   },
   {
     id: "grief",
-    name: "Grief",
+    name: "Bible Verses About Grief",
     slug: "grief-bible-verses",
     title: "Bible Verses About Grief",
     description: "Find comfort in times of loss and sorrow",
-    image: "/mountain-hero.jpg", // TODO: Replace with themed image
+    image: "/generators/grief.jpg",
     category: "theme",
   },
 
   // Book-based generators
   {
     id: "psalms",
-    name: "Psalms",
+    name: "Bible Verses from Psalms",
     slug: "psalms-bible-verses",
-    title: "Random Verse from Psalms",
+    title: "Bible Verses from Psalms",
     description: "Experience worship and praise from the Book of Psalms",
-    image: "/mountain-hero.jpg", // TODO: Replace with themed image
+    image: "/generators/psalms.jpg",
     category: "book",
   },
   {
     id: "proverbs",
-    name: "Proverbs",
+    name: "Bible Verses from Proverbs",
     slug: "proverbs-bible-verses",
-    title: "Random Verse from Proverbs",
+    title: "Bible Verses from Proverbs",
     description: "Gain wisdom from the Book of Proverbs",
-    image: "/mountain-hero.jpg", // TODO: Replace with themed image
+    image: "/generators/proverbs.jpg",
     category: "book",
   },
   {
     id: "john",
-    name: "John",
+    name: "Bible Verses from John",
     slug: "john-bible-verses",
-    title: "Random Verse from Gospel of John",
+    title: "Bible Verses from Gospel of John",
     description: "Discover Jesus through the Gospel of John",
-    image: "/mountain-hero.jpg", // TODO: Replace with themed image
+    image: "/generators/john.jpg",
     category: "book",
   },
 
   // Scenario-based generators
   {
     id: "prayer",
-    name: "Prayer",
+    name: "Bible Verses About Prayer",
     slug: "prayer-bible-verses",
     title: "Bible Verses About Prayer",
     description: "Learn to pray through Scripture",
-    image: "/mountain-hero.jpg", // TODO: Replace with themed image
+    image: "/generators/prayer.jpg",
     category: "scenario",
   },
   {
     id: "encouragement",
-    name: "Encouragement",
+    name: "Bible Verses for Encouragement",
     slug: "encouragement-bible-verses",
     title: "Bible Verses for Encouragement",
     description: "Be uplifted and encouraged by God's word",
-    image: "/mountain-hero.jpg", // TODO: Replace with themed image
+    image: "/generators/encouragement.jpg",
     category: "scenario",
   },
   {
     id: "comfort",
-    name: "Comfort",
+    name: "Bible Verses for Comfort",
     slug: "comfort-bible-verses",
     title: "Bible Verses for Comfort",
     description: "Find peace and comfort in God's presence",
-    image: "/mountain-hero.jpg", // TODO: Replace with themed image
+    image: "/generators/comfort.jpg",
     category: "scenario",
   },
   {
     id: "thanksgiving",
-    name: "Thanksgiving",
+    name: "Bible Verses About Thanksgiving",
     slug: "thanksgiving-bible-verses",
     title: "Bible Verses About Thanksgiving",
     description: "Give thanks and praise to God",
-    image: "/mountain-hero.jpg", // TODO: Replace with themed image
+    image: "/generators/thanksgiving.jpg",
     category: "scenario",
   },
 ];
