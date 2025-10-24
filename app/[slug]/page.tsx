@@ -115,13 +115,13 @@ export default function GeneratorPage({ params }: GeneratorPageProps) {
                      min-h-[calc(100vh-96px)] flex flex-col items-center justify-center text-center"
         >
           <h1
-            className={`${display.className} italic text-5xl md:text-7xl font-semibold tracking-tight leading-[1.05] drop-shadow-xl`}
+            className={`${display.className} italic text-4xl sm:text-5xl md:text-7xl font-semibold tracking-tight leading-[1.05] drop-shadow-xl px-4`}
           >
             {generator.name}
           </h1>
 
           <p
-            className={`${display.className} italic mt-8 md:mt-10 text-xl md:text-2xl opacity-90 drop-shadow max-w-3xl`}
+            className={`${display.className} italic mt-6 sm:mt-8 md:mt-10 text-lg sm:text-xl md:text-2xl opacity-90 drop-shadow max-w-3xl px-4`}
           >
             {generator.description}
           </p>
@@ -146,32 +146,34 @@ export default function GeneratorPage({ params }: GeneratorPageProps) {
 
           {/* Verse 卡片 */}
           {open && verse && (
-            <div className="mx-auto mt-14 w-full max-w-2xl rounded-3xl border border-white/20 bg-white/10 backdrop-blur p-6 md:p-8 text-left shadow-lg">
-              <div className="mb-3 flex items-center justify-between">
-                <span className="text-xs uppercase tracking-wider text-white/80">{generator.name} Verse</span>
+            <div className="mx-auto mt-10 sm:mt-14 w-full max-w-2xl rounded-2xl sm:rounded-3xl border border-white/20 bg-white/10 backdrop-blur p-5 sm:p-6 md:p-8 text-left shadow-lg">
+              <div className="mb-4 flex items-center justify-between gap-3">
+                <span className="text-xs sm:text-sm uppercase tracking-wider text-white/80 truncate">{generator.name} Verse</span>
                 <button
-                  className="rounded-full border border-white/30 px-3 py-1 text-sm hover:bg-white/10 cursor-pointer"
+                  className="rounded-full border border-white/30 px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm hover:bg-white/10 cursor-pointer transition shrink-0 touch-manipulation"
                   onClick={() => setOpen(false)}
+                  aria-label="Close verse"
                 >
                   Close
                 </button>
               </div>
 
               <blockquote
-                className={`${display.className} italic text-2xl md:text-3xl leading-snug font-medium
+                className={`${display.className} italic text-xl sm:text-2xl md:text-3xl leading-relaxed sm:leading-snug font-medium
                 underline decoration-dashed decoration-white/80 decoration-2
                 underline-offset-[6px] md:underline-offset-[8px]`}
               >
                 {verse.text}
               </blockquote>
               {verse.reference && (
-                <div className="mt-4 text-white/80">— {verse.reference}</div>
+                <div className="mt-4 text-sm sm:text-base text-white/80">— {verse.reference}</div>
               )}
 
               <div className="mt-6 flex justify-end">
                 <button
                   onClick={copyVerse}
-                  className="rounded-full bg-white/90 text-neutral-900 px-5 py-2 text-sm font-medium hover:bg-white shadow cursor-pointer transition active:scale-95"
+                  className="rounded-full bg-white/90 text-neutral-900 px-6 py-2.5 text-sm sm:text-base font-medium hover:bg-white shadow cursor-pointer transition active:scale-95 touch-manipulation min-h-[44px]"
+                  aria-label="Copy verse to clipboard"
                 >
                   Copy
                 </button>
@@ -186,8 +188,8 @@ export default function GeneratorPage({ params }: GeneratorPageProps) {
         className="relative z-10 bg-gradient-to-b from-[#0b0f1a] via-[#0a0e17] to-[#0a0a0a]"
         aria-label={`About ${generator.name} Bible verses`}
       >
-        <div className="mx-auto max-w-4xl px-6 md:px-10 py-16 md:py-20">
-          <div className="rounded-2xl border border-white/10 bg-white/5 p-6 md:p-10 backdrop-blur-sm space-y-10">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 md:px-10 py-12 sm:py-16 md:py-20">
+          <div className="rounded-2xl border border-white/10 bg-white/5 p-5 sm:p-6 md:p-10 backdrop-blur-sm space-y-8 sm:space-y-10">
             {getContentForGenerator(generator)}
           </div>
         </div>
@@ -268,46 +270,52 @@ function getContentForGenerator(generator: Generator) {
 
   return (
     <>
+      {/* Section 1: Introduction */}
       <div>
-        <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">
-          What are {generator.title}?
+        <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold tracking-tight leading-tight">
+          {categoryContent.h2Intro}
         </h2>
-        <p className="mt-3 text-white/90 leading-relaxed">
+        <p className="mt-3 sm:mt-4 text-sm sm:text-base text-white/90 leading-relaxed">
           {categoryContent.intro}
         </p>
       </div>
 
+      {/* Section 2: Benefits */}
       <div>
-        <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">
-          Why Read {generator.title}?
+        <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold tracking-tight leading-tight">
+          {categoryContent.h2Benefits}
         </h2>
-        <div className="mt-4 space-y-6">
+        <div className="mt-4 sm:mt-5 space-y-5 sm:space-y-6">
           {categoryContent.benefits.map((benefit, idx) => (
             <div key={idx}>
-              <h3 className="text-xl md:text-2xl font-semibold">{benefit.title}</h3>
-              <p className="mt-2 text-white/90 leading-relaxed">{benefit.description}</p>
+              <h3 className="text-lg sm:text-xl md:text-2xl font-semibold leading-tight">{benefit.title}</h3>
+              <p className="mt-2 text-sm sm:text-base text-white/90 leading-relaxed">{benefit.description}</p>
             </div>
           ))}
         </div>
       </div>
 
+      {/* Section 3: How to Use */}
       <div>
-        <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">
-          How to Use This Generator
+        <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold tracking-tight leading-tight">
+          How to Use This {generator.name} Generator
         </h2>
-        <ol className="mt-3 list-decimal list-inside space-y-2 text-white/90 leading-relaxed">
-          <li>Click the "Generate {generator.name} Verse" button above.</li>
-          <li>Read and reflect on the verse that appears.</li>
-          <li>Copy and share the verse with others or save it for later.</li>
-          <li>Generate new verses as often as you like for continued inspiration.</li>
+        <ol className="mt-3 sm:mt-4 list-decimal list-inside space-y-2 sm:space-y-2.5 text-sm sm:text-base text-white/90 leading-relaxed">
+          <li>Click the "Generate {generator.name} Verse" button above to get a random Bible verse</li>
+          <li>Read and reflect on the Scripture passage that appears</li>
+          <li>Copy the verse to share with friends, family, or save for your devotional time</li>
+          <li>Generate new {generator.name.toLowerCase()} as often as you need inspiration</li>
         </ol>
       </div>
 
+      {/* Section 4: Call to Action */}
       <div>
-        <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">Start Now</h2>
-        <p className="mt-3 text-white/90 leading-relaxed">
-          Click the generate button above to receive your {generator.name.toLowerCase()} Bible verse
-          and let God's word speak to your heart today.
+        <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold tracking-tight leading-tight">
+          Get Your {generator.name} Today
+        </h2>
+        <p className="mt-3 sm:mt-4 text-sm sm:text-base text-white/90 leading-relaxed">
+          Start your day with God's Word. Click the generate button above to receive your {generator.name.toLowerCase()}
+          and let Scripture speak to your heart. Each verse is randomly selected to provide fresh inspiration and guidance.
         </p>
       </div>
     </>
@@ -316,8 +324,10 @@ function getContentForGenerator(generator: Generator) {
 
 // ===== 每个类别的特定内容 =====
 function getCategorySpecificContent(generator: Generator) {
-  const contentMap: Record<string, { intro: string; benefits: Array<{ title: string; description: string }> }> = {
+  const contentMap: Record<string, { h2Intro: string; h2Benefits: string; intro: string; benefits: Array<{ title: string; description: string }> }> = {
     love: {
+      h2Intro: "Understanding Bible Verses About Love",
+      h2Benefits: "Benefits of Reading Love Verses from Scripture",
       intro: "Bible verses about love reveal God's unconditional love for us and teach us how to love others. From 1 Corinthians 13 to John 3:16, Scripture shows that love is the greatest commandment and the foundation of our faith.",
       benefits: [
         {
@@ -335,6 +345,8 @@ function getCategorySpecificContent(generator: Generator) {
       ]
     },
     hope: {
+      h2Intro: "What Does the Bible Say About Hope?",
+      h2Benefits: "Why You Should Read Bible Verses About Hope",
       intro: "Bible verses about hope remind us that our hope is anchored in God's promises and His faithful character. These verses provide encouragement during difficult times and renew our trust in God's plan.",
       benefits: [
         {
@@ -352,6 +364,8 @@ function getCategorySpecificContent(generator: Generator) {
       ]
     },
     strength: {
+      h2Intro: "Finding Strength in Bible Verses",
+      h2Benefits: "Benefits of Reading Strength Scriptures",
       intro: "Bible verses about strength remind us that God is our source of power and courage. When we feel weak, His strength is made perfect, enabling us to face any challenge with confidence in Him.",
       benefits: [
         {
@@ -369,6 +383,8 @@ function getCategorySpecificContent(generator: Generator) {
       ]
     },
     peace: {
+      h2Intro: "Discovering God's Peace Through Scripture",
+      h2Benefits: "How Peace Verses Transform Your Life",
       intro: "Bible verses about peace reveal God's gift of inner tranquility that surpasses understanding. This peace guards our hearts and minds, even in the midst of life's storms.",
       benefits: [
         {
@@ -386,6 +402,8 @@ function getCategorySpecificContent(generator: Generator) {
       ]
     },
     faith: {
+      h2Intro: "What is Faith According to the Bible?",
+      h2Benefits: "Growing Your Faith with Scripture",
       intro: "Bible verses about faith teach us to trust God completely, even when we cannot see the outcome. Faith is the substance of things hoped for and the evidence of things not seen.",
       benefits: [
         {
@@ -403,6 +421,8 @@ function getCategorySpecificContent(generator: Generator) {
       ]
     },
     grief: {
+      h2Intro: "Bible Verses for Grief and Loss",
+      h2Benefits: "Finding Comfort in Times of Sorrow",
       intro: "Bible verses about grief and loss provide comfort in times of sorrow. God draws near to the brokenhearted and promises to wipe away every tear.",
       benefits: [
         {
@@ -420,6 +440,8 @@ function getCategorySpecificContent(generator: Generator) {
       ]
     },
     prayer: {
+      h2Intro: "Learning to Pray from Scripture",
+      h2Benefits: "Strengthening Your Prayer Life with Bible Verses",
       intro: "Bible verses about prayer teach us how to communicate with God, from the Lord's Prayer to promises that God hears and answers. Prayer is our direct line to the Father's heart.",
       benefits: [
         {
@@ -437,6 +459,8 @@ function getCategorySpecificContent(generator: Generator) {
       ]
     },
     encouragement: {
+      h2Intro: "Finding Encouragement in God's Word",
+      h2Benefits: "How Encouraging Bible Verses Uplift You",
       intro: "Bible verses of encouragement lift our spirits and remind us of God's faithfulness. These verses strengthen us to press on, knowing that God is with us and for us.",
       benefits: [
         {
@@ -454,6 +478,8 @@ function getCategorySpecificContent(generator: Generator) {
       ]
     },
     thanksgiving: {
+      h2Intro: "Cultivating Gratitude Through Scripture",
+      h2Benefits: "Benefits of Reading Thanksgiving Verses",
       intro: "Bible verses about thanksgiving teach us to give thanks in all circumstances. Gratitude is not just good manners - it's a command and a pathway to experiencing God's peace.",
       benefits: [
         {
@@ -471,6 +497,8 @@ function getCategorySpecificContent(generator: Generator) {
       ]
     },
     psalms: {
+      h2Intro: "Exploring the Book of Psalms",
+      h2Benefits: "Why Read Psalms Bible Verses",
       intro: "The Book of Psalms is a collection of 150 poetic songs and prayers that express the full range of human emotion - from despair to joy, from lament to praise. The Psalms teach us to bring our whole hearts to God.",
       benefits: [
         {
@@ -488,6 +516,8 @@ function getCategorySpecificContent(generator: Generator) {
       ]
     },
     proverbs: {
+      h2Intro: "Wisdom from the Book of Proverbs",
+      h2Benefits: "Benefits of Daily Proverbs Reading",
       intro: "The Book of Proverbs contains timeless wisdom for daily living. These sayings teach practical principles for relationships, work, money, speech, and character development.",
       benefits: [
         {
@@ -505,6 +535,8 @@ function getCategorySpecificContent(generator: Generator) {
       ]
     },
     john: {
+      h2Intro: "Discovering Jesus in the Gospel of John",
+      h2Benefits: "Why Read the Gospel of John",
       intro: "The Gospel of John presents Jesus Christ as the Son of God and the source of eternal life. Written that we might believe, John's Gospel contains some of the most beloved passages about salvation, love, and the Holy Spirit.",
       benefits: [
         {
