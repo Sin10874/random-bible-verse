@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1600" height="900" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad_love" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF6B6B;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#C44569;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- 渐变背景 -->
+  <rect width="1600" height="900" fill="url(#grad_love)" />
+
+  <!-- 半透明叠加层 -->
+  <rect width="1600" height="900" fill="rgba(0,0,0,0.3)" />
+
+  <!-- Emoji 图标 -->
+  <text x="800" y="380" font-size="120" text-anchor="middle" fill="rgba(255,255,255,0.9)">
+    ❤️
+  </text>
+
+  <!-- 标题文本 -->
+  <text x="800" y="520"
+        font-family="Arial, sans-serif"
+        font-size="48"
+        font-weight="bold"
+        text-anchor="middle"
+        fill="white">
+    Bible Verses About Love
+  </text>
+
+  <!-- 临时占位符提示 -->
+  <text x="800" y="580"
+        font-family="Arial, sans-serif"
+        font-size="20"
+        text-anchor="middle"
+        fill="rgba(255,255,255,0.7)">
+    Temporary Placeholder - Replace with Unsplash Photo
+  </text>
+</svg>
