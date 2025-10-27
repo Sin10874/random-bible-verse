@@ -1,4 +1,5 @@
 export type GeneratorCategory =
+  | "purity"
   | "love"
   | "hope"
   | "strength"
@@ -19,10 +20,21 @@ export interface Generator {
   title: string; // For page title
   description: string;
   image: string;
-  category: "theme" | "book" | "scenario";
+  category: "theme" | "book" | "scenario" | "special";
 }
 
 export const GENERATORS: Generator[] = [
+  // Special tool - Featured first
+  {
+    id: "purity",
+    name: "Pornography Prayer Points with Scriptures",
+    slug: "pornography-prayer-points-with-scriptures",
+    title: "Pornography Prayer Points with Scriptures",
+    description: "50 Scripture-based prayers to overcome pornography addiction and find freedom in Christ",
+    image: "/generators/purity.jpg",
+    category: "special",
+  },
+
   // Theme-based generators
   {
     id: "love",

@@ -1,41 +1,41 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Prayer Points for Purity with Scriptures | Overcome Pornography Addiction",
+  title: "Pornography Prayer Points with Scriptures | Overcome Addiction",
   description:
-    "Powerful prayer points with Bible verses to overcome pornography addiction and find freedom, purity, and healing in Christ. Get instant spiritual guidance with Scripture-based prayers for cleansing, deliverance, strength, forgiveness, and renewal.",
+    "Powerful Scripture-based prayers to overcome pornography addiction. Bible verses for freedom, purity, and healing in Christ. Free prayer tool.",
   keywords: [
-    "pornography prayer points",
-    "prayer for purity",
-    "overcome pornography addiction",
-    "prayer against lust",
-    "sexual purity prayers",
-    "deliverance from pornography",
-    "prayer points with scriptures",
-    "Christian prayers for addiction",
-    "freedom from sexual sin",
-    "scripture-based prayers",
+    "pornography prayer points with scriptures",
+    "prayer against pornography",
+    "overcome porn addiction prayer",
+    "deliverance from pornography prayer",
+    "prayer for sexual purity",
+    "Bible verses against lust",
+    "prayer points for purity",
+    "spiritual warfare against pornography",
+    "breaking pornography addiction",
+    "Christian prayers for freedom",
   ],
   openGraph: {
     type: "website",
-    url: "/prayer-for-purity",
+    url: "/pornography-prayer-points-with-scriptures",
     siteName: "Bible Verse Generator",
-    title: "Prayer Points for Purity with Scriptures | Overcome Pornography Addiction",
+    title: "Pornography Prayer Points with Scriptures | Overcome Addiction",
     description:
-      "Get powerful prayer points with Bible verses to overcome pornography and walk in purity. Free Scripture-based prayers for freedom and healing.",
+      "Powerful Scripture-based prayers with Bible verses for breaking free from addiction and walking in purity.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Prayer Points for Purity with Scriptures | Overcome Addiction",
+    title: "Pornography Prayer Points with Scriptures",
     description:
-      "Scripture-based prayers to overcome pornography addiction and find freedom in Christ. Free spiritual guidance.",
+      "Scripture-based prayers to overcome pornography addiction and find freedom in Christ.",
   },
   alternates: {
-    canonical: "/prayer-for-purity",
+    canonical: "/pornography-prayer-points-with-scriptures",
   },
 };
 
-export default function PrayerForPurityLayout({
+export default function PornographyPrayerLayout({
   children,
 }: {
   children: React.ReactNode;

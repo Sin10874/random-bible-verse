@@ -133,7 +133,7 @@ export default function GeneratorPage({ params }: GeneratorPageProps) {
               className="btn-primary cursor-pointer"
               aria-busy={loading}
             >
-              {loading ? "Loading..." : `Generate ${generator.name} Verse`}
+              {loading ? "Loading..." : "Random Bible Verse"}
             </button>
           </div>
 
@@ -298,13 +298,13 @@ function getContentForGenerator(generator: Generator) {
       {/* Section 3: How to Use */}
       <div>
         <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold tracking-tight leading-tight">
-          How to Use This {generator.name} Generator
+          How to Use This Free Bible Verse Generator
         </h2>
         <ol className="mt-3 sm:mt-4 list-decimal list-inside space-y-2 sm:space-y-2.5 text-sm sm:text-base text-white/90 leading-relaxed">
-          <li>Click the "Generate {generator.name} Verse" button above to get a random Bible verse</li>
-          <li>Read and reflect on the Scripture passage that appears</li>
+          <li>Click the "Random Bible Verse" button above to get a random Scripture passage</li>
+          <li>Read and reflect on the Bible verse that appears</li>
           <li>Copy the verse to share with friends, family, or save for your devotional time</li>
-          <li>Generate new {generator.name.toLowerCase()} as often as you need inspiration</li>
+          <li>Generate new verses as often as you need inspiration—completely free, no registration required</li>
         </ol>
       </div>
 
@@ -318,13 +318,31 @@ function getContentForGenerator(generator: Generator) {
           and let Scripture speak to your heart. Each verse is randomly selected to provide fresh inspiration and guidance.
         </p>
       </div>
+
+      {/* Additional SEO Content */}
+      {categoryContent.additionalSections?.map((section, idx) => (
+        <div key={idx}>
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold tracking-tight leading-tight">
+            {section.title}
+          </h2>
+          <p className="mt-3 sm:mt-4 text-sm sm:text-base text-white/90 leading-relaxed">
+            {section.content}
+          </p>
+        </div>
+      ))}
     </>
   );
 }
 
 // ===== 每个类别的特定内容 =====
 function getCategorySpecificContent(generator: Generator) {
-  const contentMap: Record<string, { h2Intro: string; h2Benefits: string; intro: string; benefits: Array<{ title: string; description: string }> }> = {
+  const contentMap: Record<string, {
+    h2Intro: string;
+    h2Benefits: string;
+    intro: string;
+    benefits: Array<{ title: string; description: string }>;
+    additionalSections?: Array<{ title: string; content: string }>;
+  }> = {
     love: {
       h2Intro: "Understanding Bible Verses About Love",
       h2Benefits: "Benefits of Reading Love Verses from Scripture",
@@ -341,6 +359,16 @@ function getCategorySpecificContent(generator: Generator) {
         {
           title: "Strengthen Relationships",
           description: "Apply biblical principles of love to build stronger marriages, friendships, and family bonds rooted in God's design."
+        }
+      ],
+      additionalSections: [
+        {
+          title: "The Greatest Commandment: Love God and Love Others",
+          content: "Jesus taught that the greatest commandment is to love the Lord your God with all your heart, soul, and mind, and to love your neighbor as yourself (Matthew 22:37-39). These two commands summarize all of Scripture and form the foundation of Christian living. When we understand how much God loves us, we are empowered to love others with the same unconditional, sacrificial love."
+        },
+        {
+          title: "Biblical Definition of Love",
+          content: "1 Corinthians 13 provides the most comprehensive biblical definition of love: patient, kind, not envious or boastful, not proud or rude, not self-seeking or easily angered, keeping no record of wrongs. Love always protects, trusts, hopes, and perseveres. This isn't just romantic love—it's the agape love that reflects God's character and should characterize all Christian relationships."
         }
       ]
     },
@@ -361,6 +389,16 @@ function getCategorySpecificContent(generator: Generator) {
           title: "Encourage Others",
           description: "Share verses of hope with friends and family facing challenges, offering them the same comfort God provides to you."
         }
+      ],
+      additionalSections: [
+        {
+          title: "Hope as an Anchor for the Soul",
+          content: "Hebrews 6:19 describes hope as \"an anchor for the soul, firm and secure.\" In life's storms, biblical hope keeps us grounded and stable. Unlike wishful thinking, Christian hope is confident expectation based on God's character and promises. This hope doesn't disappoint because it's rooted in the unchanging nature of God and secured by the resurrection of Jesus Christ."
+        },
+        {
+          title: "Living Hope Through Christ",
+          content: "1 Peter 1:3 speaks of the \"living hope\" we have through the resurrection of Jesus Christ from the dead. This hope is alive and active, not a dead religious concept. Because Jesus conquered death, we have hope for eternal life, hope for transformation, and hope that sustains us through every trial. This living hope changes how we face each day."
+        }
       ]
     },
     strength: {
@@ -379,6 +417,16 @@ function getCategorySpecificContent(generator: Generator) {
         {
           title: "Renew Your Energy",
           description: "Those who wait on the Lord will renew their strength, finding fresh energy and endurance for the journey ahead."
+        }
+      ],
+      additionalSections: [
+        {
+          title: "God's Strength Made Perfect in Weakness",
+          content: "2 Corinthians 12:9 reveals a powerful truth: God's strength is made perfect in our weakness. When we acknowledge our limitations and depend on Him, His power works most effectively through us. This means we don't have to pretend to be strong on our own. Instead, we can honestly bring our weaknesses to God and experience His supernatural strength that far exceeds anything we could muster ourselves."
+        },
+        {
+          title: "Philippians 4:13 - Strength for All Things",
+          content: "\"I can do all things through Christ who strengthens me\" (Philippians 4:13) is one of the most beloved verses about strength. This doesn't mean we can accomplish anything we dream up, but rather that Christ gives us strength to handle whatever circumstances God allows in our lives. Whether facing abundance or need, health or sickness, success or failure, Christ's strength is sufficient for every situation."
         }
       ]
     },
@@ -399,6 +447,16 @@ function getCategorySpecificContent(generator: Generator) {
           title: "Rest in God's Control",
           description: "Trust that God is in control of every situation, allowing you to rest peacefully knowing He cares for you."
         }
+      ],
+      additionalSections: [
+        {
+          title: "Peace That Surpasses Understanding",
+          content: "Philippians 4:6-7 teaches that when we bring our anxieties to God through prayer and thanksgiving, His peace—which transcends all understanding—will guard our hearts and minds. This peace isn't based on circumstances being perfect; it's a supernatural calm that God gives even in chaos. It surpasses human understanding because it defies logic to be peaceful when things are falling apart, yet God's presence provides exactly that."
+        },
+        {
+          title: "Jesus, the Prince of Peace",
+          content: "Isaiah 9:6 prophesies that the Messiah would be called the \"Prince of Peace.\" Jesus is the source of true peace. In John 14:27, He says, \"Peace I leave with you; my peace I give you. I do not give to you as the world gives.\" The world's peace depends on favorable circumstances, but Christ's peace is rooted in His victory over sin and death. Through relationship with Him, we access this lasting peace."
+        }
       ]
     },
     faith: {
@@ -417,6 +475,12 @@ function getCategorySpecificContent(generator: Generator) {
         {
           title: "Please God",
           description: "Understand that without faith it's impossible to please God, and that He rewards those who earnestly seek Him."
+        }
+      ],
+      additionalSections: [
+        {
+          title: "The Hall of Faith: Hebrews 11",
+          content: "Hebrews 11 is often called the \"Hall of Faith,\" showcasing heroes like Abraham, Moses, and Rahab who trusted God despite impossible circumstances. Their stories teach us that faith isn't blind—it's confident trust in God's character and promises, even when we can't see the outcome. These examples encourage us that God honors faith in every generation and circumstance."
         }
       ]
     },
@@ -437,6 +501,20 @@ function getCategorySpecificContent(generator: Generator) {
           title: "Support Others",
           description: "Use God's comfort to minister to others experiencing loss, becoming a vessel of His compassion."
         }
+      ],
+      additionalSections: [
+        {
+          title: "God's Promise to the Brokenhearted",
+          content: "Psalm 34:18 promises that \"The Lord is close to the brokenhearted and saves those who are crushed in spirit.\" When you're grieving, God doesn't stand at a distance—He draws near. His presence brings comfort that no human words can provide. Whether you've lost a loved one, experienced a broken relationship, or faced any form of loss, God meets you in your pain with compassion and understanding."
+        },
+        {
+          title: "How to Use Scripture During Grief",
+          content: "During times of grief, reading Bible verses can feel difficult, yet it's often when we need God's Word most. Start with short passages like Psalm 23 or Matthew 5:4 (\"Blessed are those who mourn, for they will be comforted\"). Let Scripture remind you that grief is not the end of your story—God promises restoration, healing, and the hope of resurrection. Use this free tool daily to receive comfort from God's Word."
+        },
+        {
+          title: "Free Grief Support Through Scripture",
+          content: "This free Bible verse generator provides instant access to comforting Scripture passages whenever you need them. No registration or subscription required. Whether you're experiencing fresh loss or walking through prolonged grief, click the button above to receive encouraging words from God's Word. Share verses with others who are mourning, offering them the same comfort God has given you (2 Corinthians 1:3-4)."
+        }
       ]
     },
     prayer: {
@@ -455,6 +533,12 @@ function getCategorySpecificContent(generator: Generator) {
         {
           title: "See Answers",
           description: "Claim God's promises to answer prayer, trusting that He hears and responds according to His perfect wisdom."
+        }
+      ],
+      additionalSections: [
+        {
+          title: "The Lord's Prayer as a Model",
+          content: "In Matthew 6:9-13, Jesus taught His disciples how to pray through the Lord's Prayer. This model prayer includes worship (\"hallowed be your name\"), surrender (\"your will be done\"), daily dependence (\"give us today our daily bread\"), confession (\"forgive us our debts\"), and spiritual protection (\"deliver us from evil\"). Using this structure helps us pray comprehensively and align our hearts with God's priorities."
         }
       ]
     },
@@ -475,6 +559,20 @@ function getCategorySpecificContent(generator: Generator) {
           title: "Encourage Others",
           description: "Share uplifting verses with friends, family, and fellow believers who need hope and encouragement."
         }
+      ],
+      additionalSections: [
+        {
+          title: "Daily Encouragement from Scripture",
+          content: "Starting each day with an encouraging Bible verse can transform your perspective and strengthen your faith. Whether you're facing challenges at work, struggling with relationships, or simply need a reminder of God's love, Scripture provides the encouragement you need. This free tool delivers random encouraging verses from throughout the Bible—use it every morning as part of your devotional routine or whenever you need a spiritual lift."
+        },
+        {
+          title: "When to Read Encouraging Bible Verses",
+          content: "Encouraging Scripture is valuable in many situations: when facing difficult decisions, experiencing setbacks, feeling overwhelmed, or walking through uncertain times. The Bible is filled with God's promises of His presence, provision, and faithfulness. Verses like Joshua 1:9 (\"Be strong and courageous\") and Philippians 4:13 (\"I can do all things through Christ\") remind us that we're never alone and God's strength is always available."
+        },
+        {
+          title: "Share Encouragement Freely",
+          content: "This Bible verse generator is completely free—no ads, no registration, no hidden costs. We believe everyone should have easy access to God's encouraging Word. Use this tool to find verses to text a friend who's struggling, post on social media to uplift your followers, or save for your own meditation. God's Word is meant to be shared generously, bringing hope and encouragement to all who need it."
+        }
       ]
     },
     thanksgiving: {
@@ -493,6 +591,20 @@ function getCategorySpecificContent(generator: Generator) {
         {
           title: "Worship God",
           description: "Enter God's gates with thanksgiving and His courts with praise, making gratitude a form of worship."
+        }
+      ],
+      additionalSections: [
+        {
+          title: "Give Thanks in All Circumstances",
+          content: "1 Thessalonians 5:18 commands us to \"give thanks in all circumstances, for this is God's will for you in Christ Jesus.\" Notice it doesn't say \"for all circumstances\" but \"in all circumstances.\" Even during trials, we can thank God for His presence, faithfulness, and the promise that He works all things for our good. Practicing thanksgiving shifts our focus from our problems to God's power and provision."
+        },
+        {
+          title: "Thanksgiving as a Daily Practice",
+          content: "Making thanksgiving a daily habit transforms your spiritual life. Start each morning by thanking God for specific blessings—health, family, provision, salvation. Use this free Bible verse generator to discover new reasons to be thankful from Scripture. Psalm 100 teaches us to \"enter his gates with thanksgiving and his courts with praise.\" When we approach God with gratitude, we position ourselves to experience His presence and peace."
+        },
+        {
+          title: "Free Thanksgiving Bible Verses Anytime",
+          content: "This tool provides instant access to thanksgiving Bible verses whenever you need them—completely free, no subscription required. Whether you're preparing for Thanksgiving dinner, leading a prayer group, or simply want to cultivate a grateful heart, click the button above to receive inspiring verses about gratitude. Share them with family and friends to spread a spirit of thanksgiving throughout your community."
         }
       ]
     },
@@ -513,6 +625,20 @@ function getCategorySpecificContent(generator: Generator) {
           title: "Learn to Worship",
           description: "The Psalms model authentic worship that is both honest and reverent, teaching us to praise God in every situation."
         }
+      ],
+      additionalSections: [
+        {
+          title: "The Psalms: Ancient Songs for Modern Life",
+          content: "Written thousands of years ago by David, Asaph, Solomon, and others, the Psalms remain powerfully relevant today. These ancient prayers address timeless human experiences: fear and faith, doubt and trust, sorrow and celebration. Whether you're experiencing the valleys of Psalm 23 or the victory of Psalm 118, there's a Psalm that speaks to your current situation. This free generator helps you discover relevant Psalms for your spiritual journey."
+        },
+        {
+          title: "Popular Psalms and Their Themes",
+          content: "Some of the most beloved Psalms include: Psalm 23 (God as Shepherd), Psalm 91 (Protection), Psalm 103 (God's Benefits), Psalm 119 (Love for God's Word), and Psalm 139 (God's Omniscience). Each Psalm offers unique insights into God's character and our relationship with Him. Use this tool daily to explore the breadth and depth of the Psalms—you'll never run out of fresh encouragement and wisdom."
+        },
+        {
+          title: "How to Meditate on Psalms",
+          content: "The Psalms are meant to be meditated upon, not just read quickly. When you generate a Psalm verse, read it slowly multiple times. Notice the imagery, the emotions expressed, and the truths about God. Consider memorizing verses that resonate with you. Many Christians make it a practice to read one Psalm per day or pray through the Psalms as their prayer book. This free tool makes it easy to incorporate Psalms into your daily devotional life."
+        }
       ]
     },
     proverbs: {
@@ -532,6 +658,20 @@ function getCategorySpecificContent(generator: Generator) {
           title: "Make Better Choices",
           description: "Learn to choose the path of wisdom over folly, making decisions that honor God and benefit your life."
         }
+      ],
+      additionalSections: [
+        {
+          title: "Solomon's Wisdom for Today",
+          content: "Most of Proverbs was written by King Solomon, whom God blessed with supernatural wisdom (1 Kings 3:12). These proverbs address practical matters like business ethics, family relationships, financial management, and personal integrity. While written in ancient times, the principles are timeless. Whether you're navigating workplace challenges, raising children, or managing finances, Proverbs provides divine wisdom that works in every generation and culture."
+        },
+        {
+          title: "A Proverb a Day",
+          content: "Many Christians follow a 'Proverb a day' reading plan, reading one chapter of Proverbs each day corresponding to the date (Proverbs 1 on the 1st, etc.). Since Proverbs has 31 chapters, this completes the book monthly. However, you can also use this free random verse generator to receive bite-sized wisdom from Proverbs whenever you need guidance. Each proverb offers practical insight you can apply immediately to your daily life."
+        },
+        {
+          title: "Free Wisdom at Your Fingertips",
+          content: "This Bible verse generator gives you instant access to wisdom from Proverbs—no cost, no registration, no barriers. Whether you're making a difficult decision, need guidance for a relationship issue, or want to grow in character, click above to receive a relevant proverb. The wisdom of Proverbs is God's gift to help you navigate life successfully. Use this tool daily to build wisdom into your life, one verse at a time."
+        }
       ]
     },
     john: {
@@ -550,6 +690,20 @@ function getCategorySpecificContent(generator: Generator) {
         {
           title: "Experience His Love",
           description: "Encounter the depth of Christ's love demonstrated through His teaching, His life, and His sacrifice on the cross."
+        }
+      ],
+      additionalSections: [
+        {
+          title: "John 3:16 and the Gospel Message",
+          content: "John 3:16 is perhaps the most famous verse in the Bible: \"For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life.\" This verse encapsulates the entire gospel message—God's love, Jesus' sacrifice, the requirement of faith, and the promise of eternal life. The Gospel of John repeatedly emphasizes that eternal life comes through believing in Jesus Christ as God's Son."
+        },
+        {
+          title: "The Seven 'I Am' Statements of Jesus",
+          content: "In John's Gospel, Jesus makes seven profound 'I am' declarations: I am the Bread of Life (6:35), the Light of the World (8:12), the Door (10:9), the Good Shepherd (10:11), the Resurrection and the Life (11:25), the Way, the Truth, and the Life (14:6), and the True Vine (15:1). Each statement reveals a different aspect of who Jesus is and what He offers to those who believe. Use this tool to explore these powerful declarations."
+        },
+        {
+          title: "Free Access to John's Gospel",
+          content: "This free Bible verse generator gives you instant access to verses from the Gospel of John—the perfect book for seekers and believers alike. Whether you're exploring Christianity for the first time or deepening your understanding of Jesus, John's Gospel is written so that you \"may believe that Jesus is the Messiah, the Son of God, and that by believing you may have life in his name\" (John 20:31). No cost, no barriers—just the life-changing message of Jesus Christ."
         }
       ]
     }
