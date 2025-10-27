@@ -5,7 +5,7 @@ module.exports = {
     sitemapSize: 5000,
     changefreq: 'daily',                         // 建议搜索引擎每天爬取
     priority: 0.7,
-    exclude: ['/server-sitemap.xml'],            // 如果未来添加自定义 sitemap 可用
+    exclude: ['/server-sitemap.xml', '/icon.png', '/icon-*.png', '/apple-touch-icon.png'],  // 排除图标和不需要的文件
     robotsTxtOptions: {
       policies: [
         { userAgent: '*', allow: '/' },

@@ -1,12 +1,9 @@
-# robots.txt for https://bibleverse-generator.org
-
+# *
 User-agent: *
 Allow: /
-# 防止 API 被索引
-Disallow: /api/
 
-# 主机声明
+# Host
 Host: https://bibleverse-generator.org
 
-# Sitemap 声明
+# Sitemaps
 Sitemap: https://bibleverse-generator.org/sitemap.xml
