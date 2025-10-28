@@ -4,7 +4,7 @@ import Script from "next/script"; // ✅ 新增
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.bibleverse-generator.org"),
+  metadataBase: new URL("https://bibleverse-generator.org"),
   title: {
     default: "Random Bible Verse Generator | Daily Scripture & Verse of the Day",
     template: "%s | BibleVerse Generator",
