@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
-import { getGeneratorBySlug, GENERATORS, Generator } from "../data/generators";
+import { getGeneratorBySlug, GENERATORS, Generator } from "../../data/generators";
 import { notFound } from "next/navigation";
+import { getTranslations } from "next-intl/server";
 
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string; locale: string }>;
 }): Promise<Metadata> {
-  const generator = getGeneratorBySlug(params.slug);
+  const { slug, locale } = await params;
+  const generator = getGeneratorBySlug(slug);
 
   if (!generator) {
     return {
@@ -15,9 +17,10 @@ export async function generateMetadata({
     };
   }
 
-  // Optimized SEO titles and descriptions
-  const seoData = getSEOData(generator);
-  const url = `/${generator.slug}`;
+  // Get SEO data based on locale
+  const seoData = await getSEOData(generator, locale);
+  const url = `/${locale}/${generator.slug}`;
+  const siteName = locale === 'es' ? 'Generador de Versículos Bíblicos' : 'Bible Verse Generator';
 
   return {
     title: seoData.title,
@@ -29,7 +32,7 @@ export async function generateMetadata({
     openGraph: {
       type: "website",
       url,
-      siteName: "Bible Verse Generator",
+      siteName,
       title: seoData.ogTitle,
       description: seoData.description,
     },
@@ -42,8 +45,23 @@ export async function generateMetadata({
 }
 
 // SEO-optimized metadata for each generator
-function getSEOData(generator: Generator) {
+async function getSEOData(generator: Generator, locale: string) {
   const year = new Date().getFullYear();
+
+  // For Spanish, use translations from es.json
+  if (locale === 'es') {
+    const t = await getTranslations({ locale: 'es', namespace: 'seo' });
+    const generatorKey = generator.id === 'purity' ? 'purityPrayer' : generator.id;
+
+    return {
+      title: t(`${generatorKey}.title`),
+      ogTitle: t(`${generatorKey}.title`),
+      description: t(`${generatorKey}.description`),
+      keywords: t(`${generatorKey}.keywords`).split(', ')
+    };
+  }
+
+  // English SEO data (default)
 
   const seoMap: Record<string, { title: string; ogTitle: string; description: string; keywords: string[] }> = {
     love: {
@@ -129,9 +147,19 @@ function getSEOData(generator: Generator) {
 }
 
 export async function generateStaticParams() {
-  return GENERATORS.map((generator) => ({
-    slug: generator.slug,
-  }));
+  const locales = ['en', 'es', 'pt', 'zh', 'tl', 'fr'];
+  const params = [];
+
+  for (const locale of locales) {
+    for (const generator of GENERATORS) {
+      params.push({
+        locale,
+        slug: generator.slug,
+      });
+    }
+  }
+
+  return params;
 }
 
 export default function GeneratorLayout({

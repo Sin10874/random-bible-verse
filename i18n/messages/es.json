@@ -1,0 +1,687 @@
+{
+  "common": {
+    "siteName": "Generador de Versículos Bíblicos",
+    "contactUs": "Contáctenos",
+    "privacy": "Privacidad",
+    "loading": "Cargando...",
+    "error": "Ups, no se pudo cargar. Inténtalo de nuevo.",
+    "copied": "¡Copiado!"
+  },
+  "home": {
+    "heroTitle": "Confía en Dios.",
+    "heroSubtitle": "Encuentra fortaleza y paz a través de la palabra de Dios, un versículo a la vez.",
+    "generateButton": "Versículo Aleatorio",
+    "copyButton": "Copiar",
+    "closeButton": "Cerrar",
+    "trendingTitle": "Generadores Populares",
+    "trendingSubtitle": "Explora versículos bíblicos por tema, libro o situación de vida"
+  },
+  "generators": {
+    "purity": "Puntos de Oración sobre Pornografía con Escrituras",
+    "purityPrayer": "Puntos de Oración sobre Pornografía con Escrituras",
+    "love": "Versículos Bíblicos sobre el Amor",
+    "hope": "Versículos Bíblicos sobre la Esperanza",
+    "strength": "Versículos Bíblicos sobre la Fortaleza",
+    "peace": "Versículos Bíblicos sobre la Paz",
+    "faith": "Versículos Bíblicos sobre la Fe",
+    "grief": "Versículos Bíblicos sobre el Duelo",
+    "psalms": "Versículos de los Salmos",
+    "proverbs": "Versículos de Proverbios",
+    "john": "Versículos de Juan",
+    "prayer": "Versículos Bíblicos sobre la Oración",
+    "encouragement": "Versículos Bíblicos de Aliento",
+    "thanksgiving": "Versículos Bíblicos de Acción de Gracias"
+  },
+  "generatorDescriptions": {
+    "purity": "50 oraciones basadas en las Escrituras para vencer la adicción a la pornografía y encontrar libertad en Cristo",
+    "love": "Descubre el amor de Dios y versículos sobre amar a los demás",
+    "hope": "Encuentra esperanza y aliento en las promesas de Dios",
+    "strength": "Obtén fortaleza y valor de la palabra de Dios",
+    "peace": "Experimenta la paz de Dios en cada circunstancia",
+    "faith": "Fortalece tu fe a través de las Escrituras",
+    "grief": "Encuentra consuelo en tiempos de pérdida y tristeza",
+    "psalms": "Experimenta adoración y alabanza del Libro de los Salmos",
+    "proverbs": "Obtén sabiduría del Libro de Proverbios",
+    "john": "Descubre a Jesús a través del Evangelio de Juan",
+    "prayer": "Aprende a orar a través de las Escrituras",
+    "encouragement": "Sé edificado y alentado por la palabra de Dios",
+    "thanksgiving": "Da gracias y alaba a Dios"
+  },
+  "about": {
+    "whatIsTitle": "¿Qué es el Generador de Versículos Bíblicos?",
+    "whatIsContent": "Obtén un versículo bíblico aleatorio con un solo clic. Usa este generador de escrituras gratuito para descubrir versículos bíblicos diarios sobre fe, amor, esperanza, fortaleza y paz. Guarda tus favoritos o regresa en cualquier momento para más inspiración.",
+    "howItWorksTitle": "¿Cómo Funciona?",
+    "howItWorksStep1": "Haz clic en Generar Versículo para recibir instantáneamente un versículo bíblico aleatorio.",
+    "howItWorksStep2": "Copia para compartir tu versículo con amigos, familiares o en redes sociales.",
+    "howItWorksStep3": "Comienza tu hábito del Versículo del Día para reflexión y aliento diario.",
+    "whatCanYouDoTitle": "¿Qué Puedes Hacer Con Este Generador de Versículos Bíblicos?",
+    "whatCanYouDoContent": "Úsalo para inspiración diaria, oración, estudio, motivación, compartir en redes sociales y reflexión personal.",
+    "whyUseTitle": "¿Por Qué Usar un Generador Aleatorio de Versículos Bíblicos?",
+    "whyUseContent": "Redescubre la Biblia, fortalece tu fe diaria, profundiza tu conocimiento, mantente conectado con Dios y termina el día con paz.",
+    "isFreeTitle": "¿Esta Herramienta es Gratuita?",
+    "isFreeContent": "Sí, este generador de versículos bíblicos es completamente gratuito. Sin registros, sin descargas, sin límites. Simplemente haz clic en Generar Versículo y un nuevo versículo bíblico aparecerá instantáneamente para inspirar tu día.",
+    "startNowTitle": "Comienza Ahora",
+    "startNowContent": "Genera un versículo bíblico aleatorio y comienza tu viaje del Versículo del Día: gratis, rápido y siempre edificante."
+  },
+  "footer": {
+    "copyright": "© 2025 Generador de Versículos Bíblicos. Creado para la reflexión."
+  },
+  "purityPrayer": {
+    "title": "Puntos de Oración sobre Pornografía con Escrituras",
+    "subtitle": "Poderosas oraciones basadas en las Escrituras para vencer la adicción a la pornografía y encontrar libertad en Cristo.",
+    "generateButton": "Obtener Punto de Oración",
+    "copyButton": "Copiar Oración",
+    "closeButton": "Cerrar",
+    "loading": "Cargando...",
+    "categoryLabel": "Categoría",
+    "prayerPointLabel": "Punto de Oración",
+    "scriptureLabel": "Escritura",
+    "whatAreTitle": "¿Qué Son los Puntos de Oración sobre Pornografía con Escrituras?",
+    "whatAreContent": "Los puntos de oración sobre pornografía con escrituras son oraciones específicas basadas en la Biblia, diseñadas para ayudar a los creyentes a vencer la adicción a la pornografía y caminar en pureza sexual. Cada punto de oración está anclado en la Palabra de Dios, proporcionando armas espirituales para la batalla contra la lujuria, la vergüenza, la tentación y la esclavitud.",
+    "howToUseTitle": "Cómo Usar Estos Puntos de Oración",
+    "howToUseStep1": "Haz clic en \"Obtener Punto de Oración\" para recibir una oración aleatoria basada en las Escrituras.",
+    "howToUseStep2": "Lee la oración en voz alta con fe y sinceridad.",
+    "howToUseStep3": "Medita en el versículo bíblico correspondiente.",
+    "howToUseStep4": "Haz clic en \"Copiar Oración\" para guardarla para uso personal.",
+    "howToUseStep5": "Regresa diariamente para oración constante.",
+    "whyPowerfulTitle": "Por Qué las Oraciones Basadas en las Escrituras Son Poderosas",
+    "whyPowerfulContent": "Cuando oras la Palabra de Dios de vuelta a Él, alineas tus peticiones con Su voluntad. La Biblia dice que la Palabra de Dios es viva y eficaz (Hebreos 4:12). Las oraciones basadas en las Escrituras aumentan tu fe y renuevan tu mente.",
+    "notAloneTitle": "No Estás Solo",
+    "notAloneContent": "Si estás luchando con la pornografía, debes saber que no estás solo. \"Ahora, pues, ninguna condenación hay para los que están en Cristo Jesús\" (Romanos 8:1). La misericordia de Dios es nueva cada mañana. Comienza a orar hoy.",
+    "breakingFreeTitle": "Liberándote de la Adicción a la Pornografía",
+    "breakingFreeContent": "La adicción a la pornografía es una batalla espiritual que requiere armas espirituales. La Biblia nos enseña que \"no tenemos lucha contra sangre y carne, sino contra principados, contra potestades\" (Efesios 6:12). A través de la oración constante, la meditación en las Escrituras y la dependencia del Espíritu Santo, puedes liberarte de las cadenas del pecado sexual y caminar en la libertad que Cristo compró para ti en la cruz.",
+    "dailyPrayerTitle": "El Poder de la Oración Diaria",
+    "dailyPrayerContent": "La recuperación de la adicción a la pornografía no ocurre de la noche a la mañana, pero la oración diaria trae transformación. A medida que traes consistentemente tus luchas a Dios, Él renueva tu mente (Romanos 12:2) y te fortalece con Su Espíritu. Cada punto de oración en esta herramienta está diseñado para atacar áreas específicas, desde romper la vergüenza y la culpa hasta construir responsabilidad y cultivar pureza. Haz de la oración tu arma diaria contra la tentación.",
+    "biblicalFoundationTitle": "Fundamento Bíblico para la Pureza Sexual",
+    "biblicalFoundationContent": "El diseño de Dios para la sexualidad es hermoso y puro. La Biblia nos llama a \"huir de la inmoralidad sexual\" (1 Corintios 6:18) y a presentar nuestros cuerpos como \"sacrificios vivos, santos y agradables a Dios\" (Romanos 12:1). Estos puntos de oración te ayudan a alinear tu corazón con el estándar de Dios, renovando tu compromiso de honrarlo con tu cuerpo y mente. A través de Cristo, la pureza no es solo una meta, es una promesa.",
+    "hopeHealingTitle": "Encuentra Esperanza y Sanidad en Cristo",
+    "hopeHealingContent": "No importa cuánto tiempo hayas luchado con la pornografía, hay esperanza en Jesucristo. \"Si confesamos nuestros pecados, él es fiel y justo para perdonar nuestros pecados, y limpiarnos de toda maldad\" (1 Juan 1:9). Dios no te condena, te llama a la libertad. Usa estos puntos de oración como un recordatorio diario de que la gracia de Dios es suficiente, Su poder se perfecciona en tu debilidad, y Su amor nunca falla.",
+    "homeLink": "Inicio",
+    "privacyLink": "Privacidad",
+    "contactLink": "Contacto",
+    "footerText": "© {year} Generador de Versículos Bíblicos. Construido con fe para la libertad."
+  },
+  "seo": {
+    "home": {
+      "title": "Generador de Versículos Bíblicos Aleatorios | Escrituras Diarias y Versículo del Día",
+      "description": "¡Obtén un versículo bíblico aleatorio al instante! Este generador de escrituras gratuito ofrece versículos inspiradores sobre fe, amor y esperanza, perfectos para el aliento diario.",
+      "keywords": "versículos bíblicos aleatorios, generador de escrituras, versículo del día, versículos de fe, versículos de amor"
+    },
+    "purityPrayer": {
+      "title": "Puntos de Oración sobre Pornografía con Escrituras - 50 Oraciones Bíblicas",
+      "description": "50 puntos de oración basados en las Escrituras para vencer la adicción a la pornografía y encontrar libertad en Cristo. Poderosas oraciones bíblicas para pureza y sanación.",
+      "keywords": "oración contra pornografía, libertad de adicción, oraciones de pureza, escrituras sobre pureza, libertad en Cristo"
+    },
+    "love": {
+      "title": "Versículos Bíblicos sobre el Amor - Escrituras sobre el Amor de Dios 2025",
+      "description": "Descubre poderosos versículos bíblicos sobre el amor de las Escrituras. Lee lo que Dios dice sobre Su amor por nosotros y cómo amar a otros. Encuentra inspiración en 1 Corintios 13, Juan 3:16 y más.",
+      "keywords": "versículos bíblicos sobre el amor, escrituras sobre el amor, versículos del amor de Dios, 1 Corintios 13, citas bíblicas de amor"
+    },
+    "hope": {
+      "title": "Versículos Bíblicos sobre la Esperanza - Escrituras sobre Fe y Confianza en Dios",
+      "description": "Descubre poderosos versículos bíblicos sobre la esperanza, la fe y confiar en las promesas de Dios. Encuentra aliento en Romanos 15:13, Jeremías 29:11 y más.",
+      "keywords": "versículos sobre esperanza, escrituras sobre esperanza, fe y esperanza, confianza en Dios, promesas de Dios"
+    },
+    "strength": {
+      "title": "Versículos Bíblicos sobre la Fortaleza - Escrituras sobre Valor y Poder de Dios",
+      "description": "Encuentra aliento a través de versículos bíblicos sobre la fortaleza, el valor y el poder de Dios. Descubre fortaleza espiritual en Filipenses 4:13, Isaías 40:31 y más.",
+      "keywords": "versículos sobre fortaleza, escrituras sobre fortaleza, valor en Dios, poder de Dios, fortaleza espiritual"
+    },
+    "peace": {
+      "title": "Versículos Bíblicos sobre la Paz - Escrituras sobre Tranquilidad y Descanso",
+      "description": "Experimenta la paz de Dios a través de versículos bíblicos reconfortantes sobre tranquilidad y descanso. Encuentra paz en Juan 14:27, Filipenses 4:6-7 y más.",
+      "keywords": "versículos sobre paz, escrituras sobre paz, paz de Dios, tranquilidad, descanso en Dios"
+    },
+    "faith": {
+      "title": "Versículos Bíblicos sobre la Fe - Escrituras sobre Creer y Confiar en Dios",
+      "description": "Fortalece tu fe con poderosos versículos bíblicos sobre creer y confiar en Dios. Encuentra inspiración en Hebreos 11:1, Romanos 10:17 y más.",
+      "keywords": "versículos sobre fe, escrituras sobre fe, confiar en Dios, creer en Dios, fe cristiana"
+    },
+    "grief": {
+      "title": "Versículos Bíblicos sobre el Duelo - Escrituras sobre Pérdida y Presencia de Dios",
+      "description": "Encuentra consuelo y sanación en versículos bíblicos sobre el duelo, la pérdida y la presencia de Dios. Consuelo en Salmos 34:18, Mateo 5:4 y más.",
+      "keywords": "versículos sobre duelo, escrituras sobre duelo, consuelo en pérdida, sanación del duelo, presencia de Dios"
+    },
+    "prayer": {
+      "title": "Versículos Bíblicos sobre la Oración - Escrituras sobre Comunicarse con Dios",
+      "description": "Aprende sobre la oración a través de versículos bíblicos sobre comunicarse con Dios y buscar Su voluntad. Guía en Mateo 6:9-13, Filipenses 4:6 y más.",
+      "keywords": "versículos sobre oración, escrituras sobre oración, cómo orar, comunicarse con Dios, poder de la oración"
+    },
+    "encouragement": {
+      "title": "Versículos Bíblicos de Aliento - Escrituras de Esperanza y Promesas de Dios",
+      "description": "Sé alentado y edificado a través de versículos bíblicos de esperanza y las promesas de Dios. Encuentra fortaleza en Josué 1:9, Isaías 41:10 y más.",
+      "keywords": "versículos de aliento, escrituras de aliento, promesas de Dios, esperanza bíblica, fortaleza espiritual"
+    },
+    "thanksgiving": {
+      "title": "Versículos Bíblicos de Acción de Gracias - Escrituras sobre Gratitud y Alabanza a Dios",
+      "description": "Celebra la gratitud con versículos bíblicos sobre dar gracias y alabar a Dios. Encuentra inspiración en 1 Tesalonicenses 5:18, Salmos 100 y más.",
+      "keywords": "versículos de gratitud, escrituras de acción de gracias, alabanza a Dios, dar gracias, gratitud cristiana"
+    },
+    "psalms": {
+      "title": "Versículos de los Salmos - Canciones de Adoración, Alabanza y Oración a Dios",
+      "description": "Explora el Libro de los Salmos - canciones de adoración, alabanza y oración a Dios. Descubre sabiduría y consuelo en las antiguas palabras de David y otros salmistas.",
+      "keywords": "versículos de salmos, libro de salmos, salmos bíblicos, adoración y alabanza, oraciones de David"
+    },
+    "proverbs": {
+      "title": "Versículos de Proverbios - Sabiduría y Guía para la Vida Diaria",
+      "description": "Descubre sabiduría y guía del Libro de Proverbios para la vida diaria. Aprende principios de vida práctica de la sabiduría de Salomón.",
+      "keywords": "versículos de proverbios, libro de proverbios, sabiduría bíblica, proverbios de Salomón, sabiduría diaria"
+    },
+    "john": {
+      "title": "Versículos de Juan - Evangelio sobre Jesucristo y Vida Eterna",
+      "description": "Lee versículos del Evangelio de Juan sobre Jesucristo y la vida eterna. Descubre la historia de Jesús a través de las palabras del discípulo amado.",
+      "keywords": "evangelio de juan, versículos de juan, jesucristo, vida eterna, juan 3:16"
+    }
+  },
+  "generatorContent": {
+    "ui": {
+      "generateButton": "Versículo Bíblico Aleatorio",
+      "loading": "Cargando...",
+      "closeButton": "Cerrar",
+      "copyButton": "Copiar",
+      "copied": "Copiado",
+      "error": "Ups, no se pudo cargar. Inténtalo de nuevo.",
+      "verseLabel": "Versículo",
+      "home": "Inicio",
+      "privacy": "Privacidad",
+      "contactUs": "Contáctenos",
+      "footerCopyright": "© 2025 Generador de Versículos Bíblicos. Creado para la reflexión."
+    },
+    "sections": {
+      "howToUseTitle": "Cómo Usar Este Generador Gratuito de Versículos Bíblicos",
+      "howToUseStep1": "Haz clic en el botón \"Versículo Bíblico Aleatorio\" arriba para obtener un pasaje bíblico aleatorio",
+      "howToUseStep2": "Lee y reflexiona sobre el versículo bíblico que aparece",
+      "howToUseStep3": "Copia el versículo para compartir con amigos, familiares o guardarlo para tu tiempo devocional",
+      "howToUseStep4": "Genera nuevos versículos tan a menudo como necesites inspiración—completamente gratis, sin registro requerido",
+      "callToActionTitle": "Obtén Tu {name} Hoy",
+      "callToActionContent": "Comienza tu día con la Palabra de Dios. Haz clic en el botón de generar arriba para recibir tu {name} y deja que las Escrituras hablen a tu corazón. Cada versículo es seleccionado aleatoriamente para proporcionar inspiración y guía fresca."
+    },
+    "love": {
+      "h2Intro": "Entendiendo los Versículos Bíblicos sobre el Amor",
+      "h2Benefits": "Beneficios de Leer Versículos de Amor de las Escrituras",
+      "intro": "Los versículos bíblicos sobre el amor revelan el amor incondicional de Dios por nosotros y nos enseñan cómo amar a los demás. Desde 1 Corintios 13 hasta Juan 3:16, las Escrituras muestran que el amor es el mandamiento más grande y el fundamento de nuestra fe.",
+      "benefits": [
+        {
+          "title": "Comprender el Amor de Dios",
+          "description": "Descubre cuán profundamente te ama Dios a través de versículos que revelan Su amor sacrificial e incondicional demostrado por medio de Jesucristo."
+        },
+        {
+          "title": "Aprender a Amar a los Demás",
+          "description": "Encuentra guía práctica para amar a tu prójimo, perdonar a quienes te lastiman y mostrar el amor de Cristo en tus relaciones diarias."
+        },
+        {
+          "title": "Fortalecer Relaciones",
+          "description": "Aplica principios bíblicos de amor para construir matrimonios, amistades y lazos familiares más fuertes, arraigados en el diseño de Dios."
+        }
+      ],
+      "additionalSections": [
+        {
+          "title": "El Mandamiento Más Grande: Amar a Dios y Amar a los Demás",
+          "content": "Jesús enseñó que el mandamiento más grande es amar al Señor tu Dios con todo tu corazón, alma y mente, y amar a tu prójimo como a ti mismo (Mateo 22:37-39). Estos dos mandamientos resumen toda la Escritura y forman el fundamento de la vida cristiana. Cuando entendemos cuánto nos ama Dios, somos capacitados para amar a los demás con el mismo amor incondicional y sacrificial."
+        },
+        {
+          "title": "Definición Bíblica del Amor",
+          "content": "1 Corintios 13 proporciona la definición bíblica más completa del amor: paciente, bondadoso, no envidioso ni jactancioso, no orgulloso ni grosero, no egoísta ni fácilmente provocado, no guarda rencor. El amor siempre protege, confía, espera y persevera. Este no es solo amor romántico—es el amor ágape que refleja el carácter de Dios y debe caracterizar todas las relaciones cristianas."
+        }
+      ]
+    },
+    "hope": {
+      "h2Intro": "¿Qué Dice la Biblia sobre la Esperanza?",
+      "h2Benefits": "Por Qué Deberías Leer Versículos Bíblicos sobre la Esperanza",
+      "intro": "Los versículos bíblicos sobre la esperanza nos recuerdan que nuestra esperanza está anclada en las promesas de Dios y Su carácter fiel. Estos versículos proporcionan aliento durante tiempos difíciles y renuevan nuestra confianza en el plan de Dios.",
+      "benefits": [
+        {
+          "title": "Encontrar Esperanza en las Pruebas",
+          "description": "Cuando las circunstancias parecen sin esperanza, las Escrituras nos recuerdan que Dios obra todas las cosas para nuestro bien y tiene un propósito en cada temporada."
+        },
+        {
+          "title": "Anclar Tu Fe",
+          "description": "Construye tu fe sobre el fundamento sólido de las promesas inmutables de Dios y Su fidelidad probada a lo largo de la historia."
+        },
+        {
+          "title": "Alentar a Otros",
+          "description": "Comparte versículos de esperanza con amigos y familiares que enfrentan desafíos, ofreciéndoles el mismo consuelo que Dios te proporciona."
+        }
+      ],
+      "additionalSections": [
+        {
+          "title": "La Esperanza como Ancla para el Alma",
+          "content": "Hebreos 6:19 describe la esperanza como \"un ancla para el alma, firme y segura.\" En las tormentas de la vida, la esperanza bíblica nos mantiene fundamentados y estables. A diferencia del pensamiento ilusorio, la esperanza cristiana es expectativa confiada basada en el carácter y las promesas de Dios. Esta esperanza no defrauda porque está arraigada en la naturaleza inmutable de Dios y asegurada por la resurrección de Jesucristo."
+        },
+        {
+          "title": "Esperanza Viva a Través de Cristo",
+          "content": "1 Pedro 1:3 habla de la \"esperanza viva\" que tenemos a través de la resurrección de Jesucristo de entre los muertos. Esta esperanza está viva y activa, no es un concepto religioso muerto. Porque Jesús conquistó la muerte, tenemos esperanza de vida eterna, esperanza de transformación y esperanza que nos sostiene en cada prueba. Esta esperanza viva cambia cómo enfrentamos cada día."
+        }
+      ]
+    },
+    "strength": {
+      "h2Intro": "Encontrando Fortaleza en los Versículos Bíblicos",
+      "h2Benefits": "Beneficios de Leer Escrituras sobre la Fortaleza",
+      "intro": "Los versículos bíblicos sobre la fortaleza nos recuerdan que Dios es nuestra fuente de poder y valor. Cuando nos sentimos débiles, Su fortaleza se perfecciona, capacitándonos para enfrentar cualquier desafío con confianza en Él.",
+      "benefits": [
+        {
+          "title": "Encontrar Fortaleza en la Debilidad",
+          "description": "Descubre cómo el poder de Dios se perfecciona en tu debilidad, dándote fortaleza sobrenatural más allá de tus capacidades naturales."
+        },
+        {
+          "title": "Superar Desafíos",
+          "description": "Enfrenta los obstáculos de la vida con valor, sabiendo que todo lo puedes en Cristo que te fortalece."
+        },
+        {
+          "title": "Renovar Tu Energía",
+          "description": "Los que esperan en el Señor renovarán sus fuerzas, encontrando energía fresca y resistencia para el camino por delante."
+        }
+      ],
+      "additionalSections": [
+        {
+          "title": "La Fortaleza de Dios Perfeccionada en la Debilidad",
+          "content": "2 Corintios 12:9 revela una verdad poderosa: la fortaleza de Dios se perfecciona en nuestra debilidad. Cuando reconocemos nuestras limitaciones y dependemos de Él, Su poder obra más eficazmente a través de nosotros. Esto significa que no tenemos que pretender ser fuertes por nuestra cuenta. En cambio, podemos llevar honestamente nuestras debilidades a Dios y experimentar Su fortaleza sobrenatural que excede por mucho cualquier cosa que pudiéramos reunir nosotros mismos."
+        },
+        {
+          "title": "Filipenses 4:13 - Fortaleza para Todas las Cosas",
+          "content": "\"Todo lo puedo en Cristo que me fortalece\" (Filipenses 4:13) es uno de los versículos más queridos sobre la fortaleza. Esto no significa que podamos lograr cualquier cosa que soñemos, sino que Cristo nos da fortaleza para manejar cualquier circunstancia que Dios permita en nuestras vidas. Ya sea enfrentando abundancia o necesidad, salud o enfermedad, éxito o fracaso, la fortaleza de Cristo es suficiente para cada situación."
+        }
+      ]
+    },
+    "peace": {
+      "h2Intro": "Descubriendo la Paz de Dios a Través de las Escrituras",
+      "h2Benefits": "Cómo los Versículos de Paz Transforman Tu Vida",
+      "intro": "Los versículos bíblicos sobre la paz revelan el regalo de Dios de tranquilidad interior que sobrepasa el entendimiento. Esta paz guarda nuestros corazones y mentes, incluso en medio de las tormentas de la vida.",
+      "benefits": [
+        {
+          "title": "Experimentar Paz Interior",
+          "description": "Encuentra la paz que Jesús prometió—una paz que el mundo no puede dar, anclada en la presencia y promesas de Dios."
+        },
+        {
+          "title": "Calmar Pensamientos Ansiosos",
+          "description": "Reemplaza la preocupación y la ansiedad con la paz de Dios a través de la oración, acción de gracias y meditación en Su Palabra."
+        },
+        {
+          "title": "Descansar en el Control de Dios",
+          "description": "Confía en que Dios tiene el control de cada situación, permitiéndote descansar pacíficamente sabiendo que Él cuida de ti."
+        }
+      ],
+      "additionalSections": [
+        {
+          "title": "Paz Que Sobrepasa el Entendimiento",
+          "content": "Filipenses 4:6-7 enseña que cuando llevamos nuestras ansiedades a Dios a través de la oración y acción de gracias, Su paz—que trasciende todo entendimiento—guardará nuestros corazones y mentes. Esta paz no se basa en circunstancias perfectas; es una calma sobrenatural que Dios da incluso en el caos. Sobrepasa el entendimiento humano porque desafía la lógica estar en paz cuando las cosas se están desmoronando, sin embargo, la presencia de Dios proporciona exactamente eso."
+        },
+        {
+          "title": "Jesús, el Príncipe de Paz",
+          "content": "Isaías 9:6 profetiza que el Mesías sería llamado el \"Príncipe de Paz\". Jesús es la fuente de la verdadera paz. En Juan 14:27, dice: \"La paz os dejo, mi paz os doy; yo no os la doy como el mundo la da.\" La paz del mundo depende de circunstancias favorables, pero la paz de Cristo está arraigada en Su victoria sobre el pecado y la muerte. A través de la relación con Él, accedemos a esta paz duradera."
+        }
+      ]
+    },
+    "faith": {
+      "h2Intro": "¿Qué es la Fe Según la Biblia?",
+      "h2Benefits": "Haciendo Crecer Tu Fe con las Escrituras",
+      "intro": "Los versículos bíblicos sobre la fe nos enseñan a confiar completamente en Dios, incluso cuando no podemos ver el resultado. La fe es la certeza de lo que se espera y la convicción de lo que no se ve.",
+      "benefits": [
+        {
+          "title": "Fortalecer Tu Confianza",
+          "description": "Construye confianza inquebrantable en el carácter y las promesas de Dios, sabiendo que Él es fiel para completar lo que comienza."
+        },
+        {
+          "title": "Mover Montañas",
+          "description": "Aprende cómo incluso la fe del tamaño de una semilla de mostaza puede mover montañas cuando se coloca en un Dios todopoderoso."
+        },
+        {
+          "title": "Agradar a Dios",
+          "description": "Entiende que sin fe es imposible agradar a Dios, y que Él recompensa a quienes lo buscan diligentemente."
+        }
+      ],
+      "additionalSections": [
+        {
+          "title": "El Salón de la Fe: Hebreos 11",
+          "content": "Hebreos 11 a menudo se llama el \"Salón de la Fe\", mostrando héroes como Abraham, Moisés y Rahab que confiaron en Dios a pesar de circunstancias imposibles. Sus historias nos enseñan que la fe no es ciega—es confianza segura en el carácter y las promesas de Dios, incluso cuando no podemos ver el resultado. Estos ejemplos nos alientan a que Dios honra la fe en cada generación y circunstancia."
+        }
+      ]
+    },
+    "grief": {
+      "h2Intro": "Versículos Bíblicos para el Duelo y la Pérdida",
+      "h2Benefits": "Encontrando Consuelo en Tiempos de Tristeza",
+      "intro": "Los versículos bíblicos sobre el duelo y la pérdida proporcionan consuelo en tiempos de tristeza. Dios se acerca a los quebrantados de corazón y promete enjugar cada lágrima.",
+      "benefits": [
+        {
+          "title": "Encontrar Consuelo en la Pérdida",
+          "description": "Descubre la presencia compasiva de Dios con aquellos que lloran, ofreciendo consuelo genuino y sanación para corazones quebrantados."
+        },
+        {
+          "title": "Procesar Tu Dolor",
+          "description": "Date permiso para llorar mientras te aferras a la esperanza de la resurrección y la vida eterna en Cristo."
+        },
+        {
+          "title": "Apoyar a Otros",
+          "description": "Usa el consuelo de Dios para ministrar a otros que experimentan pérdida, convirtiéndote en un vaso de Su compasión."
+        }
+      ],
+      "additionalSections": [
+        {
+          "title": "La Promesa de Dios a los Quebrantados de Corazón",
+          "content": "Salmos 34:18 promete que \"Cercano está Jehová a los quebrantados de corazón; y salva a los contritos de espíritu.\" Cuando estás llorando, Dios no se mantiene a distancia—se acerca. Su presencia trae consuelo que ninguna palabra humana puede proporcionar. Ya sea que hayas perdido a un ser querido, experimentado una relación rota o enfrentado cualquier forma de pérdida, Dios te encuentra en tu dolor con compasión y comprensión."
+        },
+        {
+          "title": "Cómo Usar las Escrituras Durante el Duelo",
+          "content": "Durante tiempos de duelo, leer versículos bíblicos puede sentirse difícil, sin embargo, a menudo es cuando más necesitamos la Palabra de Dios. Comienza con pasajes cortos como Salmos 23 o Mateo 5:4 (\"Bienaventurados los que lloran, porque ellos recibirán consolación\"). Deja que las Escrituras te recuerden que el duelo no es el final de tu historia—Dios promete restauración, sanación y la esperanza de la resurrección. Usa esta herramienta gratuita diariamente para recibir consuelo de la Palabra de Dios."
+        },
+        {
+          "title": "Apoyo Gratuito para el Duelo a Través de las Escrituras",
+          "content": "Este generador gratuito de versículos bíblicos proporciona acceso instantáneo a pasajes reconfortantes de las Escrituras cuando los necesites. Sin registro o suscripción requerida. Ya sea que estés experimentando una pérdida reciente o atravesando un duelo prolongado, haz clic en el botón arriba para recibir palabras alentadoras de la Palabra de Dios. Comparte versículos con otros que están llorando, ofreciéndoles el mismo consuelo que Dios te ha dado (2 Corintios 1:3-4)."
+        }
+      ]
+    },
+    "prayer": {
+      "h2Intro": "Aprendiendo a Orar desde las Escrituras",
+      "h2Benefits": "Fortaleciendo Tu Vida de Oración con Versículos Bíblicos",
+      "intro": "Los versículos bíblicos sobre la oración nos enseñan cómo comunicarnos con Dios, desde el Padre Nuestro hasta promesas de que Dios escucha y responde. La oración es nuestra línea directa al corazón del Padre.",
+      "benefits": [
+        {
+          "title": "Aprender a Orar Eficazmente",
+          "description": "Descubre principios bíblicos para la oración, incluyendo persistencia, fe y alinear tus peticiones con la voluntad de Dios."
+        },
+        {
+          "title": "Experimentar la Presencia de Dios",
+          "description": "Acércate a Dios a través de la oración y experimenta la intimidad de la relación con tu Padre celestial."
+        },
+        {
+          "title": "Ver Respuestas",
+          "description": "Reclama las promesas de Dios de responder la oración, confiando en que Él escucha y responde según Su perfecta sabiduría."
+        }
+      ],
+      "additionalSections": [
+        {
+          "title": "El Padre Nuestro como Modelo",
+          "content": "En Mateo 6:9-13, Jesús enseñó a Sus discípulos cómo orar a través del Padre Nuestro. Esta oración modelo incluye adoración (\"santificado sea tu nombre\"), rendición (\"hágase tu voluntad\"), dependencia diaria (\"el pan nuestro de cada día, dánoslo hoy\"), confesión (\"perdónanos nuestras deudas\") y protección espiritual (\"líbranos del mal\"). Usar esta estructura nos ayuda a orar de manera integral y alinear nuestros corazones con las prioridades de Dios."
+        }
+      ]
+    },
+    "encouragement": {
+      "h2Intro": "Encontrando Aliento en la Palabra de Dios",
+      "h2Benefits": "Cómo los Versículos Bíblicos Alentadores Te Edifican",
+      "intro": "Los versículos bíblicos de aliento levantan nuestros espíritus y nos recuerdan la fidelidad de Dios. Estos versículos nos fortalecen para seguir adelante, sabiendo que Dios está con nosotros y a favor nuestro.",
+      "benefits": [
+        {
+          "title": "Superar el Desaliento",
+          "description": "Encuentra motivación y esperanza renovadas cuando te sientas desanimado, recordando que las promesas de Dios nunca fallan."
+        },
+        {
+          "title": "Mantenerte Fuerte",
+          "description": "Sé fortalecido y valiente, sabiendo que el Señor va delante de ti y nunca te dejará ni te abandonará."
+        },
+        {
+          "title": "Alentar a Otros",
+          "description": "Comparte versículos edificantes con amigos, familiares y hermanos creyentes que necesitan esperanza y aliento."
+        }
+      ],
+      "additionalSections": [
+        {
+          "title": "Aliento Diario de las Escrituras",
+          "content": "Comenzar cada día con un versículo bíblico alentador puede transformar tu perspectiva y fortalecer tu fe. Ya sea que enfrentes desafíos en el trabajo, luchas con relaciones o simplemente necesites un recordatorio del amor de Dios, las Escrituras proporcionan el aliento que necesitas. Esta herramienta gratuita entrega versículos alentadores aleatorios de toda la Biblia—úsala cada mañana como parte de tu rutina devocional o siempre que necesites un impulso espiritual."
+        },
+        {
+          "title": "Cuándo Leer Versículos Bíblicos Alentadores",
+          "content": "Las Escrituras alentadoras son valiosas en muchas situaciones: al enfrentar decisiones difíciles, experimentar contratiempos, sentirse abrumado o caminar a través de tiempos inciertos. La Biblia está llena de promesas de Dios de Su presencia, provisión y fidelidad. Versículos como Josué 1:9 (\"Esfuérzate y sé valiente\") y Filipenses 4:13 (\"Todo lo puedo en Cristo\") nos recuerdan que nunca estamos solos y que la fortaleza de Dios siempre está disponible."
+        },
+        {
+          "title": "Comparte Aliento Libremente",
+          "content": "Este generador de versículos bíblicos es completamente gratuito—sin anuncios, sin registro, sin costos ocultos. Creemos que todos deberían tener fácil acceso a la Palabra alentadora de Dios. Usa esta herramienta para encontrar versículos para enviar por mensaje a un amigo que está luchando, publicar en redes sociales para edificar a tus seguidores o guardar para tu propia meditación. La Palabra de Dios está destinada a ser compartida generosamente, trayendo esperanza y aliento a todos los que la necesitan."
+        }
+      ]
+    },
+    "thanksgiving": {
+      "h2Intro": "Cultivando Gratitud a Través de las Escrituras",
+      "h2Benefits": "Beneficios de Leer Versículos de Acción de Gracias",
+      "intro": "Los versículos bíblicos sobre acción de gracias nos enseñan a dar gracias en todas las circunstancias. La gratitud no es solo buenos modales—es un mandamiento y un camino para experimentar la paz de Dios.",
+      "benefits": [
+        {
+          "title": "Cultivar Gratitud",
+          "description": "Desarrolla un corazón agradecido reflexionando regularmente sobre la bondad y fidelidad de Dios en tu vida."
+        },
+        {
+          "title": "Experimentar Gozo",
+          "description": "Descubre cómo la acción de gracias transforma tu perspectiva y llena tu corazón de gozo, independientemente de las circunstancias."
+        },
+        {
+          "title": "Adorar a Dios",
+          "description": "Entra por las puertas de Dios con acción de gracias y en Sus atrios con alabanza, haciendo de la gratitud una forma de adoración."
+        }
+      ],
+      "additionalSections": [
+        {
+          "title": "Dad Gracias en Todas las Circunstancias",
+          "content": "1 Tesalonicenses 5:18 nos manda a \"dad gracias en todo, porque esta es la voluntad de Dios para con vosotros en Cristo Jesús.\" Nota que no dice \"por todas las circunstancias\" sino \"en todas las circunstancias.\" Incluso durante las pruebas, podemos agradecer a Dios por Su presencia, fidelidad y la promesa de que Él obra todas las cosas para nuestro bien. Practicar la acción de gracias cambia nuestro enfoque de nuestros problemas al poder y provisión de Dios."
+        },
+        {
+          "title": "Acción de Gracias como Práctica Diaria",
+          "content": "Hacer de la acción de gracias un hábito diario transforma tu vida espiritual. Comienza cada mañana agradeciendo a Dios por bendiciones específicas—salud, familia, provisión, salvación. Usa este generador gratuito de versículos bíblicos para descubrir nuevas razones para estar agradecido desde las Escrituras. Salmos 100 nos enseña a \"entrar por sus puertas con acción de gracias, por sus atrios con alabanza.\" Cuando nos acercamos a Dios con gratitud, nos posicionamos para experimentar Su presencia y paz."
+        },
+        {
+          "title": "Versículos Bíblicos de Acción de Gracias Gratis en Cualquier Momento",
+          "content": "Esta herramienta proporciona acceso instantáneo a versículos bíblicos de acción de gracias cuando los necesites—completamente gratis, sin suscripción requerida. Ya sea que estés preparándote para la cena de Acción de Gracias, dirigiendo un grupo de oración o simplemente quieras cultivar un corazón agradecido, haz clic en el botón arriba para recibir versículos inspiradores sobre gratitud. Compártelos con familiares y amigos para difundir un espíritu de acción de gracias en toda tu comunidad."
+        }
+      ]
+    },
+    "psalms": {
+      "h2Intro": "Explorando el Libro de los Salmos",
+      "h2Benefits": "Por Qué Leer Versículos de los Salmos",
+      "intro": "El Libro de los Salmos es una colección de 150 canciones y oraciones poéticas que expresan la gama completa de emoción humana—desde la desesperación hasta el gozo, desde el lamento hasta la alabanza. Los Salmos nos enseñan a llevar nuestros corazones completos a Dios.",
+      "benefits": [
+        {
+          "title": "Orar los Salmos",
+          "description": "Usa los Salmos como guía para tus propias oraciones, expresando adoración, confesión, acción de gracias y petición a Dios."
+        },
+        {
+          "title": "Encontrar Expresión Emocional",
+          "description": "Descubre palabras para cada emoción—los Salmos validan tus sentimientos mientras te señalan a la fidelidad de Dios."
+        },
+        {
+          "title": "Aprender a Adorar",
+          "description": "Los Salmos modelan adoración auténtica que es tanto honesta como reverente, enseñándonos a alabar a Dios en cada situación."
+        }
+      ],
+      "additionalSections": [
+        {
+          "title": "Los Salmos: Canciones Antiguas para la Vida Moderna",
+          "content": "Escritos hace miles de años por David, Asaf, Salomón y otros, los Salmos siguen siendo poderosamente relevantes hoy. Estas oraciones antiguas abordan experiencias humanas atemporales: miedo y fe, duda y confianza, tristeza y celebración. Ya sea que estés experimentando los valles del Salmo 23 o la victoria del Salmo 118, hay un Salmo que habla a tu situación actual. Este generador gratuito te ayuda a descubrir Salmos relevantes para tu jornada espiritual."
+        },
+        {
+          "title": "Salmos Populares y Sus Temas",
+          "content": "Algunos de los Salmos más queridos incluyen: Salmo 23 (Dios como Pastor), Salmo 91 (Protección), Salmo 103 (Beneficios de Dios), Salmo 119 (Amor por la Palabra de Dios) y Salmo 139 (Omnisciencia de Dios). Cada Salmo ofrece perspectivas únicas sobre el carácter de Dios y nuestra relación con Él. Usa esta herramienta diariamente para explorar la amplitud y profundidad de los Salmos—nunca te quedarás sin aliento y sabiduría frescos."
+        },
+        {
+          "title": "Cómo Meditar en los Salmos",
+          "content": "Los Salmos están destinados a ser meditados, no solo leídos rápidamente. Cuando generes un versículo de Salmo, léelo lentamente varias veces. Nota las imágenes, las emociones expresadas y las verdades sobre Dios. Considera memorizar versículos que resuenen contigo. Muchos cristianos hacen la práctica de leer un Salmo por día o orar a través de los Salmos como su libro de oración. Esta herramienta gratuita facilita incorporar los Salmos en tu vida devocional diaria."
+        }
+      ]
+    },
+    "proverbs": {
+      "h2Intro": "Sabiduría del Libro de Proverbios",
+      "h2Benefits": "Beneficios de la Lectura Diaria de Proverbios",
+      "intro": "El Libro de Proverbios contiene sabiduría atemporal para la vida diaria. Estos dichos enseñan principios prácticos para las relaciones, el trabajo, el dinero, el habla y el desarrollo del carácter.",
+      "benefits": [
+        {
+          "title": "Obtener Sabiduría Práctica",
+          "description": "Aplica la sabiduría de Dios a las decisiones cotidianas y relaciones, aprendiendo a navegar la vida con discernimiento."
+        },
+        {
+          "title": "Desarrollar Carácter",
+          "description": "Construye carácter piadoso a través de principios de integridad, diligencia, humildad y autocontrol."
+        },
+        {
+          "title": "Tomar Mejores Decisiones",
+          "description": "Aprende a elegir el camino de la sabiduría sobre la necedad, tomando decisiones que honren a Dios y beneficien tu vida."
+        }
+      ],
+      "additionalSections": [
+        {
+          "title": "La Sabiduría de Salomón para Hoy",
+          "content": "La mayor parte de Proverbios fue escrita por el Rey Salomón, a quien Dios bendijo con sabiduría sobrenatural (1 Reyes 3:12). Estos proverbios abordan asuntos prácticos como ética empresarial, relaciones familiares, gestión financiera e integridad personal. Aunque escritos en tiempos antiguos, los principios son atemporales. Ya sea que estés navegando desafíos en el lugar de trabajo, criando hijos o administrando finanzas, Proverbios proporciona sabiduría divina que funciona en cada generación y cultura."
+        },
+        {
+          "title": "Un Proverbio al Día",
+          "content": "Muchos cristianos siguen un plan de lectura de 'Proverbio al día', leyendo un capítulo de Proverbios cada día correspondiente a la fecha (Proverbios 1 el día 1, etc.). Dado que Proverbios tiene 31 capítulos, esto completa el libro mensualmente. Sin embargo, también puedes usar este generador de versículos aleatorios gratuito para recibir sabiduría en porciones de Proverbios cuando necesites guía. Cada proverbio ofrece perspectiva práctica que puedes aplicar inmediatamente a tu vida diaria."
+        },
+        {
+          "title": "Sabiduría Gratuita al Alcance de Tu Mano",
+          "content": "Este generador de versículos bíblicos te da acceso instantáneo a la sabiduría de Proverbios—sin costo, sin registro, sin barreras. Ya sea que estés tomando una decisión difícil, necesites guía para un problema de relaciones o quieras crecer en carácter, haz clic arriba para recibir un proverbio relevante. La sabiduría de Proverbios es el regalo de Dios para ayudarte a navegar la vida exitosamente. Usa esta herramienta diariamente para construir sabiduría en tu vida, un versículo a la vez."
+        }
+      ]
+    },
+    "john": {
+      "h2Intro": "Descubriendo a Jesús en el Evangelio de Juan",
+      "h2Benefits": "Por Qué Leer el Evangelio de Juan",
+      "intro": "El Evangelio de Juan presenta a Jesucristo como el Hijo de Dios y la fuente de vida eterna. Escrito para que creamos, el Evangelio de Juan contiene algunos de los pasajes más queridos sobre salvación, amor y el Espíritu Santo.",
+      "benefits": [
+        {
+          "title": "Conocer a Jesucristo",
+          "description": "Descubre quién es Jesús a través de Sus siete declaraciones 'Yo Soy' y señales milagrosas que revelan Su naturaleza divina."
+        },
+        {
+          "title": "Recibir Vida Eterna",
+          "description": "Entiende el camino a la salvación a través de la fe en Jesucristo, el único Hijo de Dios dado por el mundo."
+        },
+        {
+          "title": "Experimentar Su Amor",
+          "description": "Encuentra la profundidad del amor de Cristo demostrado a través de Su enseñanza, Su vida y Su sacrificio en la cruz."
+        }
+      ],
+      "additionalSections": [
+        {
+          "title": "Juan 3:16 y el Mensaje del Evangelio",
+          "content": "Juan 3:16 es quizás el versículo más famoso de la Biblia: \"Porque de tal manera amó Dios al mundo, que ha dado a su Hijo unigénito, para que todo aquel que en él cree, no se pierda, mas tenga vida eterna.\" Este versículo encapsula todo el mensaje del evangelio—el amor de Dios, el sacrificio de Jesús, el requisito de fe y la promesa de vida eterna. El Evangelio de Juan enfatiza repetidamente que la vida eterna viene a través de creer en Jesucristo como el Hijo de Dios."
+        },
+        {
+          "title": "Las Siete Declaraciones 'Yo Soy' de Jesús",
+          "content": "En el Evangelio de Juan, Jesús hace siete declaraciones profundas 'Yo Soy': Yo Soy el Pan de Vida (6:35), la Luz del Mundo (8:12), la Puerta (10:9), el Buen Pastor (10:11), la Resurrección y la Vida (11:25), el Camino, la Verdad y la Vida (14:6) y la Vid Verdadera (15:1). Cada declaración revela un aspecto diferente de quién es Jesús y lo que ofrece a aquellos que creen. Usa esta herramienta para explorar estas poderosas declaraciones."
+        },
+        {
+          "title": "Acceso Gratuito al Evangelio de Juan",
+          "content": "Este generador gratuito de versículos bíblicos te da acceso instantáneo a versículos del Evangelio de Juan—el libro perfecto tanto para buscadores como para creyentes. Ya sea que estés explorando el cristianismo por primera vez o profundizando tu comprensión de Jesús, el Evangelio de Juan está escrito para que \"creas que Jesús es el Mesías, el Hijo de Dios, y para que creyendo, tengas vida en su nombre\" (Juan 20:31). Sin costo, sin barreras—solo el mensaje transformador de Jesucristo."
+        }
+      ]
+    },
+    "purity": {
+      "h2Intro": "Puntos de Oración Bíblicos para Pureza Sexual",
+      "h2Benefits": "Por Qué las Oraciones Basadas en las Escrituras Son Poderosas",
+      "intro": "Los puntos de oración sobre pornografía con escrituras son oraciones específicas basadas en la Biblia, diseñadas para ayudar a los creyentes a vencer la adicción a la pornografía y caminar en pureza sexual. Cada punto de oración está anclado en la Palabra de Dios, proporcionando armas espirituales para la batalla contra la lujuria, la vergüenza, la tentación y la esclavitud.",
+      "benefits": [
+        {
+          "title": "Fundamento Bíblico",
+          "description": "Cada oración está arraigada en las Escrituras, alineando tus peticiones con la voluntad revelada de Dios para pureza y santidad."
+        },
+        {
+          "title": "Autoridad Espiritual",
+          "description": "La Palabra de Dios es viva y eficaz (Hebreos 4:12). Cuando oras las Escrituras, ejerces autoridad espiritual sobre la tentación y el pecado."
+        },
+        {
+          "title": "Renovación de la Mente",
+          "description": "Las oraciones basadas en las Escrituras renuevan tu mente (Romanos 12:2), transformando patrones de pensamiento y rompiendo fortalezas mentales."
+        }
+      ],
+      "additionalSections": [
+        {
+          "title": "Liberándote de la Adicción a la Pornografía",
+          "content": "La adicción a la pornografía es una batalla espiritual que requiere armas espirituales. La Biblia nos enseña que \"no tenemos lucha contra sangre y carne, sino contra principados, contra potestades\" (Efesios 6:12). A través de la oración constante, la meditación en las Escrituras y la dependencia del Espíritu Santo, puedes liberarte de las cadenas del pecado sexual y caminar en la libertad que Cristo compró para ti en la cruz."
+        },
+        {
+          "title": "El Poder de la Oración Diaria",
+          "content": "La recuperación de la adicción a la pornografía no ocurre de la noche a la mañana, pero la oración diaria trae transformación. A medida que traes consistentemente tus luchas a Dios, Él renueva tu mente (Romanos 12:2) y te fortalece con Su Espíritu. Cada punto de oración en esta herramienta está diseñado para atacar áreas específicas, desde romper la vergüenza y la culpa hasta construir responsabilidad y cultivar pureza. Haz de la oración tu arma diaria contra la tentación."
+        },
+        {
+          "title": "Encuentra Esperanza y Sanidad en Cristo",
+          "content": "No importa cuánto tiempo hayas luchado con la pornografía, hay esperanza en Jesucristo. \"Si confesamos nuestros pecados, él es fiel y justo para perdonar nuestros pecados, y limpiarnos de toda maldad\" (1 Juan 1:9). Dios no te condena, te llama a la libertad. Usa estos puntos de oración como un recordatorio diario de que la gracia de Dios es suficiente, Su poder se perfecciona en tu debilidad, y Su amor nunca falla."
+        }
+      ]
+    }
+  },
+  "privacy": {
+    "backToHome": "Volver al Inicio",
+    "title": "Política de Privacidad",
+    "effectiveDate": "Fecha de Vigencia: 14 de octubre de 2025",
+    "intro": "Bienvenido a Generador Aleatorio de Versículos Bíblicos (\"nosotros\", \"nuestro\"). Respetamos su privacidad y nos comprometemos a proteger cualquier información que pueda ser capturada durante el uso de este sitio. Esta Política de Privacidad describe cómo recopilamos, usamos, divulgamos y protegemos la información cuando visita y usa nuestro servicio generador aleatorio de versículos bíblicos (el \"Servicio\").",
+    "section1": {
+      "title": "1. Información que Recopilamos",
+      "intro": "Nos esforzamos por minimizar la recopilación de datos. Las categorías de información que podemos recopilar incluyen:",
+      "technical": {
+        "title": "Datos Técnicos / de Uso (recopilados automáticamente)",
+        "item1": "Tipo de dispositivo, nombre y versión del navegador, sistema operativo",
+        "item2": "URLs de referencia, páginas visitadas, marcas de tiempo, duración de la sesión",
+        "item3": "Dirección IP (típicamente en forma anonimizada o agregada)",
+        "item4": "Clics, conteos de uso, cargas de página para análisis"
+      },
+      "cookies": {
+        "title": "Cookies / Almacenamiento Local",
+        "item1": "Podemos usar cookies básicas o almacenamiento del navegador para manejar sesiones o habilitar funcionalidades del sitio.",
+        "item2": "No usamos cookies de publicidad o rastreo.",
+        "item3": "Puede desactivar las cookies a través de la configuración de su navegador; el sitio continuará funcionando para las características principales."
+      },
+      "noPersonalData": "No recopilamos ni almacenamos nombres, direcciones de correo electrónico, direcciones físicas, datos de pago, perfiles de redes sociales u otra información de identidad personal."
+    },
+    "section2": {
+      "title": "2. Cómo Usamos la Información",
+      "item1": "Operar, mantener y mejorar el Servicio",
+      "item2": "Comprender patrones de uso para hacer mejoras",
+      "item3": "Monitorear y prevenir uso abusivo o malicioso",
+      "item4": "Cumplir con obligaciones legales, si aplica",
+      "noAdvertising": "No usaremos datos para publicidad dirigida, construcción de perfiles de usuario o venta/compartición de información con fines de marketing."
+    },
+    "section3": {
+      "title": "3. Compartir y Divulgación",
+      "intro": "Debido a que recopilamos datos mínimos y en gran medida no identificables, compartir es muy limitado. Podemos divulgar información en los siguientes casos:",
+      "providers": {
+        "title": "Proveedores de servicios / vendedores",
+        "description": "como proveedores de alojamiento, herramientas de análisis — solo según sea necesario y bajo obligaciones de confidencialidad"
+      },
+      "legal": {
+        "title": "Solicitudes legales / regulatorias",
+        "description": "para cumplir con órdenes judiciales, citaciones u otros procesos legales"
+      },
+      "protection": {
+        "title": "Protección de derechos y seguridad",
+        "description": "para investigar fraude, violaciones de seguridad o hacer cumplir nuestros Términos"
+      },
+      "noSelling": "Nunca venderemos sus datos a terceros."
+    },
+    "section4": {
+      "title": "4. Retención de Datos",
+      "content": "Retenemos datos técnicos y de uso solo durante el tiempo necesario para cumplir con los propósitos descritos anteriormente, o para cumplir con la ley aplicable. Podemos anonimizar o agregar datos antiguos para uso estadístico a largo plazo."
+    },
+    "section5": {
+      "title": "5. Seguridad",
+      "intro": "Tomamos medidas razonables para proteger los datos que recopilamos (aunque sean mínimos) del acceso, alteración o destrucción no autorizados. Las medidas incluyen:",
+      "item1": "Cifrado HTTPS",
+      "item2": "Acceso restringido a servidores",
+      "item3": "Monitoreo y registro de acceso",
+      "item4": "Revisiones de seguridad regulares",
+      "disclaimer": "Sin embargo, ningún método de transmisión o almacenamiento es 100% seguro; no se puede garantizar seguridad absoluta."
+    },
+    "section6": {
+      "title": "6. Privacidad de los Niños",
+      "content": "No recopilamos conscientemente información de niños menores de 13 años (o la edad mínima aplicable en su jurisdicción). Si cree que hemos recopilado dichos datos, contáctenos y los eliminaremos prontamente."
+    },
+    "section7": {
+      "title": "7. Transferencias Internacionales y Aplicabilidad",
+      "content": "Su información (en su mayoría no identificable) puede ser procesada o almacenada en servidores ubicados en diferentes países. Si se encuentra en la Unión Europea, el Reino Unido u otras jurisdicciones con leyes de privacidad más estrictas (por ejemplo, GDPR, CCPA), puede tener derechos adicionales descritos a continuación."
+    },
+    "section8": {
+      "title": "8. Derechos de los Usuarios (Jurisdicciones Aplicables)",
+      "intro": "Dependiendo de su jurisdicción, puede tener los siguientes derechos:",
+      "right1": "Derecho de acceso (obtener una copia)",
+      "right2": "Derecho a corregir o actualizar",
+      "right3": "Derecho a eliminar / borrar",
+      "right4": "Derecho a restringir el procesamiento",
+      "right5": "Derecho a objetar el procesamiento",
+      "right6": "Derecho a la portabilidad de datos",
+      "exercise": "Si desea ejercer alguno de estos derechos, contáctenos (ver sección de Contacto). Responderemos de acuerdo con la ley aplicable."
+    },
+    "section9": {
+      "title": "9. Cambios a Esta Política de Privacidad",
+      "content": "Podemos actualizar esta Política de Privacidad de vez en cuando. Cuando ocurran cambios, revisaremos la \"Fecha de Vigencia\" y publicaremos la política actualizada en esta página. Los cambios significativos se destacarán o se comunicarán de otra manera. El uso continuado del Servicio después de los cambios constituye la aceptación de la política actualizada."
+    },
+    "section10": {
+      "title": "10. Contáctenos",
+      "intro": "Si tiene preguntas o inquietudes sobre esta Política de Privacidad o cómo manejamos los datos, contáctenos:",
+      "emailLabel": "Correo electrónico"
+    }
+  }
+}

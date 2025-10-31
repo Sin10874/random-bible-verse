@@ -2,8 +2,10 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useLocale, useTranslations } from "next-intl";
 import { Cormorant_Garamond } from "next/font/google";
-import { GENERATORS } from "./data/generators";
+import { GENERATORS } from "../data/generators";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 const display = Cormorant_Garamond({
   subsets: ["latin"],
@@ -14,6 +16,12 @@ const display = Cormorant_Garamond({
 type Verse = { text: string; reference?: string };
 
 export default function Page() {
+  const locale = useLocale();
+  const t = useTranslations('home');
+  const tCommon = useTranslations('common');
+  const tGenerators = useTranslations('generators');
+  const tAbout = useTranslations('about');
+
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [verse, setVerse] = useState<Verse | null>(null);
@@ -24,13 +32,13 @@ export default function Page() {
     try {
       setLoading(true);
       setError(null);
-      const res = await fetch("/api/verse", { cache: "no-store" });
+      const res = await fetch(`/api/verse?locale=${locale}`, { cache: "no-store" });
       if (!res.ok) throw new Error("Failed to fetch");
       const data = await res.json();
       setVerse({ text: data.text, reference: data.reference });
       setOpen(true);
     } catch {
-      setError("Oops, failed to load. Try again.");
+      setError(tCommon('error'));
       setOpen(false);
     } finally {
       setLoading(false);
@@ -73,24 +81,26 @@ export default function Page() {
           <div className="flex items-center gap-3">
             <img
               src="/logo.svg"
-              alt="Bible Verse Generator Logo"
+              alt={`${tCommon('siteName')} Logo`}
               width={32}
               height={32}
               className="h-8 w-8 object-contain drop-shadow-sm"
             />
             <h1 className="font-semibold tracking-tight text-lg md:text-xl">
-              Bible Verse Generator
+              {tCommon('siteName')}
             </h1>
           </div>
 
-          {/* 顶部右侧：仅保留 Contact Us 图标按钮 */}
+          {/* 顶部右侧：语言选择器 + Contact Us */}
+          <div className="flex items-center gap-3">
+            <LanguageSwitcher />
           <a
             href="mailto:randombibleverse@outlook.com"
             className="inline-flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20
                        ring-1 ring-white/25 p-2 backdrop-blur transition cursor-pointer
                        focus:outline-none focus:ring-2 focus:ring-white/30"
-            aria-label="Contact Us"
-            title="Contact Us"
+            aria-label={tCommon('contactUs')}
+            title={tCommon('contactUs')}
           >
             {/* Envelope Icon */}
             <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5" aria-hidden="true">
@@ -100,6 +110,7 @@ export default function Page() {
             {/* 如需桌面显示文字，解开下一行注释： */}
             {/* <span className="hidden md:inline ml-2 text-sm">Contact</span> */}
           </a>
+          </div>
         </header>
 
         {/* Hero 内容 —— 垂直居中 */}
@@ -111,24 +122,24 @@ export default function Page() {
             className={`${display.className} italic text-5xl md:text-7xl font-semibold tracking-tight leading-[1.05] drop-shadow-xl`}
             aria-hidden="true"
           >
-            Trust God.
+            {t('heroTitle')}
           </p>
 
           <p
             className={`${display.className} italic mt-8 md:mt-10 text-xl md:text-2xl opacity-90 drop-shadow`}
           >
-            Find strength and peace through God’s word — one verse at a time.
+            {t('heroSubtitle')}
           </p>
 
           <div className="mt-12 md:mt-14 flex items-center justify-center">
-            <h2 className="sr-only">Random Bible Verse</h2>
+            <h2 className="sr-only">{t('generateButton')}</h2>
             <button
               onClick={fetchVerse}
               disabled={loading}
               className="btn-primary cursor-pointer"
               aria-busy={loading}
             >
-              {loading ? "Loading..." : "Random Bible Verse"}
+              {loading ? tCommon('loading') : t('generateButton')}
             </button>
           </div>
 
@@ -143,12 +154,12 @@ export default function Page() {
           {open && verse && (
             <div className="mx-auto mt-14 w-full max-w-2xl rounded-3xl border border-white/20 bg-white/10 backdrop-blur p-6 md:p-8 text-left shadow-lg">
               <div className="mb-3 flex items-center justify-between">
-                <span className="text-xs uppercase tracking-wider text-white/80">Random Verse</span>
+                <span className="text-xs uppercase tracking-wider text-white/80">{t('generateButton')}</span>
                 <button
                   className="rounded-full border border-white/30 px-3 py-1 text-sm hover:bg-white/10 cursor-pointer"
                   onClick={() => setOpen(false)}
                 >
-                  Close
+                  {t('closeButton')}
                 </button>
               </div>
 
@@ -168,7 +179,7 @@ export default function Page() {
                   onClick={copyVerse}
                   className="rounded-full bg-white/90 text-neutral-900 px-5 py-2 text-sm font-medium hover:bg-white shadow cursor-pointer transition active:scale-95"
                 >
-                  Copy
+                  {t('copyButton')}
                 </button>
               </div>
             </div>
@@ -179,21 +190,21 @@ export default function Page() {
       {/* ===== Trending Generators 模块 ===== */}
       <section
         className="relative z-10 bg-gradient-to-b from-[#0b0f1a] to-[#0a0e17] py-16 md:py-24"
-        aria-label="Trending Bible Verse Generators"
+        aria-label={t('trendingTitle')}
       >
         <div className="mx-auto max-w-6xl px-6 md:px-10">
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-center mb-4">
-            Trending Generators
+            {t('trendingTitle')}
           </h2>
           <p className="text-white/80 text-center max-w-2xl mx-auto mb-12 md:mb-16">
-            Explore Bible verses by theme, book, or life situation
+            {t('trendingSubtitle')}
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {GENERATORS.map((generator) => (
               <Link
                 key={generator.id}
-                href={`/${generator.slug}`}
+                href={`/${locale}/${generator.slug}`}
                 className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5
                          hover:bg-white/10 hover:border-white/20 transition-all duration-300
                          backdrop-blur-sm shadow-lg hover:shadow-xl hover:scale-[1.02]"
@@ -202,7 +213,7 @@ export default function Page() {
                 <div className="relative h-56 md:h-64 overflow-hidden">
                   <img
                     src={generator.image}
-                    alt={generator.title}
+                    alt={tGenerators(generator.id)}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                   {/* 渐变遮罩 */}
@@ -211,7 +222,7 @@ export default function Page() {
                   {/* 标题 - 居中显示 */}
                   <div className="absolute inset-0 flex items-center justify-center p-6">
                     <h3 className="text-2xl md:text-3xl font-bold text-center drop-shadow-2xl leading-tight">
-                      {generator.name}
+                      {tGenerators(generator.id)}
                     </h3>
                   </div>
                 </div>
@@ -419,7 +430,7 @@ export default function Page() {
             <ul className="flex justify-center md:justify-end items-center gap-6">
               <li>
                 <Link
-                  href="/privacy"
+                  href={`/${locale}/privacy`}
                   className="inline-flex items-center rounded-md px-2 py-2
                        text-sm hover:text-white
                        focus:outline-none focus:ring-2 focus:ring-white/30"

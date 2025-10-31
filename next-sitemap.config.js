@@ -13,8 +13,8 @@ module.exports = {
     },
     // 自定义优先级
     transform: async (config, path) => {
-      // 首页最高优先级
-      if (path === '/') {
+      // 西班牙语主页高优先级
+      if (path === '/es' || path === '/es/') {
         return {
           loc: path,
           changefreq: 'daily',
@@ -23,8 +23,18 @@ module.exports = {
         }
       }
 
-      // 生成器页面高优先级
-      if (path.includes('-bible-verses')) {
+      // 英文主页最高优先级
+      if (path === '/' || path === '/en' || path === '/en/') {
+        return {
+          loc: path,
+          changefreq: 'daily',
+          priority: 1.0,
+          lastmod: new Date().toISOString(),
+        }
+      }
+
+      // 生成器页面高优先级（英文和西班牙语）
+      if (path.includes('-bible-verses') || path.includes('pornography-prayer-points')) {
         return {
           loc: path,
           changefreq: 'daily',

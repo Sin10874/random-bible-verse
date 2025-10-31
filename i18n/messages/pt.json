@@ -1,0 +1,51 @@
+{
+  "common": {
+    "siteName": "Bible Verse Generator",
+    "contactUs": "Contact Us",
+    "privacy": "Privacy",
+    "loading": "Loading...",
+    "error": "Oops, failed to load. Try again.",
+    "copied": "Copied!"
+  },
+  "home": {
+    "heroTitle": "Trust God.",
+    "heroSubtitle": "Find strength and peace through God's word — one verse at a time.",
+    "generateButton": "Random Bible Verse",
+    "copyButton": "Copy",
+    "closeButton": "Close",
+    "trendingTitle": "Trending Generators",
+    "trendingSubtitle": "Explore Bible verses by theme, book, or life situation"
+  },
+  "generators": {
+    "purityPrayer": "Pornography Prayer Points with Scriptures",
+    "love": "Bible Verses About Love",
+    "hope": "Bible Verses About Hope",
+    "strength": "Bible Verses About Strength",
+    "peace": "Bible Verses About Peace",
+    "faith": "Bible Verses About Faith",
+    "grief": "Bible Verses About Grief",
+    "psalms": "Psalms Bible Verses",
+    "proverbs": "Proverbs Bible Verses",
+    "john": "John Bible Verses",
+    "prayer": "Bible Verses About Prayer",
+    "encouragement": "Encouraging Bible Verses",
+    "thanksgiving": "Thanksgiving Bible Verses"
+  },
+  "about": {
+    "whatIsTitle": "What is Bible Verse Generator?",
+    "whatIsContent": "Get a random Bible verse in one click. Use this free random scripture generator to discover daily Bible verses about faith, love, hope, strength, and peace. Save your favorites or come back anytime for more inspiration.",
+    "howItWorksTitle": "How It Works?",
+    "howItWorksStep1": "Click Generate Verse to instantly receive a random Bible verse.",
+    "howItWorksStep2": "Copy to share your verse with friends, family, or on social media.",
+    "howItWorksStep3": "Begin your Verse of the Day habit for daily reflection and encouragement.",
+    "whatCanYouDoTitle": "What Can You Do With This Bible Verse Generator?",
+    "whyUseTitle": "Why Use a Random Bible Verse Generator？",
+    "isFreeTitle": "Is This Tool Free？",
+    "isFreeContent": "Yes — this Bible verse generator is completely free to use. No sign-ups, no downloads, no limits. Simply click Generate Verse, and a new Bible verse will appear instantly to inspire your day.",
+    "startNowTitle": "Start Now",
+    "startNowContent": "Generate a random Bible verse and begin your Verse of the Day journey — free, fast, and always uplifting."
+  },
+  "footer": {
+    "copyright": "© 2024 Bible Verse Generator. Built with ❤️ for reflection."
+  }
+}

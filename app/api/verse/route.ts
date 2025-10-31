@@ -24,7 +24,7 @@ function writeRecent(res: NextResponse, recent: string[]) {
   });
 }
 
-// —— 加载 KJV 映射（"Book C:V" -> text）——
+// —— 加载 KJV 映射（English - "Book C:V" -> text）——
 let KJV_MAP: Record<string, string> = {};
 let KJV_KEYS: string[] = [];
 try {
@@ -35,6 +35,19 @@ try {
   console.log(`Loaded KJV verses: ${KJV_KEYS.length}`);
 } catch (e) {
   console.error("Failed to load public/kjv-map.json", e);
+}
+
+// —— 加载 RV1960 映射（Spanish - "Book C:V" -> text）——
+let RV1960_MAP: Record<string, string> = {};
+let RV1960_KEYS: string[] = [];
+try {
+  const filePath = path.join(process.cwd(), "public", "rv1960-map.json");
+  const raw = fs.readFileSync(filePath, "utf8");
+  RV1960_MAP = JSON.parse(raw) as Record<string, string>;
+  RV1960_KEYS = Object.keys(RV1960_MAP);
+  console.log(`Loaded RV1960 verses: ${RV1960_KEYS.length}`);
+} catch (e) {
+  console.error("Failed to load public/rv1960-map.json", e);
 }
 
 // —— 加载经文分类数据 ——
@@ -55,15 +68,22 @@ try {
   console.error("Failed to load public/verse-categories.json", e);
 }
 
-// —— 根据类别获取可用的经文键列表 ——
-function getKeysForCategory(category: string | null): string[] {
-  if (!category) return KJV_KEYS;
+// —— 根据类别和语言获取可用的经文键列表 ——
+function getKeysForCategory(category: string | null, locale: string): string[] {
+  // 根据语言选择基础键列表
+  const baseKeys = locale === "es" && RV1960_KEYS.length > 0 ? RV1960_KEYS : KJV_KEYS;
+
+  if (!category) return baseKeys;
 
   const catData = VERSE_CATEGORIES[category];
-  if (!catData) return KJV_KEYS;
+  if (!catData) return baseKeys;
 
-  // 如果有 verses 列表（主题类/场景类），直接返回
+  // 如果有 verses 列表（主题类/场景类），过滤出在当前语言中存在的经文
   if (catData.verses && catData.verses.length > 0) {
+    if (locale === "es" && RV1960_KEYS.length > 0) {
+      // 只返回在 RV1960 中存在的经文
+      return catData.verses.filter((ref) => RV1960_MAP[ref]);
+    }
     return catData.verses;
   }
 
@@ -72,7 +92,7 @@ function getKeysForCategory(category: string | null): string[] {
     const bookName = catData.bookFilter;
     const exclude = catData.bookExclude || [];
 
-    return KJV_KEYS.filter((key) => {
+    return baseKeys.filter((key) => {
       // 检查是否以该书卷名开头
       if (!key.startsWith(bookName + " ")) return false;
 
@@ -85,7 +105,7 @@ function getKeysForCategory(category: string | null): string[] {
     });
   }
 
-  return KJV_KEYS;
+  return baseKeys;
 }
 
 // —— 均匀随机选一个"近期未出现"的引用（最多重抽 10 次）——
@@ -101,34 +121,62 @@ function pickRefNotRecent(recent: string[], keys: string[]): string {
   return keys[Math.floor(Math.random() * keys.length)];
 }
 
-// —— 清理文本：去掉段落标记“# ”（该数据用 # 表示新段落）——
+// —— 清理文本：去掉段落标记"# "（该数据用 # 表示新段落）——
 function cleanText(s: string) {
   return s.replace(/^#\s*/gm, "").trim();
 }
 
-// —— 探活 —— 
+// —— 根据 locale 获取对应语言的经文文本（带 fallback）——
+function getVerseText(reference: string, locale: string): string {
+  // 西班牙语：优先使用 RV1960，不存在则 fallback 到 KJV
+  if (locale === "es" && RV1960_MAP[reference]) {
+    return cleanText(RV1960_MAP[reference]);
+  }
+
+  // 其他语言暂时使用 KJV（英文）
+  // TODO: 添加其他语言的圣经版本 (pt, zh, tl, fr)
+  return cleanText(KJV_MAP[reference] ?? "");
+}
+
+// —— 获取圣经版本标识 ——
+function getBibleVersion(locale: string): string {
+  switch (locale) {
+    case "es": return "RV1960";
+    case "pt": return "KJV"; // TODO: Almeida Revista e Corrigida
+    case "zh": return "KJV"; // TODO: 和合本
+    case "tl": return "KJV"; // TODO: Ang Biblia
+    case "fr": return "KJV"; // TODO: Louis Segond 1910
+    default: return "KJV";
+  }
+}
+
+// —— 探活 ——
 export async function HEAD() {
   return new Response(null, { status: 200, headers: { "cache-control": "no-store" } });
 }
 
-// —— 主逻辑：返回原文（支持 ?debug=1 和 ?category=xxx）——
+// —— 主逻辑：返回原文（支持 ?debug=1, ?category=xxx, ?locale=xx）——
 export async function GET(req: NextRequest) {
   const debug = req.nextUrl.searchParams.get("debug") === "1";
   const category = req.nextUrl.searchParams.get("category");
+  const locale = req.nextUrl.searchParams.get("locale") || "en";
   const reqId = crypto.randomUUID();
   const t0 = Date.now();
 
   const recent = readRecent(req);
-  const keys = getKeysForCategory(category);
+  const keys = getKeysForCategory(category, locale);
   const reference = pickRefNotRecent(recent, keys);
-  const text = cleanText(KJV_MAP[reference] ?? "");
+  const text = getVerseText(reference, locale);
+  const version = getBibleVersion(locale);
 
   const body = debug
     ? {
         ok: true,
         verse: { reference, text },
         debug: {
-          source: "local-json-kjv-map",
+          source: `local-json-${version.toLowerCase()}-map`,
+          version,
+          locale,
           category: category || "all",
           availableVerses: keys.length,
           latencyMs: Date.now() - t0

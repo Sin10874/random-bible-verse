@@ -2,7 +2,9 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { useLocale, useTranslations } from "next-intl";
 import { Cormorant_Garamond } from "next/font/google";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 const display = Cormorant_Garamond({
   subsets: ["latin"],
@@ -19,6 +21,10 @@ type PrayerPoint = {
 };
 
 export default function PornographyPrayerPage() {
+  const locale = useLocale();
+  const t = useTranslations('purityPrayer');
+  const tCommon = useTranslations('common');
+
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [prayer, setPrayer] = useState<PrayerPoint | null>(null);
@@ -26,11 +32,12 @@ export default function PornographyPrayerPage() {
   const [showToast, setShowToast] = useState(false);
 
   useEffect(() => {
-    fetch("/prayer-data.json")
+    const prayerDataFile = locale === "es" ? "/prayer-data-es.json" : "/prayer-data.json";
+    fetch(prayerDataFile)
       .then((res) => res.json())
       .then((data) => setAllPrayers(data))
       .catch((err) => console.error("Failed to load prayer data:", err));
-  }, []);
+  }, [locale]);
 
   function getRandomPrayer() {
     setLoading(true);
@@ -75,54 +82,42 @@ export default function PornographyPrayerPage() {
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-[#0b0f1a]" />
 
         <header className="relative z-20 flex items-center justify-between px-6 md:px-10 py-5">
-          <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition">
+          <Link href={`/${locale}`} className="flex items-center gap-3 hover:opacity-80 transition">
             <img
               src="/logo.svg"
-              alt="Bible Verse Generator Logo"
+              alt={`${tCommon('siteName')} Logo`}
               width={32}
               height={32}
               className="h-8 w-8 object-contain drop-shadow-sm"
             />
             <h1 className="font-semibold tracking-tight text-lg md:text-xl">
-              Pornography Prayer Points
+              {tCommon('siteName')}
             </h1>
           </Link>
 
-          <a
-            href="mailto:randombibleverse@outlook.com"
-            className="inline-flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20
-                       ring-1 ring-white/25 p-2 backdrop-blur transition cursor-pointer
-                       focus:outline-none focus:ring-2 focus:ring-white/30"
-            aria-label="Contact Us"
-            title="Contact Us"
-          >
-            <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5" aria-hidden="true">
-              <path d="M4 6h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1Z" stroke="currentColor" strokeWidth="1.5"/>
-              <path d="M4 8l8 5 8-5" stroke="currentColor" strokeWidth="1.5" />
-            </svg>
-          </a>
+          <LanguageSwitcher />
         </header>
 
         <main className="relative z-10 mx-auto max-w-5xl px-6 md:px-10 min-h-[calc(100vh-96px)] flex flex-col items-center justify-center text-center">
           <p
             className={`${display.className} italic text-4xl md:text-6xl font-semibold tracking-tight leading-[1.05] drop-shadow-xl`}
           >
-            Pornography Prayer Points<br />with Scriptures
+            {t('title')}
           </p>
 
           <p className={`${display.className} italic mt-8 md:mt-10 text-xl md:text-2xl opacity-90 drop-shadow max-w-3xl`}>
-            Powerful Scripture-based prayers to overcome pornography addiction and find freedom in Christ.
+            {t('subtitle')}
           </p>
 
           <div className="mt-12 md:mt-14 flex items-center justify-center">
-            <h2 className="sr-only">Generate Prayer Point</h2>
+            <h2 className="sr-only">{t('generateButton')}</h2>
             <button
               onClick={getRandomPrayer}
               disabled={loading || allPrayers.length === 0}
               className="btn-primary cursor-pointer"
               aria-busy={loading}
             >
-              {loading ? "Loading..." : "Get Prayer Point"}
+              {loading ? t('loading') : t('generateButton')}
             </button>
           </div>
 
@@ -136,20 +131,20 @@ export default function PornographyPrayerPage() {
                   className="rounded-full border border-white/30 px-3 py-1 text-sm hover:bg-white/10 cursor-pointer"
                   onClick={() => setOpen(false)}
                 >
-                  Close
+                  {t('closeButton')}
                 </button>
               </div>
 
               <div className="space-y-6">
                 <div>
-                  <h3 className="text-sm uppercase tracking-wider text-white/70 mb-2">Prayer Point</h3>
+                  <h3 className="text-sm uppercase tracking-wider text-white/70 mb-2">{t('prayerPointLabel')}</h3>
                   <p className="text-lg md:text-xl leading-relaxed font-medium">
                     {prayer.prayerPoint}
                   </p>
                 </div>
 
                 <div className="border-t border-white/20 pt-6">
-                  <h3 className="text-sm uppercase tracking-wider text-white/70 mb-2">Scripture</h3>
+                  <h3 className="text-sm uppercase tracking-wider text-white/70 mb-2">{t('scriptureLabel')}</h3>
                   <blockquote className={`${display.className} italic text-xl md:text-2xl leading-snug font-medium`}>
                     "{prayer.scripture}"
                   </blockquote>
@@ -162,7 +157,7 @@ export default function PornographyPrayerPage() {
                   onClick={copyPrayer}
                   className="rounded-full bg-white/90 text-neutral-900 px-5 py-2 text-sm font-medium hover:bg-white shadow cursor-pointer transition active:scale-95"
                 >
-                  Copy Prayer
+                  {t('copyButton')}
                 </button>
               </div>
             </div>
@@ -175,77 +170,77 @@ export default function PornographyPrayerPage() {
           <div className="rounded-2xl border border-white/10 bg-white/5 p-6 md:p-10 backdrop-blur-sm space-y-10">
             <div>
               <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">
-                What Are Pornography Prayer Points with Scriptures?
+                {t('whatAreTitle')}
               </h2>
               <p className="mt-3 text-white/90 leading-relaxed">
-                Pornography prayer points with scriptures are specific, Bible-based prayers designed to help believers overcome pornography addiction and walk in sexual purity. Each prayer point is anchored in God's Word, providing spiritual weapons for the battle against lust, shame, temptation, and bondage.
+                {t('whatAreContent')}
               </p>
             </div>
 
             <div>
               <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">
-                How to Use These Prayer Points
+                {t('howToUseTitle')}
               </h2>
               <ol className="mt-3 list-decimal list-inside space-y-2 text-white/90 leading-relaxed">
-                <li>Click "Get Prayer Point" to receive a random Scripture-based prayer.</li>
-                <li>Read the prayer aloud with faith and sincerity.</li>
-                <li>Meditate on the corresponding Bible verse.</li>
-                <li>Click "Copy Prayer" to save it for personal use.</li>
-                <li>Return daily for consistent prayer.</li>
+                <li>{t('howToUseStep1')}</li>
+                <li>{t('howToUseStep2')}</li>
+                <li>{t('howToUseStep3')}</li>
+                <li>{t('howToUseStep4')}</li>
+                <li>{t('howToUseStep5')}</li>
               </ol>
             </div>
 
             <div>
               <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">
-                Why Scripture-Based Prayers Are Powerful
+                {t('whyPowerfulTitle')}
               </h2>
               <p className="mt-3 text-white/90 leading-relaxed">
-                When you pray God's Word back to Him, you align your requests with His will. The Bible says that God's Word is living and active (Hebrews 4:12). Scripture-based prayers increase your faith and renew your mind.
+                {t('whyPowerfulContent')}
               </p>
             </div>
 
             <div>
               <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">
-                You Are Not Alone
+                {t('notAloneTitle')}
               </h2>
               <p className="mt-3 text-white/90 leading-relaxed">
-                If you are struggling with pornography, know that you are not alone. "There is therefore now no condemnation to them which are in Christ Jesus" (Romans 8:1). God's mercy is new every morning. Start praying today.
+                {t('notAloneContent')}
               </p>
             </div>
 
             <div>
               <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">
-                Breaking Free from Pornography Addiction
+                {t('breakingFreeTitle')}
               </h2>
               <p className="mt-3 text-white/90 leading-relaxed">
-                Pornography addiction is a spiritual battle that requires spiritual weapons. The Bible teaches us that "we wrestle not against flesh and blood, but against principalities, against powers" (Ephesians 6:12). Through consistent prayer, meditation on Scripture, and reliance on the Holy Spirit, you can break free from the chains of sexual sin and walk in the freedom Christ purchased for you on the cross.
+                {t('breakingFreeContent')}
               </p>
             </div>
 
             <div>
               <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">
-                The Power of Daily Prayer
+                {t('dailyPrayerTitle')}
               </h2>
               <p className="mt-3 text-white/90 leading-relaxed">
-                Recovery from pornography addiction doesn't happen overnight, but daily prayer brings transformation. As you consistently bring your struggles to God, He renews your mind (Romans 12:2) and strengthens you with His Spirit. Each prayer point in this tool is designed to target specific areas—from breaking shame and guilt to building accountability and cultivating purity. Make prayer your daily weapon against temptation.
+                {t('dailyPrayerContent')}
               </p>
             </div>
 
             <div>
               <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">
-                Biblical Foundation for Sexual Purity
+                {t('biblicalFoundationTitle')}
               </h2>
               <p className="mt-3 text-white/90 leading-relaxed">
-                God's design for sexuality is beautiful and pure. The Bible calls us to "flee sexual immorality" (1 Corinthians 6:18) and to present our bodies as "living sacrifices, holy and acceptable to God" (Romans 12:1). These prayer points help you align your heart with God's standard, renewing your commitment to honor Him with your body and mind. Through Christ, purity is not just a goal—it's a promise.
+                {t('biblicalFoundationContent')}
               </p>
             </div>
 
             <div>
               <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">
-                Find Hope and Healing in Christ
+                {t('hopeHealingTitle')}
               </h2>
               <p className="mt-3 text-white/90 leading-relaxed">
-                No matter how long you've struggled with pornography, there is hope in Jesus Christ. "If we confess our sins, he is faithful and just to forgive us our sins, and to cleanse us from all unrighteousness" (1 John 1:9). God doesn't condemn you—He calls you to freedom. Use these prayer points as a daily reminder that God's grace is sufficient, His power is made perfect in your weakness, and His love never fails.
+                {t('hopeHealingContent')}
               </p>
             </div>
           </div>
@@ -254,7 +249,7 @@ export default function PornographyPrayerPage() {
 
       {showToast && (
         <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white/90 text-neutral-900 px-5 py-2 rounded-full shadow-md text-sm font-medium z-50">
-          Copied
+          {tCommon('copied')}
         </div>
       )}
 
@@ -262,13 +257,13 @@ export default function PornographyPrayerPage() {
         <div className="mx-auto max-w-5xl px-5 py-6 md:px-10 md:py-10 flex flex-col md:flex-row md:items-center md:justify-between gap-4 text-white/70">
           <nav className="order-1 md:order-2 w-full md:w-auto">
             <ul className="flex justify-center md:justify-end items-center gap-6">
-              <li><Link href="/" className="text-sm hover:text-white">Home</Link></li>
-              <li><Link href="/privacy" className="text-sm hover:text-white">Privacy</Link></li>
-              <li><a href="mailto:randombibleverse@outlook.com" className="text-sm hover:text-white">Contact</a></li>
+              <li><Link href={`/${locale}`} className="text-sm hover:text-white">{t('homeLink')}</Link></li>
+              <li><Link href={`/${locale}/privacy`} className="text-sm hover:text-white">{t('privacyLink')}</Link></li>
+              <li><a href="mailto:randombibleverse@outlook.com" className="text-sm hover:text-white">{t('contactLink')}</a></li>
             </ul>
           </nav>
           <p className="order-2 md:order-1 text-center md:text-left text-xs md:text-sm">
-            © {new Date().getFullYear()} Bible Verse Generator. Built with faith for freedom.
+            © 2025 {tCommon('siteName')}. {t('title')}.
           </p>
         </div>
       </footer>

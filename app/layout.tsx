@@ -1,6 +1,6 @@
 // app/layout.tsx
 import type { Metadata, Viewport } from "next";
-import Script from "next/script"; // ✅ 新增
+import Script from "next/script";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -16,9 +16,12 @@ export const metadata: Metadata = {
   // Next.js 会自动处理 app/favicon.ico 和 app/icon.png
   icons: {
     icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/logo.svg", type: "image/svg+xml" },
       { url: "/icon-192.png", type: "image/png", sizes: "192x192" },
       { url: "/icon-512.png", type: "image/png", sizes: "512x512" },
     ],
+    shortcut: ["/favicon.ico"],
     apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
   },
 
@@ -52,29 +55,5 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <html lang="en">
-      <body className="antialiased">
-        {children}
-
-        {/* ✅ Google Analytics (GA4) */}
-        <Script
-          strategy="afterInteractive"
-          src="https://www.googletagmanager.com/gtag/js?id=G-14SYS6MEDE"
-        />
-        <Script
-          id="ga-init"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-14SYS6MEDE', { page_path: window.location.pathname });
-            `,
-          }}
-        />
-      </body>
-    </html>
-  );
+  return children;
 }

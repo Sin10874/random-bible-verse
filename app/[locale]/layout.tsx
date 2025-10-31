@@ -1,0 +1,94 @@
+import { notFound } from 'next/navigation';
+import { NextIntlClientProvider } from 'next-intl';
+import { getMessages, setRequestLocale, getTranslations } from 'next-intl/server';
+import { locales } from '@/i18n/config';
+import Script from 'next/script';
+import type { Metadata } from 'next';
+import '../globals.css';
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'seo' });
+  const url = `/${locale}`;
+  const siteName = locale === 'es' ? 'Generador de Versículos Bíblicos' : 'Bible Verse Generator';
+
+  return {
+    title: t('home.title'),
+    description: t('home.description'),
+    keywords: t('home.keywords').split(', '),
+    openGraph: {
+      type: 'website',
+      url,
+      siteName,
+      title: t('home.title'),
+      description: t('home.description'),
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: t('home.title'),
+      description: t('home.description'),
+    },
+    alternates: {
+      canonical: url,
+    },
+  };
+}
+
+export default async function LocaleLayout({
+  children,
+  params,
+}: {
+  children: React.ReactNode;
+  params: Promise<{ locale: string }>;
+}) {
+  // Await params in Next.js 15
+  const { locale } = await params;
+
+  // Validate that the incoming locale parameter is valid
+  if (!locales.includes(locale as any)) {
+    notFound();
+  }
+
+  // Enable static rendering
+  setRequestLocale(locale);
+
+  // Get messages for the current locale
+  const messages = await getMessages({ locale });
+
+  return (
+    <html lang={locale}>
+      <body className="antialiased">
+        <NextIntlClientProvider messages={messages} locale={locale}>
+          {children}
+        </NextIntlClientProvider>
+
+        {/* ✅ Google Analytics (GA4) */}
+        <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-14SYS6MEDE"
+        />
+        <Script
+          id="ga-init"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-14SYS6MEDE', { page_path: window.location.pathname });
+            `,
+          }}
+        />
+      </body>
+    </html>
+  );
+}
+
+// Generate static params for all supported locales
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
+}
