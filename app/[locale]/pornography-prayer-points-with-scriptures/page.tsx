@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { Cormorant_Garamond } from "next/font/google";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
@@ -66,16 +67,20 @@ export default function PornographyPrayerPage() {
   return (
     <div className="text-white bg-[#0b0f1a]">
       <section className="relative min-h-screen overflow-hidden">
-        <img
+        <Image
           src={process.env.NEXT_PUBLIC_HERO_URL || "/mountain-hero.jpg"}
           alt=""
-          className="absolute inset-0 hidden sm:block h-full w-full object-cover"
+          fill
+          priority
+          className="hidden sm:block object-cover"
           aria-hidden="true"
         />
-        <img
+        <Image
           src={process.env.NEXT_PUBLIC_HERO_MOBILE_URL || "/mountain-hero-mobile.jpg"}
           alt=""
-          className="absolute inset-0 block sm:hidden h-full w-full object-cover object-[50%_30%]"
+          fill
+          priority
+          className="block sm:hidden object-cover object-[50%_30%]"
           aria-hidden="true"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/60" />
@@ -83,7 +88,7 @@ export default function PornographyPrayerPage() {
 
         <header className="relative z-20 flex items-center justify-between px-6 md:px-10 py-5">
           <Link href={`/${locale}`} className="flex items-center gap-3 hover:opacity-80 transition">
-            <img
+            <Image
               src="/logo.svg"
               alt={`${tCommon('siteName')} Logo`}
               width={32}

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { Cormorant_Garamond } from "next/font/google";
 import { GENERATORS } from "../data/generators";
@@ -59,17 +60,21 @@ export default function Page() {
       {/* ===== Hero：首屏使用背景图 ===== */}
       <section className="relative min-h-screen overflow-hidden">
         {/* 桌面背景 */}
-        <img
+        <Image
           src={process.env.NEXT_PUBLIC_HERO_URL || "/mountain-hero.jpg"}
           alt=""
-          className="absolute inset-0 hidden sm:block h-full w-full object-cover"
+          fill
+          priority
+          className="hidden sm:block object-cover"
           aria-hidden="true"
         />
         {/* 移动端背景（竖图） */}
-        <img
+        <Image
           src={process.env.NEXT_PUBLIC_HERO_MOBILE_URL || "/mountain-hero-mobile.jpg"}
           alt=""
-          className="absolute inset-0 block sm:hidden h-full w-full object-cover object-[50%_30%]"
+          fill
+          priority
+          className="block sm:hidden object-cover object-[50%_30%]"
           aria-hidden="true"
         />
         {/* 暗化遮罩 */}
@@ -80,7 +85,7 @@ export default function Page() {
         {/* 顶部导航（含 H1） */}
         <header className="relative z-20 flex items-center justify-between px-6 md:px-10 py-5">
           <div className="flex items-center gap-3">
-            <img
+            <Image
               src="/logo.svg"
               alt={`${tCommon('siteName')} Logo`}
               width={32}
@@ -194,10 +199,11 @@ export default function Page() {
               >
                 {/* 图片区域 */}
                 <div className="relative h-56 md:h-64 overflow-hidden">
-                  <img
+                  <Image
                     src={generator.image}
                     alt={tGenerators(generator.id)}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                   {/* 渐变遮罩 */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />

@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, setRequestLocale, getTranslations } from 'next-intl/server';
-import { locales } from '@/i18n/config';
+import { locales, type Locale } from '@/i18n/config';
 import Script from 'next/script';
 import type { Metadata } from 'next';
 import '../globals.css';
@@ -49,7 +49,7 @@ export default async function LocaleLayout({
   const { locale } = await params;
 
   // Validate that the incoming locale parameter is valid
-  if (!locales.includes(locale as any)) {
+  if (!locales.includes(locale as Locale)) {
     notFound();
   }
 

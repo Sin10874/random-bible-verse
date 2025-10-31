@@ -2,6 +2,7 @@
 
 import { useState, use } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { Cormorant_Garamond } from "next/font/google";
 import { getGeneratorBySlug, Generator } from "../../data/generators";
@@ -70,17 +71,21 @@ export default function GeneratorPage({ params }: GeneratorPageProps) {
       {/* ===== Hero：首屏使用背景图 ===== */}
       <section className="relative min-h-screen overflow-hidden">
         {/* 桌面背景 */}
-        <img
+        <Image
           src={generator.image}
           alt=""
-          className="absolute inset-0 hidden sm:block h-full w-full object-cover"
+          fill
+          priority
+          className="hidden sm:block object-cover"
           aria-hidden="true"
         />
         {/* 移动端背景 */}
-        <img
+        <Image
           src={generator.image}
           alt=""
-          className="absolute inset-0 block sm:hidden h-full w-full object-cover object-center"
+          fill
+          priority
+          className="block sm:hidden object-cover object-center"
           aria-hidden="true"
         />
         {/* 暗化遮罩 */}
@@ -91,7 +96,7 @@ export default function GeneratorPage({ params }: GeneratorPageProps) {
         {/* 顶部导航 */}
         <header className="relative z-20 flex items-center justify-between px-6 md:px-10 py-5">
           <Link href={`/${locale}`} className="flex items-center gap-3 hover:opacity-80 transition">
-            <img
+            <Image
               src="/logo.svg"
               alt="Bible Verse Generator Logo"
               width={32}
@@ -267,7 +272,7 @@ function getContentForGenerator(
   t: (key: string, params?: Record<string, string>) => string | { raw: (key: string) => GeneratorContent },
   tGenerators: (key: string) => string
 ) {
-  const content = (t as { raw: (key: string) => GeneratorContent }).raw(`${generator.id}`);
+  const content = (t as unknown as { raw: (key: string) => GeneratorContent }).raw(`${generator.id}`);
 
   return (
     <>

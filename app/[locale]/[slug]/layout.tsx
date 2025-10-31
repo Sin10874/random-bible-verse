@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { getGeneratorBySlug, GENERATORS, Generator } from "../../data/generators";
-import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 
 export async function generateMetadata({
