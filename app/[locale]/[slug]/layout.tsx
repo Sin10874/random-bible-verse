@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getGeneratorBySlug, GENERATORS, Generator } from "../../data/generators";
 import { getTranslations } from "next-intl/server";
+import { locales } from "@/i18n/config";
 
 export async function generateMetadata({
   params,
@@ -146,7 +147,6 @@ async function getSEOData(generator: Generator, locale: string) {
 }
 
 export async function generateStaticParams() {
-  const locales = ['en', 'es', 'pt', 'zh', 'tl', 'fr'];
   const params = [];
 
   for (const locale of locales) {

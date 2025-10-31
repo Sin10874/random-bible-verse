@@ -17,6 +17,7 @@
     "trendingSubtitle": "Explore Bible verses by theme, book, or life situation"
   },
   "generators": {
+    "purity": "Pornography Prayer Points with Scriptures",
     "purityPrayer": "Pornography Prayer Points with Scriptures",
     "love": "Bible Verses About Love",
     "hope": "Bible Verses About Hope",
@@ -31,6 +32,21 @@
     "encouragement": "Encouraging Bible Verses",
     "thanksgiving": "Thanksgiving Bible Verses"
   },
+  "generatorDescriptions": {
+    "purity": "50 Scripture-based prayers to overcome pornography addiction and find freedom in Christ",
+    "love": "Discover God's love and verses about loving others",
+    "hope": "Find hope and encouragement in God's promises",
+    "strength": "Draw strength and courage from God's word",
+    "peace": "Experience God's peace in every circumstance",
+    "faith": "Strengthen your faith through Scripture",
+    "grief": "Find comfort in times of loss and sorrow",
+    "psalms": "Experience worship and praise from the Book of Psalms",
+    "proverbs": "Gain wisdom from the Book of Proverbs",
+    "john": "Discover Jesus through the Gospel of John",
+    "prayer": "Learn to pray through Scripture",
+    "encouragement": "Be uplifted and encouraged by God's word",
+    "thanksgiving": "Give thanks and praise to God"
+  },
   "about": {
     "whatIsTitle": "What is Bible Verse Generator?",
     "whatIsContent": "Get a random Bible verse in one click. Use this free random scripture generator to discover daily Bible verses about faith, love, hope, strength, and peace. Save your favorites or come back anytime for more inspiration.",
@@ -39,13 +55,633 @@
     "howItWorksStep2": "Copy to share your verse with friends, family, or on social media.",
     "howItWorksStep3": "Begin your Verse of the Day habit for daily reflection and encouragement.",
     "whatCanYouDoTitle": "What Can You Do With This Bible Verse Generator?",
-    "whyUseTitle": "Why Use a Random Bible Verse Generator？",
-    "isFreeTitle": "Is This Tool Free？",
+    "whatCanYouDoContent": "Use this tool for daily inspiration, prayer, study, motivation, social sharing, and journaling.",
+    "whyUseTitle": "Why Use a Random Bible Verse Generator?",
+    "whyUseContent": "Rediscover the Bible, strengthen daily faith, deepen knowledge, stay connected with God, and end the day with peace.",
+    "isFreeTitle": "Is This Tool Free?",
     "isFreeContent": "Yes — this Bible verse generator is completely free to use. No sign-ups, no downloads, no limits. Simply click Generate Verse, and a new Bible verse will appear instantly to inspire your day.",
     "startNowTitle": "Start Now",
     "startNowContent": "Generate a random Bible verse and begin your Verse of the Day journey — free, fast, and always uplifting."
   },
   "footer": {
-    "copyright": "© 2024 Bible Verse Generator. Built with ❤️ for reflection."
+    "copyright": "© 2025 Bible Verse Generator. Built with faith for reflection."
+  },
+  "purityPrayer": {
+    "title": "Pornography Prayer Points with Scriptures",
+    "subtitle": "Powerful Scripture-based prayers to overcome pornography addiction and find freedom in Christ.",
+    "generateButton": "Get Prayer Point",
+    "copyButton": "Copy Prayer",
+    "closeButton": "Close",
+    "loading": "Loading...",
+    "categoryLabel": "Category",
+    "prayerPointLabel": "Prayer Point",
+    "scriptureLabel": "Scripture",
+    "whatAreTitle": "What Are Pornography Prayer Points with Scriptures?",
+    "whatAreContent": "Pornography prayer points with scriptures are specific Bible-based prayers designed to help believers overcome pornography addiction and walk in sexual purity. Each prayer point is anchored in God's Word, providing spiritual weapons for the battle against lust, shame, temptation, and bondage.",
+    "howToUseTitle": "How to Use These Prayer Points",
+    "howToUseStep1": "Click \"Get Prayer Point\" to receive a random Scripture-based prayer.",
+    "howToUseStep2": "Read the prayer aloud with faith and sincerity.",
+    "howToUseStep3": "Meditate on the accompanying Bible verse.",
+    "howToUseStep4": "Click \"Copy Prayer\" to save it for personal use.",
+    "howToUseStep5": "Return daily for consistent prayer.",
+    "whyPowerfulTitle": "Why Scripture-Based Prayers Are Powerful",
+    "whyPowerfulContent": "When you pray God's Word back to Him, you align your requests with His will. The Bible says God's Word is living and active (Hebrews 4:12). Scripture-based prayers increase your faith and renew your mind.",
+    "notAloneTitle": "You're Not Alone",
+    "notAloneContent": "If you're struggling with pornography, know that you're not alone. \"There is therefore now no condemnation for those who are in Christ Jesus\" (Romans 8:1). God's mercy is new every morning. Start praying today.",
+    "breakingFreeTitle": "Breaking Free from Pornography Addiction",
+    "breakingFreeContent": "Pornography addiction is a spiritual battle that requires spiritual weapons. The Bible teaches us that \"we do not wrestle against flesh and blood, but against principalities, against powers\" (Ephesians 6:12). Through consistent prayer, Scripture meditation, and dependence on the Holy Spirit, you can break free from the chains of sexual sin and walk in the freedom Christ purchased for you on the cross.",
+    "dailyPrayerTitle": "The Power of Daily Prayer",
+    "dailyPrayerContent": "Recovery from pornography addiction doesn't happen overnight, but daily prayer brings transformation. As you consistently bring your struggles to God, He renews your mind (Romans 12:2) and strengthens you with His Spirit. Each prayer point in this tool is designed to target specific areas—from breaking shame and guilt to building accountability and cultivating purity. Make prayer your daily weapon against temptation.",
+    "biblicalFoundationTitle": "Biblical Foundation for Sexual Purity",
+    "biblicalFoundationContent": "God's design for sexuality is beautiful and pure. The Bible calls us to \"flee from sexual immorality\" (1 Corinthians 6:18) and to present our bodies as \"living sacrifices, holy and pleasing to God\" (Romans 12:1). These prayer points help you align your heart with God's standard, renewing your commitment to honor Him with your body and mind. Through Christ, purity is not just a goal—it's a promise.",
+    "hopeHealingTitle": "Find Hope and Healing in Christ",
+    "hopeHealingContent": "No matter how long you've struggled with pornography, there is hope in Jesus Christ. \"If we confess our sins, he is faithful and just and will forgive us our sins and purify us from all unrighteousness\" (1 John 1:9). God doesn't condemn you—He calls you to freedom. Use these prayer points as a daily reminder that God's grace is sufficient, His power is made perfect in your weakness, and His love never fails.",
+    "homeLink": "Home",
+    "privacyLink": "Privacy",
+    "contactLink": "Contact",
+    "footerText": "© {year} Bible Verse Generator. Built with faith for freedom."
+  },
+  "seo": {
+    "home": {
+      "title": "Random Bible Verse Generator | Daily Scripture & Verse of the Day",
+      "description": "Get a random Bible verse instantly! This free scripture generator delivers inspiring verses about faith, love, and hope—perfect for daily encouragement.",
+      "keywords": "random bible verse, scripture generator, verse of the day, faith verses, love verses"
+    },
+    "purityPrayer": {
+      "title": "Pornography Prayer Points with Scriptures - 50 Biblical Prayers",
+      "description": "50 Scripture-based prayer points to overcome pornography addiction and find freedom in Christ. Powerful Bible prayers for purity and healing.",
+      "keywords": "pornography prayer points with scriptures, prayer against pornography, overcome porn addiction prayer, deliverance from pornography prayer, prayer for sexual purity, Bible verses against lust, prayer points for purity, spiritual warfare against pornography, breaking pornography addiction, Christian prayers for freedom"
+    },
+    "love": {
+      "title": "Bible Verses About Love - Scripture on God's Love 2025",
+      "description": "Discover powerful Bible verses about love from Scripture. Read what God says about His love for us and how to love others. Find inspiration from 1 Corinthians 13, John 3:16, and more.",
+      "keywords": "bible verses about love, scripture on love, God's love verses, 1 Corinthians 13, love bible quotes"
+    },
+    "hope": {
+      "title": "Bible Verses About Hope - Scripture for Encouragement 2025",
+      "description": "Find encouragement with Bible verses about hope. Discover God's promises and renew your faith during difficult times. Read inspiring hope scriptures from Romans, Psalms, and more.",
+      "keywords": "bible verses about hope, hope scriptures, verses for encouragement, God's promises, hope in hard times"
+    },
+    "strength": {
+      "title": "Bible Verses About Strength - Find Courage in Scripture 2025",
+      "description": "Draw strength and courage from powerful Bible verses. Find God's strength in times of weakness and difficulty. Read scriptures from Philippians 4:13, Isaiah 40:31, and more.",
+      "keywords": "bible verses about strength, strength scriptures, verses for courage, God's strength, Isaiah 40:31"
+    },
+    "peace": {
+      "title": "Bible Verses About Peace - Experience God's Peace 2025",
+      "description": "Experience God's peace with powerful Bible verses. Find peace that surpasses understanding in every situation. Read scriptures from Philippians 4:6-7, John 14:27, and more.",
+      "keywords": "bible verses about peace, peace scriptures, God's peace, Philippians 4:7, peace of mind verses"
+    },
+    "faith": {
+      "title": "Bible Verses About Faith - Strengthen Your Faith 2025",
+      "description": "Strengthen your faith with powerful Bible verses. Learn what faith means and how to trust God completely. Read scriptures from Hebrews 11:1, Mark 11:22, and more.",
+      "keywords": "bible verses about faith, faith scriptures, Hebrews 11, faith and trust, growing in faith"
+    },
+    "grief": {
+      "title": "Bible Verses About Grief - Find Comfort in Loss 2025",
+      "description": "Find comfort in Bible verses about grief and loss. God draws near to the brokenhearted and offers healing. Read comforting scriptures from Psalms, 2 Corinthians, and more.",
+      "keywords": "bible verses about grief, grief scriptures, comfort in loss, verses for mourning, healing from loss"
+    },
+    "psalms": {
+      "title": "Psalms Bible Verses - Worship & Praise 2025",
+      "description": "Discover the beauty of Psalms with our verse generator. Experience worship, praise, and honest prayers from King David and other psalmists. Perfect for daily devotion.",
+      "keywords": "psalms bible verses, book of psalms, psalm scriptures, worship verses, David's psalms"
+    },
+    "proverbs": {
+      "title": "Proverbs Bible Verses - Wisdom for Daily Living 2025",
+      "description": "Gain wisdom with Proverbs Bible verses. Discover practical guidance for life, relationships, and decision-making from Solomon's timeless wisdom. Perfect for daily inspiration.",
+      "keywords": "proverbs bible verses, book of proverbs, wisdom verses, Solomon's wisdom, practical wisdom"
+    },
+    "john": {
+      "title": "John Bible Verses - Gospel of John Scripture 2025",
+      "description": "Discover Jesus through the Gospel of John. Read about His miracles, teachings, and divine nature. Find verses from John 3:16, John 14, and other powerful passages.",
+      "keywords": "gospel of john, john bible verses, John 3:16, Jesus in John, gospel scriptures"
+    },
+    "prayer": {
+      "title": "Bible Verses About Prayer - Learn to Pray Scripture 2025",
+      "description": "Learn to pray with powerful Bible verses about prayer. Discover what God says about communicating with Him. Read scriptures from Matthew 6, Philippians 4, and more.",
+      "keywords": "bible verses about prayer, prayer scriptures, how to pray, power of prayer, prayer verses"
+    },
+    "encouragement": {
+      "title": "Encouraging Bible Verses - Uplifting Scripture 2025",
+      "description": "Find uplifting encouragement with powerful Bible verses. Be renewed and strengthened by God's promises. Read encouraging scriptures from Psalms, Isaiah, Romans, and more.",
+      "keywords": "encouraging bible verses, uplifting scriptures, verses for encouragement, motivational bible quotes, inspirational verses"
+    },
+    "thanksgiving": {
+      "title": "Thanksgiving Bible Verses - Give Thanks to God 2025",
+      "description": "Celebrate thanksgiving with Bible verses about gratitude and praise. Learn to give thanks in all circumstances. Read scriptures from 1 Thessalonians 5:18, Psalms 100, and more.",
+      "keywords": "thanksgiving bible verses, gratitude scriptures, thankful verses, giving thanks, praise verses"
+    }
+  },
+  "generatorContent": {
+    "ui": {
+      "generateButton": "Random Bible Verse",
+      "loading": "Loading...",
+      "closeButton": "Close",
+      "copyButton": "Copy",
+      "copied": "Copied",
+      "error": "Oops, failed to load. Try again.",
+      "verseLabel": "Verse",
+      "home": "Home",
+      "privacy": "Privacy",
+      "contactUs": "Contact Us",
+      "footerCopyright": "© 2025 Bible Verse Generator. Built with faith for reflection."
+    },
+    "sections": {
+      "howToUseTitle": "How to Use This Free Bible Verse Generator",
+      "howToUseStep1": "Click the \"Random Bible Verse\" button above to get a random Bible passage",
+      "howToUseStep2": "Read and reflect on the Bible verse that appears",
+      "howToUseStep3": "Copy the verse to share with friends, family, or save for your devotional time",
+      "howToUseStep4": "Generate new verses as often as you need inspiration—completely free, no registration required",
+      "callToActionTitle": "Get Your {name} Today",
+      "callToActionContent": "Start your day with God's Word. Click the generate button above to receive your {name} and let Scripture speak to your heart. Each verse is randomly selected to provide fresh inspiration and guidance."
+    },
+    "love": {
+      "h2Intro": "Understanding Bible Verses About Love",
+      "h2Benefits": "Benefits of Reading Love Verses from Scripture",
+      "intro": "Bible verses about love reveal God's unconditional love for us and teach us how to love others. From 1 Corinthians 13 to John 3:16, Scripture shows that love is the greatest commandment and the foundation of our faith.",
+      "benefits": [
+        {
+          "title": "Understand God's Love",
+          "description": "Discover how deeply God loves you through verses that reveal His sacrificial, unconditional love demonstrated through Jesus Christ."
+        },
+        {
+          "title": "Learn to Love Others",
+          "description": "Find practical guidance for loving your neighbor, forgiving those who hurt you, and showing Christ's love in your daily relationships."
+        },
+        {
+          "title": "Strengthen Relationships",
+          "description": "Apply biblical principles of love to build stronger marriages, friendships, and family bonds rooted in God's design."
+        }
+      ],
+      "additionalSections": [
+        {
+          "title": "The Greatest Commandment: Love God and Love Others",
+          "content": "Jesus taught that the greatest commandment is to love the Lord your God with all your heart, soul, and mind, and to love your neighbor as yourself (Matthew 22:37-39). These two commandments summarize all of Scripture and form the foundation of Christian life. When we understand how much God loves us, we're empowered to love others with the same unconditional, sacrificial love."
+        },
+        {
+          "title": "Biblical Definition of Love",
+          "content": "1 Corinthians 13 provides the most comprehensive biblical definition of love: patient, kind, not envious or boastful, not proud or rude, not self-seeking or easily angered, keeps no record of wrongs. Love always protects, trusts, hopes, and perseveres. This isn't just romantic love—it's agape love that reflects God's character and should characterize all Christian relationships."
+        }
+      ]
+    },
+    "hope": {
+      "h2Intro": "What Does the Bible Say About Hope?",
+      "h2Benefits": "Why You Should Read Bible Verses About Hope",
+      "intro": "Bible verses about hope remind us that our hope is anchored in God's promises and His faithful character. These verses provide encouragement during difficult times and renew our confidence in God's plan.",
+      "benefits": [
+        {
+          "title": "Find Hope in Trials",
+          "description": "When circumstances seem hopeless, Scripture reminds us that God works all things for our good and has a purpose in every season."
+        },
+        {
+          "title": "Anchor Your Faith",
+          "description": "Build your faith on the solid foundation of God's unchanging promises and His proven faithfulness throughout history."
+        },
+        {
+          "title": "Encourage Others",
+          "description": "Share hope verses with friends and family facing challenges, offering them the same comfort God provides you."
+        }
+      ],
+      "additionalSections": [
+        {
+          "title": "Hope as an Anchor for the Soul",
+          "content": "Hebrews 6:19 describes hope as \"an anchor for the soul, firm and secure.\" In life's storms, biblical hope keeps us grounded and stable. Unlike wishful thinking, Christian hope is confident expectation based on God's character and promises. This hope does not disappoint because it's rooted in God's unchanging nature and secured by the resurrection of Jesus Christ."
+        },
+        {
+          "title": "Living Hope Through Christ",
+          "content": "1 Peter 1:3 speaks of the \"living hope\" we have through the resurrection of Jesus Christ from the dead. This hope is alive and active, not a dead religious concept. Because Jesus conquered death, we have hope of eternal life, hope of transformation, and hope that sustains us through every trial. This living hope changes how we face each day."
+        }
+      ]
+    },
+    "strength": {
+      "h2Intro": "Finding Strength in Bible Verses",
+      "h2Benefits": "Benefits of Reading Scriptures About Strength",
+      "intro": "Bible verses about strength remind us that God is our source of power and courage. When we feel weak, His strength is made perfect, empowering us to face any challenge with confidence in Him.",
+      "benefits": [
+        {
+          "title": "Find Strength in Weakness",
+          "description": "Discover how God's power is made perfect in your weakness, giving you supernatural strength beyond your natural abilities."
+        },
+        {
+          "title": "Overcome Challenges",
+          "description": "Face life's obstacles with courage, knowing you can do all things through Christ who strengthens you."
+        },
+        {
+          "title": "Renew Your Energy",
+          "description": "Those who hope in the Lord will renew their strength, finding fresh energy and endurance for the road ahead."
+        }
+      ],
+      "additionalSections": [
+        {
+          "title": "God's Strength Made Perfect in Weakness",
+          "content": "2 Corinthians 12:9 reveals a powerful truth: God's strength is made perfect in our weakness. When we acknowledge our limitations and depend on Him, His power works most effectively through us. This means we don't have to pretend to be strong on our own. Instead, we can honestly bring our weaknesses to God and experience His supernatural strength that far exceeds anything we could muster ourselves."
+        },
+        {
+          "title": "Philippians 4:13 - Strength for All Things",
+          "content": "\"I can do all things through Christ who strengthens me\" (Philippians 4:13) is one of the most beloved verses about strength. This doesn't mean we can accomplish anything we dream up, but that Christ gives us strength to handle whatever circumstances God allows in our lives. Whether facing abundance or need, health or sickness, success or failure, Christ's strength is sufficient for every situation."
+        }
+      ]
+    },
+    "peace": {
+      "h2Intro": "Discovering God's Peace Through Scripture",
+      "h2Benefits": "How Peace Verses Transform Your Life",
+      "intro": "Bible verses about peace reveal God's gift of inner calm that surpasses understanding. This peace guards our hearts and minds, even amid life's storms.",
+      "benefits": [
+        {
+          "title": "Experience Inner Peace",
+          "description": "Find the peace Jesus promised—a peace the world cannot give, anchored in God's presence and promises."
+        },
+        {
+          "title": "Calm Anxious Thoughts",
+          "description": "Replace worry and anxiety with God's peace through prayer, thanksgiving, and meditating on His Word."
+        },
+        {
+          "title": "Rest in God's Control",
+          "description": "Trust that God is in control of every situation, allowing you to rest peacefully knowing He cares for you."
+        }
+      ],
+      "additionalSections": [
+        {
+          "title": "Peace That Surpasses Understanding",
+          "content": "Philippians 4:6-7 teaches that when we bring our anxieties to God through prayer and thanksgiving, His peace—which transcends all understanding—will guard our hearts and minds. This peace isn't based on perfect circumstances; it's a supernatural calm God gives even in chaos. It surpasses human understanding because it defies logic to be at peace when things are falling apart, yet God's presence provides exactly that."
+        },
+        {
+          "title": "Jesus, the Prince of Peace",
+          "content": "Isaiah 9:6 prophesies that the Messiah would be called the \"Prince of Peace.\" Jesus is the source of true peace. In John 14:27, He says, \"Peace I leave with you; my peace I give you. I do not give to you as the world gives.\" The world's peace depends on favorable circumstances, but Christ's peace is rooted in His victory over sin and death. Through relationship with Him, we access this lasting peace."
+        }
+      ]
+    },
+    "faith": {
+      "h2Intro": "What is Faith According to the Bible?",
+      "h2Benefits": "Growing Your Faith with Scripture",
+      "intro": "Bible verses about faith teach us to trust God completely, even when we can't see the outcome. Faith is confidence in what we hope for and assurance about what we do not see.",
+      "benefits": [
+        {
+          "title": "Strengthen Your Trust",
+          "description": "Build unshakable confidence in God's character and promises, knowing He is faithful to complete what He begins."
+        },
+        {
+          "title": "Move Mountains",
+          "description": "Learn how even mustard-seed-sized faith can move mountains when placed in an almighty God."
+        },
+        {
+          "title": "Please God",
+          "description": "Understand that without faith it's impossible to please God, and that He rewards those who earnestly seek Him."
+        }
+      ],
+      "additionalSections": [
+        {
+          "title": "The Hall of Faith: Hebrews 11",
+          "content": "Hebrews 11 is often called the \"Hall of Faith,\" showcasing heroes like Abraham, Moses, and Rahab who trusted God despite impossible circumstances. Their stories teach us that faith isn't blind—it's confident trust in God's character and promises, even when we can't see the outcome. These examples encourage us that God honors faith in every generation and circumstance."
+        }
+      ]
+    },
+    "grief": {
+      "h2Intro": "Bible Verses for Grief and Loss",
+      "h2Benefits": "Finding Comfort in Times of Sorrow",
+      "intro": "Bible verses about grief and loss provide comfort in times of sorrow. God draws near to the brokenhearted and promises to wipe away every tear.",
+      "benefits": [
+        {
+          "title": "Find Comfort in Loss",
+          "description": "Discover God's compassionate presence with those who mourn, offering genuine comfort and healing for broken hearts."
+        },
+        {
+          "title": "Process Your Grief",
+          "description": "Give yourself permission to grieve while holding onto the hope of resurrection and eternal life in Christ."
+        },
+        {
+          "title": "Support Others",
+          "description": "Use God's comfort to minister to others experiencing loss, becoming a vessel of His compassion."
+        }
+      ],
+      "additionalSections": [
+        {
+          "title": "God's Promise to the Brokenhearted",
+          "content": "Psalm 34:18 promises that \"The Lord is close to the brokenhearted and saves those who are crushed in spirit.\" When you're grieving, God doesn't stay distant—He draws near. His presence brings comfort that no human words can provide. Whether you've lost a loved one, experienced a broken relationship, or faced any form of loss, God meets you in your pain with compassion and understanding."
+        },
+        {
+          "title": "How to Use Scripture During Grief",
+          "content": "During times of grief, reading Bible verses can feel difficult, yet it's often when we need God's Word most. Start with short passages like Psalm 23 or Matthew 5:4 (\"Blessed are those who mourn, for they will be comforted\"). Let Scripture remind you that grief isn't the end of your story—God promises restoration, healing, and the hope of resurrection. Use this free tool daily to receive comfort from God's Word."
+        },
+        {
+          "title": "Free Grief Support Through Scripture",
+          "content": "This free Bible verse generator provides instant access to comforting Scripture passages when you need them. No registration or subscription required. Whether you're experiencing recent loss or walking through prolonged grief, click the button above to receive encouraging words from God's Word. Share verses with others who are grieving, offering them the same comfort God has given you (2 Corinthians 1:3-4)."
+        }
+      ]
+    },
+    "prayer": {
+      "h2Intro": "Learning to Pray from Scripture",
+      "h2Benefits": "Strengthening Your Prayer Life with Bible Verses",
+      "intro": "Bible verses about prayer teach us how to communicate with God, from the Lord's Prayer to promises that God hears and answers. Prayer is our direct line to the Father's heart.",
+      "benefits": [
+        {
+          "title": "Learn to Pray Effectively",
+          "description": "Discover biblical principles for prayer, including persistence, faith, and aligning your requests with God's will."
+        },
+        {
+          "title": "Experience God's Presence",
+          "description": "Draw near to God through prayer and experience the intimacy of relationship with your heavenly Father."
+        },
+        {
+          "title": "See Answers",
+          "description": "Claim God's promises to answer prayer, trusting that He hears and responds according to His perfect wisdom."
+        }
+      ],
+      "additionalSections": [
+        {
+          "title": "The Lord's Prayer as a Model",
+          "content": "In Matthew 6:9-13, Jesus taught His disciples how to pray through the Lord's Prayer. This model prayer includes worship (\"hallowed be your name\"), surrender (\"your will be done\"), daily dependence (\"give us today our daily bread\"), confession (\"forgive us our debts\"), and spiritual protection (\"deliver us from evil\"). Using this structure helps us pray comprehensively and align our hearts with God's priorities."
+        }
+      ]
+    },
+    "encouragement": {
+      "h2Intro": "Finding Encouragement in God's Word",
+      "h2Benefits": "How Encouraging Bible Verses Uplift You",
+      "intro": "Encouraging Bible verses lift our spirits and remind us of God's faithfulness. These verses strengthen us to press on, knowing God is with us and for us.",
+      "benefits": [
+        {
+          "title": "Overcome Discouragement",
+          "description": "Find renewed motivation and hope when feeling discouraged, remembering that God's promises never fail."
+        },
+        {
+          "title": "Stay Strong",
+          "description": "Be strengthened and courageous, knowing the Lord goes before you and will never leave or forsake you."
+        },
+        {
+          "title": "Encourage Others",
+          "description": "Share uplifting verses with friends, family, and fellow believers who need hope and encouragement."
+        }
+      ],
+      "additionalSections": [
+        {
+          "title": "Daily Encouragement from Scripture",
+          "content": "Starting each day with an encouraging Bible verse can transform your outlook and strengthen your faith. Whether you're facing challenges at work, struggling with relationships, or simply need a reminder of God's love, Scripture provides the encouragement you need. This free tool delivers random encouraging verses from throughout the Bible—use it each morning as part of your devotional routine or whenever you need a spiritual boost."
+        },
+        {
+          "title": "When to Read Encouraging Bible Verses",
+          "content": "Encouraging Scripture is valuable in many situations: when facing difficult decisions, experiencing setbacks, feeling overwhelmed, or walking through uncertain times. The Bible is filled with God's promises of His presence, provision, and faithfulness. Verses like Joshua 1:9 (\"Be strong and courageous\") and Philippians 4:13 (\"I can do all things through Christ\") remind us we're never alone and God's strength is always available."
+        },
+        {
+          "title": "Share Encouragement Freely",
+          "content": "This Bible verse generator is completely free—no ads, no registration, no hidden costs. We believe everyone should have easy access to God's encouraging Word. Use this tool to find verses to text a struggling friend, post on social media to uplift your followers, or save for your own meditation. God's Word is meant to be shared generously, bringing hope and encouragement to all who need it."
+        }
+      ]
+    },
+    "thanksgiving": {
+      "h2Intro": "Cultivating Gratitude Through Scripture",
+      "h2Benefits": "Benefits of Reading Thanksgiving Verses",
+      "intro": "Bible verses about thanksgiving teach us to give thanks in all circumstances. Gratitude isn't just good manners—it's a command and a pathway to experiencing God's peace.",
+      "benefits": [
+        {
+          "title": "Cultivate Gratitude",
+          "description": "Develop a thankful heart by regularly reflecting on God's goodness and faithfulness in your life."
+        },
+        {
+          "title": "Experience Joy",
+          "description": "Discover how thanksgiving transforms your perspective and fills your heart with joy, regardless of circumstances."
+        },
+        {
+          "title": "Worship God",
+          "description": "Enter God's gates with thanksgiving and His courts with praise, making gratitude a form of worship."
+        }
+      ],
+      "additionalSections": [
+        {
+          "title": "Give Thanks in All Circumstances",
+          "content": "1 Thessalonians 5:18 commands us to \"give thanks in all circumstances, for this is God's will for you in Christ Jesus.\" Notice it doesn't say \"for all circumstances\" but \"in all circumstances.\" Even during trials, we can thank God for His presence, faithfulness, and the promise that He works all things for our good. Practicing thanksgiving shifts our focus from our problems to God's power and provision."
+        },
+        {
+          "title": "Thanksgiving as Daily Practice",
+          "content": "Making thanksgiving a daily habit transforms your spiritual life. Start each morning thanking God for specific blessings—health, family, provision, salvation. Use this free Bible verse generator to discover new reasons to be grateful from Scripture. Psalm 100 teaches us to \"enter his gates with thanksgiving and his courts with praise.\" When we approach God with gratitude, we position ourselves to experience His presence and peace."
+        },
+        {
+          "title": "Free Thanksgiving Bible Verses Anytime",
+          "content": "This tool provides instant access to thanksgiving Bible verses when you need them—completely free, no subscription required. Whether you're preparing for Thanksgiving dinner, leading a prayer group, or simply want to cultivate a grateful heart, click the button above to receive inspiring verses about gratitude. Share them with family and friends to spread a spirit of thanksgiving throughout your community."
+        }
+      ]
+    },
+    "psalms": {
+      "h2Intro": "Exploring the Book of Psalms",
+      "h2Benefits": "Why Read Psalm Verses",
+      "intro": "The Book of Psalms is a collection of 150 poetic songs and prayers that express the full range of human emotion—from despair to joy, from lament to praise. Psalms teach us to bring our whole hearts to God.",
+      "benefits": [
+        {
+          "title": "Pray the Psalms",
+          "description": "Use Psalms as a guide for your own prayers, expressing worship, confession, thanksgiving, and petition to God."
+        },
+        {
+          "title": "Find Emotional Expression",
+          "description": "Discover words for every emotion—Psalms validate your feelings while pointing you to God's faithfulness."
+        },
+        {
+          "title": "Learn to Worship",
+          "description": "Psalms model authentic worship that's both honest and reverent, teaching us to praise God in every situation."
+        }
+      ],
+      "additionalSections": [
+        {
+          "title": "Psalms: Ancient Songs for Modern Life",
+          "content": "Written thousands of years ago by David, Asaph, Solomon, and others, Psalms remain powerfully relevant today. These ancient prayers address timeless human experiences: fear and faith, doubt and trust, sorrow and celebration. Whether you're experiencing the valleys of Psalm 23 or the victory of Psalm 118, there's a Psalm that speaks to your current situation. This free generator helps you discover Psalms relevant to your spiritual journey."
+        },
+        {
+          "title": "Popular Psalms and Their Themes",
+          "content": "Some of the most beloved Psalms include: Psalm 23 (God as Shepherd), Psalm 91 (Protection), Psalm 103 (God's Benefits), Psalm 119 (Love for God's Word), and Psalm 139 (God's Omniscience). Each Psalm offers unique insights into God's character and our relationship with Him. Use this tool daily to explore the breadth and depth of Psalms—you'll never run out of fresh encouragement and wisdom."
+        },
+        {
+          "title": "How to Meditate on Psalms",
+          "content": "Psalms are meant to be meditated on, not just skimmed. When you generate a Psalm verse, read it slowly several times. Notice the imagery, the emotions expressed, and the truths about God. Consider memorizing verses that resonate with you. Many Christians make a practice of reading one Psalm per day or praying through Psalms as their prayer book. This free tool makes it easy to incorporate Psalms into your daily devotional life."
+        }
+      ]
+    },
+    "proverbs": {
+      "h2Intro": "Wisdom from the Book of Proverbs",
+      "h2Benefits": "Benefits of Daily Proverbs Reading",
+      "intro": "The Book of Proverbs contains timeless wisdom for daily living. These sayings teach practical principles for relationships, work, money, speech, and character development.",
+      "benefits": [
+        {
+          "title": "Gain Practical Wisdom",
+          "description": "Apply God's wisdom to everyday decisions and relationships, learning to navigate life with discernment."
+        },
+        {
+          "title": "Develop Character",
+          "description": "Build godly character through principles of integrity, diligence, humility, and self-control."
+        },
+        {
+          "title": "Make Better Decisions",
+          "description": "Learn to choose the path of wisdom over foolishness, making decisions that honor God and benefit your life."
+        }
+      ],
+      "additionalSections": [
+        {
+          "title": "Solomon's Wisdom for Today",
+          "content": "Most of Proverbs was written by King Solomon, whom God blessed with supernatural wisdom (1 Kings 3:12). These proverbs address practical matters like business ethics, family relationships, financial management, and personal integrity. Though written in ancient times, the principles are timeless. Whether you're navigating workplace challenges, raising children, or managing finances, Proverbs provides divine wisdom that works in every generation and culture."
+        },
+        {
+          "title": "A Proverb a Day",
+          "content": "Many Christians follow a 'Proverb a day' reading plan, reading one chapter of Proverbs each day corresponding to the date (Proverbs 1 on day 1, etc.). Since Proverbs has 31 chapters, this completes the book monthly. However, you can also use this free random verse generator to receive bite-sized wisdom from Proverbs when you need guidance. Each proverb offers practical insight you can apply immediately to your daily life."
+        },
+        {
+          "title": "Free Wisdom at Your Fingertips",
+          "content": "This Bible verse generator gives you instant access to Proverbs wisdom—no cost, no registration, no barriers. Whether you're making a difficult decision, need guidance for a relationship issue, or want to grow in character, click above to receive a relevant proverb. Proverbs wisdom is God's gift to help you navigate life successfully. Use this tool daily to build wisdom into your life, one verse at a time."
+        }
+      ]
+    },
+    "john": {
+      "h2Intro": "Discovering Jesus in the Gospel of John",
+      "h2Benefits": "Why Read the Gospel of John",
+      "intro": "The Gospel of John presents Jesus Christ as the Son of God and the source of eternal life. Written that we might believe, John's Gospel contains some of the most beloved passages about salvation, love, and the Holy Spirit.",
+      "benefits": [
+        {
+          "title": "Know Jesus Christ",
+          "description": "Discover who Jesus is through His seven \"I Am\" statements and miraculous signs that reveal His divine nature."
+        },
+        {
+          "title": "Receive Eternal Life",
+          "description": "Understand the path to salvation through faith in Jesus Christ, God's only Son given for the world."
+        },
+        {
+          "title": "Experience His Love",
+          "description": "Find the depth of Christ's love demonstrated through His teaching, His life, and His sacrifice on the cross."
+        }
+      ],
+      "additionalSections": [
+        {
+          "title": "John 3:16 and the Gospel Message",
+          "content": "John 3:16 is perhaps the most famous verse in the Bible: \"For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life.\" This verse encapsulates the entire gospel message—God's love, Jesus' sacrifice, the requirement of faith, and the promise of eternal life. The Gospel of John repeatedly emphasizes that eternal life comes through believing in Jesus Christ as the Son of God."
+        },
+        {
+          "title": "Jesus' Seven 'I Am' Statements",
+          "content": "In the Gospel of John, Jesus makes seven profound \"I Am\" statements: I Am the Bread of Life (6:35), the Light of the World (8:12), the Door (10:9), the Good Shepherd (10:11), the Resurrection and the Life (11:25), the Way, the Truth, and the Life (14:6), and the True Vine (15:1). Each statement reveals a different aspect of who Jesus is and what He offers to those who believe. Use this tool to explore these powerful declarations."
+        },
+        {
+          "title": "Free Access to the Gospel of John",
+          "content": "This free Bible verse generator gives you instant access to verses from the Gospel of John—the perfect book for both seekers and believers. Whether you're exploring Christianity for the first time or deepening your understanding of Jesus, John's Gospel is written so that you \"may believe that Jesus is the Messiah, the Son of God, and that by believing you may have life in his name\" (John 20:31). No cost, no barriers—just the life-transforming message of Jesus Christ."
+        }
+      ]
+    },
+    "purity": {
+      "h2Intro": "Biblical Prayer Points for Sexual Purity",
+      "h2Benefits": "Why Scripture-Based Prayers Are Powerful",
+      "intro": "Pornography prayer points with scriptures are specific Bible-based prayers designed to help believers overcome pornography addiction and walk in sexual purity. Each prayer point is anchored in God's Word, providing spiritual weapons for the battle against lust, shame, temptation, and bondage.",
+      "benefits": [
+        {
+          "title": "Biblical Foundation",
+          "description": "Every prayer is rooted in Scripture, aligning your requests with God's revealed will for purity and holiness."
+        },
+        {
+          "title": "Spiritual Authority",
+          "description": "God's Word is living and active (Hebrews 4:12). When you pray Scripture, you exercise spiritual authority over temptation and sin."
+        },
+        {
+          "title": "Mind Renewal",
+          "description": "Scripture-based prayers renew your mind (Romans 12:2), transforming thought patterns and breaking mental strongholds."
+        }
+      ],
+      "additionalSections": [
+        {
+          "title": "Breaking Free from Pornography Addiction",
+          "content": "Pornography addiction is a spiritual battle that requires spiritual weapons. The Bible teaches us that \"we do not wrestle against flesh and blood, but against principalities, against powers\" (Ephesians 6:12). Through consistent prayer, Scripture meditation, and dependence on the Holy Spirit, you can break free from the chains of sexual sin and walk in the freedom Christ purchased for you on the cross."
+        },
+        {
+          "title": "The Power of Daily Prayer",
+          "content": "Recovery from pornography addiction doesn't happen overnight, but daily prayer brings transformation. As you consistently bring your struggles to God, He renews your mind (Romans 12:2) and strengthens you with His Spirit. Each prayer point in this tool is designed to target specific areas—from breaking shame and guilt to building accountability and cultivating purity. Make prayer your daily weapon against temptation."
+        },
+        {
+          "title": "Find Hope and Healing in Christ",
+          "content": "No matter how long you've struggled with pornography, there is hope in Jesus Christ. \"If we confess our sins, he is faithful and just and will forgive us our sins and purify us from all unrighteousness\" (1 John 1:9). God doesn't condemn you—He calls you to freedom. Use these prayer points as a daily reminder that God's grace is sufficient, His power is made perfect in your weakness, and His love never fails."
+        }
+      ]
+    }
+  },
+  "privacy": {
+    "backToHome": "Back to Home",
+    "title": "Privacy Policy",
+    "effectiveDate": "Effective Date: October 14, 2025",
+    "intro": "Welcome to Random Bible Verse Generator (\"we,\" \"our,\" \"us\"). We respect your privacy and are committed to protecting any information that may be captured during your use of this site. This Privacy Policy describes how we collect, use, disclose, and safeguard information when you visit and use our random Bible verse generator service (the \"Service\").",
+    "section1": {
+      "title": "1. Information We Collect",
+      "intro": "We strive to minimize data collection. The categories of information we may collect include:",
+      "technical": {
+        "title": "Technical / Usage Data (collected automatically)",
+        "item1": "Device type, browser name and version, operating system",
+        "item2": "Referring URLs, pages visited, timestamps, session duration",
+        "item3": "IP address (typically in anonymized or aggregated form)",
+        "item4": "Clicks, usage counts, page loads for analytics"
+      },
+      "cookies": {
+        "title": "Cookies / Local Storage",
+        "item1": "We may use basic cookies or browser storage to handle sessions or enable site functionality.",
+        "item2": "We do not use advertising or tracking cookies.",
+        "item3": "You may disable cookies through your browser settings; the site will continue to function for core features."
+      },
+      "noPersonalData": "We do not collect or store names, email addresses, physical addresses, payment data, social media profiles, or other personally identifiable information."
+    },
+    "section2": {
+      "title": "2. How We Use the Information",
+      "item1": "Operate, maintain, and improve the Service",
+      "item2": "Understand usage patterns to make improvements",
+      "item3": "Monitor and prevent abusive or malicious use",
+      "item4": "Comply with legal obligations, if applicable",
+      "noAdvertising": "We will not use data for targeted advertising, building user profiles, or selling/sharing information for marketing purposes."
+    },
+    "section3": {
+      "title": "3. Sharing and Disclosure",
+      "intro": "Because we collect minimal and largely non-identifiable data, sharing is very limited. We may disclose information in the following cases:",
+      "providers": {
+        "title": "Service providers / vendors",
+        "description": "such as hosting providers, analytics tools—only as needed and under confidentiality obligations"
+      },
+      "legal": {
+        "title": "Legal / regulatory requests",
+        "description": "to comply with court orders, subpoenas, or other legal process"
+      },
+      "protection": {
+        "title": "Protection of rights and safety",
+        "description": "to investigate fraud, security breaches, or enforce our Terms"
+      },
+      "noSelling": "We will never sell your data to third parties."
+    },
+    "section4": {
+      "title": "4. Data Retention",
+      "content": "We retain technical and usage data only as long as necessary to fulfill the purposes described above, or as required by applicable law. We may anonymize or aggregate old data for long-term statistical use."
+    },
+    "section5": {
+      "title": "5. Security",
+      "intro": "We take reasonable measures to protect the data we collect (though minimal) from unauthorized access, alteration, or destruction. Measures include:",
+      "item1": "HTTPS encryption",
+      "item2": "Restricted server access",
+      "item3": "Access monitoring and logging",
+      "item4": "Regular security reviews",
+      "disclaimer": "However, no method of transmission or storage is 100% secure; we cannot guarantee absolute security."
+    },
+    "section6": {
+      "title": "6. Children's Privacy",
+      "content": "We do not knowingly collect information from children under 13 years old (or the applicable minimum age in your jurisdiction). If you believe we have collected such data, please contact us and we will promptly delete it."
+    },
+    "section7": {
+      "title": "7. International Transfers and Applicability",
+      "content": "Your information (mostly non-identifiable) may be processed or stored on servers located in different countries. If you are located in the European Union, United Kingdom, or other jurisdictions with stricter privacy laws (e.g., GDPR, CCPA), you may have additional rights described below."
+    },
+    "section8": {
+      "title": "8. User Rights (Applicable Jurisdictions)",
+      "intro": "Depending on your jurisdiction, you may have the following rights:",
+      "right1": "Right to access (obtain a copy)",
+      "right2": "Right to correct or update",
+      "right3": "Right to delete / erasure",
+      "right4": "Right to restrict processing",
+      "right5": "Right to object to processing",
+      "right6": "Right to data portability",
+      "exercise": "If you wish to exercise any of these rights, contact us (see Contact section). We will respond in accordance with applicable law."
+    },
+    "section9": {
+      "title": "9. Changes to This Privacy Policy",
+      "content": "We may update this Privacy Policy from time to time. When changes occur, we will revise the \"Effective Date\" and post the updated policy on this page. Significant changes will be highlighted or otherwise communicated. Continued use of the Service after changes constitutes acceptance of the updated policy."
+    },
+    "section10": {
+      "title": "10. Contact Us",
+      "intro": "If you have questions or concerns about this Privacy Policy or how we handle data, please contact us:",
+      "emailLabel": "Email"
+    }
   }
 }
