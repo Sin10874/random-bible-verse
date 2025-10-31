@@ -31,6 +31,11 @@ export async function generateMetadata({
       },
       alternates: {
         canonical: url,
+        languages: {
+          'en': '/pornography-prayer-points-with-scriptures',
+          'es': '/es/pornography-prayer-points-with-scriptures',
+          'x-default': '/pornography-prayer-points-with-scriptures',
+        },
       },
     };
   }
@@ -54,7 +59,7 @@ export async function generateMetadata({
     ],
     openGraph: {
       type: "website",
-      url,
+      url: '/pornography-prayer-points-with-scriptures',
       siteName: "Bible Verse Generator",
       title: "Pornography Prayer Points with Scriptures | Overcome Addiction",
       description:
@@ -67,7 +72,12 @@ export async function generateMetadata({
         "Scripture-based prayers to overcome pornography addiction and find freedom in Christ.",
     },
     alternates: {
-      canonical: url,
+      canonical: '/pornography-prayer-points-with-scriptures',
+      languages: {
+        'en': '/pornography-prayer-points-with-scriptures',
+        'es': '/es/pornography-prayer-points-with-scriptures',
+        'x-default': '/pornography-prayer-points-with-scriptures',
+      },
     },
   };
 }

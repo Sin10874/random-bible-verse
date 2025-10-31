@@ -26,7 +26,12 @@ export async function generateMetadata({
     title: seoData.title,
     description: seoData.description,
     alternates: {
-      canonical: url,
+      canonical: locale === 'en' ? `/${generator.slug}` : url,
+      languages: {
+        'en': `/${generator.slug}`,
+        'es': `/es/${generator.slug}`,
+        'x-default': `/${generator.slug}`,
+      },
     },
     keywords: seoData.keywords,
     openGraph: {

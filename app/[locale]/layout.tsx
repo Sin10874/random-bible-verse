@@ -33,7 +33,12 @@ export async function generateMetadata({
       description: t('home.description'),
     },
     alternates: {
-      canonical: url,
+      canonical: locale === 'en' ? '/' : url,
+      languages: {
+        'en': '/',
+        'es': '/es',
+        'x-default': '/', // Default fallback for unsupported languages
+      },
     },
   };
 }

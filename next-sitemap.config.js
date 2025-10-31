@@ -11,12 +11,20 @@ module.exports = {
         { userAgent: '*', allow: '/' },
       ],
     },
-    // 自定义优先级
+    // 自定义优先级和路径转换
     transform: async (config, path) => {
+      // Remove /en/ prefix from English URLs (English is default language)
+      let loc = path;
+      if (path.startsWith('/en/')) {
+        loc = path.replace('/en/', '/');
+      } else if (path === '/en') {
+        loc = '/';
+      }
+
       // 西班牙语主页高优先级
       if (path === '/es' || path === '/es/') {
         return {
-          loc: path,
+          loc,
           changefreq: 'daily',
           priority: 1.0,
           lastmod: new Date().toISOString(),
@@ -26,7 +34,7 @@ module.exports = {
       // 英文主页最高优先级
       if (path === '/' || path === '/en' || path === '/en/') {
         return {
-          loc: path,
+          loc,
           changefreq: 'daily',
           priority: 1.0,
           lastmod: new Date().toISOString(),
@@ -36,7 +44,7 @@ module.exports = {
       // 生成器页面高优先级（英文和西班牙语）
       if (path.includes('-bible-verses') || path.includes('pornography-prayer-points')) {
         return {
-          loc: path,
+          loc,
           changefreq: 'daily',
           priority: 0.9,
           lastmod: new Date().toISOString(),
@@ -45,7 +53,7 @@ module.exports = {
 
       // 其他页面默认优先级
       return {
-        loc: path,
+        loc,
         changefreq: config.changefreq,
         priority: config.priority,
         lastmod: new Date().toISOString(),

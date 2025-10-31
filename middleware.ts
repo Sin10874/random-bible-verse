@@ -8,11 +8,11 @@ export default createMiddleware({
   // Used when no locale matches
   defaultLocale,
 
-  // Always use locale prefix for all locales (temporarily for debugging)
-  localePrefix: 'always',
+  // Default locale (en) doesn't need prefix, non-default (es) needs prefix
+  localePrefix: 'as-needed',
 });
 
 export const config = {
   // Match only internationalized pathnames
-  matcher: ['/', '/(en|es|pt|zh|tl|fr)/:path*', '/((?!api|_next|_vercel|.*\\..*).*)'],
+  matcher: ['/', '/(en|es)/:path*', '/((?!api|_next|_vercel|.*\\..*).*)'],
 };
