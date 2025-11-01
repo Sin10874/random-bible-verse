@@ -3,6 +3,7 @@ import { getGeneratorBySlug, GENERATORS, Generator } from "../../data/generators
 import { getTranslations } from "next-intl/server";
 import { locales } from "@/i18n/config";
 import StructuredData from "@/components/StructuredData";
+import { GENERATOR_FAQS } from "@/data/faqs";
 
 export async function generateMetadata({
   params,
@@ -209,6 +210,9 @@ export default async function GeneratorLayout({
     },
   ];
 
+  // Get FAQ data for this generator (GEO optimization)
+  const faqs = GENERATOR_FAQS[generator.id] || [];
+
   return (
     <>
       {/* Article Structured Data */}
@@ -228,6 +232,13 @@ export default async function GeneratorLayout({
         type="Breadcrumb"
         items={breadcrumbItems}
       />
+      {/* FAQ Structured Data for GEO (AI Search Engines) */}
+      {faqs.length > 0 && (
+        <StructuredData
+          type="FAQ"
+          items={faqs}
+        />
+      )}
       {children}
     </>
   );

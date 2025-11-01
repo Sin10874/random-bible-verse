@@ -34,7 +34,17 @@ interface BreadcrumbSchema {
   items: BreadcrumbItem[];
 }
 
-type StructuredDataProps = WebSiteSchema | ArticleSchema | BreadcrumbSchema;
+interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+interface FAQSchema {
+  type: 'FAQ';
+  items: FAQItem[];
+}
+
+type StructuredDataProps = WebSiteSchema | ArticleSchema | BreadcrumbSchema | FAQSchema;
 
 // ============================================
 // STRUCTURED DATA COMPONENT
@@ -63,6 +73,8 @@ function generateSchema(props: StructuredDataProps) {
       return generateArticleSchema(props);
     case 'Breadcrumb':
       return generateBreadcrumbSchema(props);
+    case 'FAQ':
+      return generateFAQSchema(props);
     default:
       return null;
   }
@@ -164,6 +176,22 @@ function generateBreadcrumbSchema(props: BreadcrumbSchema) {
       position: index + 1,
       name: item.name,
       item: item.url,
+    })),
+  };
+}
+
+// FAQ Schema for GEO (Generative Engine Optimization)
+function generateFAQSchema(props: FAQSchema) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: props.items.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer,
+      },
     })),
   };
 }
