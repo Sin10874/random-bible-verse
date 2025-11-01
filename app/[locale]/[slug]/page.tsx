@@ -8,6 +8,8 @@ import { Cormorant_Garamond } from "next/font/google";
 import { getGeneratorBySlug, Generator } from "../../data/generators";
 import { notFound } from "next/navigation";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import FAQSection from "@/components/FAQSection";
+import { GENERATOR_FAQS } from "@/data/faqs";
 
 const display = Cormorant_Garamond({
   subsets: ["latin"],
@@ -199,6 +201,11 @@ export default function GeneratorPage({ params }: GeneratorPageProps) {
           </div>
         </div>
       </section>
+
+      {/* ===== FAQ Section for GEO ===== */}
+      {GENERATOR_FAQS[generator.id] && locale === "en" && (
+        <FAQSection faqs={GENERATOR_FAQS[generator.id]} />
+      )}
 
       {/* ===== Copy Toast ===== */}
       {showToast && (
