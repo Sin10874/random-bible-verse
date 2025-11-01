@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getGeneratorBySlug, GENERATORS, Generator } from "../../data/generators";
 import { getTranslations } from "next-intl/server";
 import { locales } from "@/i18n/config";
+import StructuredData from "@/components/StructuredData";
 
 export async function generateMetadata({
   params,
@@ -166,10 +167,68 @@ export async function generateStaticParams() {
   return params;
 }
 
-export default function GeneratorLayout({
+export default async function GeneratorLayout({
   children,
+  params,
 }: {
   children: React.ReactNode;
+  params: Promise<{ slug: string; locale: string }>;
 }) {
-  return <>{children}</>;
+  const { slug, locale } = await params;
+  const generator = getGeneratorBySlug(slug);
+
+  if (!generator) {
+    return <>{children}</>;
+  }
+
+  // Get SEO data for structured data
+  const seoData = await getSEOData(generator, locale);
+  const baseUrl = 'https://bibleverse-generator.org';
+  const articleUrl = locale === 'en'
+    ? `${baseUrl}/${generator.slug}`
+    : `${baseUrl}/${locale}/${generator.slug}`;
+
+  // Publication dates (you can customize these)
+  const datePublished = '2024-01-01'; // Initial publication date
+  const dateModified = new Date().toISOString().split('T')[0]; // Today's date
+
+  // Get translations for breadcrumb
+  const t = await getTranslations({ locale, namespace: 'common' });
+  const tGenerators = await getTranslations({ locale, namespace: 'generators' });
+
+  // Breadcrumb items
+  const homeUrl = locale === 'en' ? baseUrl : `${baseUrl}/${locale}`;
+  const breadcrumbItems = [
+    {
+      name: t('home'),
+      url: homeUrl,
+    },
+    {
+      name: tGenerators(generator.id),
+      url: articleUrl,
+    },
+  ];
+
+  return (
+    <>
+      {/* Article Structured Data */}
+      <StructuredData
+        type="Article"
+        headline={seoData.title}
+        description={seoData.description}
+        url={articleUrl}
+        datePublished={datePublished}
+        dateModified={dateModified}
+        author="Bible Verse Generator"
+        locale={locale}
+        imageUrl={`${baseUrl}/og-${generator.slug}.jpg`}
+      />
+      {/* Breadcrumb Structured Data */}
+      <StructuredData
+        type="Breadcrumb"
+        items={breadcrumbItems}
+      />
+      {children}
+    </>
+  );
 }

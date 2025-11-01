@@ -7,11 +7,15 @@ import { useLocale, useTranslations } from "next-intl";
 import { Cormorant_Garamond } from "next/font/google";
 import { GENERATORS } from "../data/generators";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import StructuredData from "@/components/StructuredData";
 
 const display = Cormorant_Garamond({
   subsets: ["latin"],
   weight: "700",
   style: "italic",
+  display: "swap", // Optimize font loading performance
+  preload: true,
+  fallback: ['Georgia', 'serif'],
 });
 
 type Verse = { text: string; reference?: string };
@@ -57,6 +61,15 @@ export default function Page() {
 
   return (
     <div className="text-white bg-[#0b0f1a]">
+      {/* Structured Data for SEO */}
+      <StructuredData
+        type="WebSite"
+        name={tCommon('siteName')}
+        description={t('heroSubtitle')}
+        url={`https://bibleverse-generator.org${locale === 'en' ? '' : `/${locale}`}`}
+        locale={locale}
+      />
+
       {/* ===== Hero：首屏使用背景图 ===== */}
       <section className="relative min-h-screen overflow-hidden">
         {/* 桌面背景 */}

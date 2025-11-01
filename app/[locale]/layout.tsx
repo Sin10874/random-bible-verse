@@ -4,6 +4,7 @@ import { getMessages, setRequestLocale, getTranslations } from 'next-intl/server
 import { locales, type Locale } from '@/i18n/config';
 import Script from 'next/script';
 import type { Metadata } from 'next';
+import StructuredData from '@/components/StructuredData';
 import '../globals.css';
 
 export async function generateMetadata({
@@ -64,8 +65,29 @@ export default async function LocaleLayout({
   // Get messages for the current locale
   const messages = await getMessages({ locale });
 
+  // Get translations for structured data
+  const t = await getTranslations({ locale, namespace: 'seo' });
+
   return (
     <html lang={locale}>
+      <head>
+        {/* Preconnect to improve loading speed */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+
+        {/* DNS Prefetch for faster domain resolution */}
+        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+
+        {/* WebSite Structured Data */}
+        <StructuredData
+          type="WebSite"
+          name={locale === 'es' ? 'Generador de Versículos Bíblicos' : 'Bible Verse Generator'}
+          description={t('home.description')}
+          url={locale === 'en' ? 'https://bibleverse-generator.org' : `https://bibleverse-generator.org/${locale}`}
+          locale={locale}
+        />
+      </head>
       <body className="antialiased">
         <NextIntlClientProvider messages={messages} locale={locale}>
           {children}

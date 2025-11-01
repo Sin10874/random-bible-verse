@@ -10,6 +10,9 @@ const display = Cormorant_Garamond({
   subsets: ["latin"],
   weight: "700",
   style: "italic",
+  display: "swap",
+  preload: true,
+  fallback: ['Georgia', 'serif'],
 });
 
 export default function PrivacyPage() {
