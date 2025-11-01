@@ -1,6 +1,7 @@
 {
   "common": {
     "siteName": "Bible Verse Generator",
+    "home": "Home",
     "contactUs": "Contact Us",
     "privacy": "Privacy",
     "loading": "Loading...",

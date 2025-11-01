@@ -8,8 +8,6 @@ import { Cormorant_Garamond } from "next/font/google";
 import { getGeneratorBySlug, Generator } from "../../data/generators";
 import { notFound } from "next/navigation";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
-import { MultipleStructuredData } from "@/components/StructuredData";
-import Breadcrumb from "@/components/Breadcrumb";
 
 const display = Cormorant_Garamond({
   subsets: ["latin"],
@@ -71,35 +69,8 @@ export default function GeneratorPage({ params }: GeneratorPageProps) {
     setTimeout(() => setShowToast(false), 1500);
   }
 
-  const pageUrl = `https://bibleverse-generator.org${locale === 'en' ? '' : `/${locale}`}/${slug}`;
-  const homeUrl = `https://bibleverse-generator.org${locale === 'en' ? '' : `/${locale}`}`;
-
   return (
     <div className="text-white bg-[#0b0f1a]">
-      {/* Structured Data for SEO */}
-      <MultipleStructuredData
-        schemas={[
-          {
-            type: 'Article',
-            headline: tGenerators(generator.id),
-            description: locale === "es" ? tDescriptions(generator.id) : generator.description,
-            url: pageUrl,
-            datePublished: '2025-01-01',
-            dateModified: new Date().toISOString(),
-            author: 'Bible Verse Generator',
-            locale: locale,
-            imageUrl: `https://bibleverse-generator.org${generator.image}`
-          },
-          {
-            type: 'Breadcrumb',
-            items: [
-              { name: tCommon('siteName'), url: homeUrl },
-              { name: tGenerators(generator.id), url: pageUrl }
-            ]
-          }
-        ]}
-      />
-
       {/* ===== Hero：首屏使用背景图 ===== */}
       <section className="relative min-h-screen overflow-hidden">
         {/* 桌面背景 */}
@@ -143,20 +114,10 @@ export default function GeneratorPage({ params }: GeneratorPageProps) {
           <LanguageSwitcher />
         </header>
 
-        {/* Breadcrumb Navigation */}
-        <div className="relative z-20 px-6 md:px-10">
-          <Breadcrumb
-            items={[
-              { label: tCommon('siteName'), href: `/${locale}` },
-              { label: tGenerators(generator.id), href: `/${locale}/${slug}` }
-            ]}
-          />
-        </div>
-
         {/* Hero 内容 */}
         <main
           className="relative z-10 mx-auto max-w-5xl px-6 md:px-10
-                     min-h-[calc(100vh-96px-48px)] flex flex-col items-center justify-center text-center"
+                     min-h-[calc(100vh-96px)] flex flex-col items-center justify-center text-center"
         >
           <h1
             className={`${display.className} italic text-4xl sm:text-5xl md:text-7xl font-semibold tracking-tight leading-[1.05] drop-shadow-xl px-4`}

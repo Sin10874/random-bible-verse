@@ -1,6 +1,7 @@
 {
   "common": {
     "siteName": "Generador de Versículos Bíblicos",
+    "home": "Inicio",
     "contactUs": "Contáctenos",
     "privacy": "Privacidad",
     "loading": "Cargando...",
